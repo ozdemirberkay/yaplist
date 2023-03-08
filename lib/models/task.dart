@@ -3,7 +3,7 @@ import 'package:yaplist/models/category.dart';
 
 class Task {
   final int id;
-  final String title;
+  String title;
   final String? content;
   bool isCompleted;
   final DateTime? date;

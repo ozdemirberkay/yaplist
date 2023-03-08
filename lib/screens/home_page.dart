@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yaplist/models/task.dart';
+import 'package:yaplist/shareds/temp.dart';
 import 'package:yaplist/widgets/card/task_card.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
@@ -11,36 +11,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Task> tasks = [
-    Task(id: 1, title: "Deneme görevi", isCompleted: false),
-    Task(id: 2, title: "Postman sil", isCompleted: false),
-    Task(id: 3, title: "Deneme görevi 12312xws", isCompleted: false),
-    Task(id: 4, title: "Notion doldur", isCompleted: false),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Layout(
       title: "asdasd",
       body: Column(
         children: [
-          TaskCard(
-            task: tasks[0],
-          ),
-          TaskCard(
-            task: tasks[1],
-          ),
-          TaskCard(
-            task: tasks[2],
-          ),
-          TaskCard(
-            task: tasks[3],
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: tempTasks.length,
+            itemBuilder: (context, index) => TaskCard(
+              task: tempTasks[index],
+            ),
           ),
         ],
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => denemeslide(),
+            ));
+          },
           icon: const Icon(Icons.search),
         )
       ],

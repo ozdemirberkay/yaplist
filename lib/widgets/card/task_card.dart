@@ -10,66 +10,35 @@ class TaskCard extends StatefulWidget {
 }
 
 class _TaskCardState extends State<TaskCard> {
-  Widget buildSwipeActionLeft() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      color: Colors.green,
-      child: const Icon(
-        Icons.done,
-      ),
-    );
-  }
-
-  Widget buildSwipeActionRight() {
-    return Container(
-      alignment: Alignment.centerRight,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      color: Colors.red,
-      child: const Icon(
-        Icons.delete_forever,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: const BorderRadius.all(Radius.circular(5)),
-        border: Border.all(
-          color: const Color(0xffE2E8F0),
-        ),
+        border: Border.all(color: Colors.pink),
       ),
       margin: const EdgeInsets.only(bottom: 10),
-      child: Dismissible(
-        key: const Key("asd"),
-        secondaryBackground: buildSwipeActionRight(),
-        background: buildSwipeActionLeft(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-          child: Row(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+      child: Row(
+        children: [
+          Checkbox(
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            onChanged: (value) {
+              setState(() {
+                widget.task.isCompleted = value!;
+              });
+            },
+            value: widget.task.isCompleted,
+          ),
+          Column(
             children: [
-              Checkbox(
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                onChanged: (value) {
-                  setState(() {
-                    widget.task.isCompleted = value!;
-                  });
-                },
-                value: widget.task.isCompleted,
-              ),
-              Column(
-                children: [
-                  Text(
-                    widget.task.title,
-                  ),
-                ],
+              Text(
+                widget.task.title,
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
