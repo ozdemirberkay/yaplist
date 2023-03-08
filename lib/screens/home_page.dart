@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/widgets/card/task_card.dart';
-import 'package:yaplist/widgets/layout/Layout.dart';
+import 'package:yaplist/widgets/layout/layout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Layout(
+      title: "asdasd",
       body: Column(
         children: [
           TaskCard(

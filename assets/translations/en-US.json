@@ -1,4 +1,6 @@
 {
     "homePage": "Home",
-    "statistics": "Statistics"
+    "statistics": "Statistics",
+    "search": "Search",
+    "addTask": "Add Task"
 }

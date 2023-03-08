@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:yaplist/shareds/constants/routes.dart';
 
 class DashboardLayout extends StatelessWidget {
   final Widget body;
@@ -17,7 +18,9 @@ class DashboardLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, Routes.addScreen);
+        },
         child: const Icon(
           Icons.add,
         ),

@@ -44,7 +44,7 @@ class _TaskCardState extends State<TaskCard> {
       ),
       margin: const EdgeInsets.only(bottom: 10),
       child: Dismissible(
-        key: Key("asd"),
+        key: const Key("asd"),
         secondaryBackground: buildSwipeActionRight(),
         background: buildSwipeActionLeft(),
         child: Padding(
