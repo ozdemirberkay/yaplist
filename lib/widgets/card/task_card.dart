@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:yaplist/models/task.dart';
 
 class TaskCard extends StatefulWidget {
@@ -10,35 +12,63 @@ class TaskCard extends StatefulWidget {
 }
 
 class _TaskCardState extends State<TaskCard> {
+  void doNothing(BuildContext context) {}
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius: const BorderRadius.all(Radius.circular(5)),
-        border: Border.all(color: Colors.pink),
-      ),
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-      child: Row(
-        children: [
-          Checkbox(
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            onChanged: (value) {
-              setState(() {
-                widget.task.isCompleted = value!;
-              });
-            },
-            value: widget.task.isCompleted,
-          ),
-          Column(
+      margin: const EdgeInsets.only(bottom: 5),
+      child: Slidable(
+        key: ValueKey(widget.task.id),
+        endActionPane: ActionPane(
+          motion: const DrawerMotion(),
+          children: [
+            SlidableAction(
+              onPressed: doNothing,
+              backgroundColor: Colors.grey,
+              foregroundColor: Colors.white,
+              icon: Icons.info,
+              label: tr("details"),
+            ),
+            SlidableAction(
+              onPressed: doNothing,
+              backgroundColor: const Color(0xFFFE4A49),
+              foregroundColor: Colors.white,
+              icon: Icons.delete_forever,
+              label: tr("delete"),
+            ),
+          ],
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              border: const Border.symmetric(
+                horizontal: BorderSide(color: Colors.grey),
+              )
+              // border: Border.all(color: Colors.pink),
+              ),
+          child: Row(
             children: [
-              Text(
-                widget.task.title,
+              Checkbox(
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                onChanged: (value) {
+                  setState(() {
+                    widget.task.isCompleted = value!;
+                  });
+                },
+                value: widget.task.isCompleted,
+              ),
+              Column(
+                children: [
+                  Text(
+                    widget.task.title,
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

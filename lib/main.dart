@@ -35,7 +35,6 @@ class YaplistApp extends StatelessWidget {
       theme: YaplistTheme.light,
       darkTheme: YaplistTheme.dark,
       themeMode: ThemeMode.light,
-      routes: Routes.routes,
       initialRoute: Routes.initialScreen,
       home: BlocProvider(
         create: (context) => TodoBloc(),

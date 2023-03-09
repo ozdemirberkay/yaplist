@@ -28,11 +28,7 @@ class _HomePageState extends State<HomePage> {
       ),
       actions: [
         IconButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => denemeslide(),
-            ));
-          },
+          onPressed: () {},
           icon: const Icon(Icons.search),
         )
       ],

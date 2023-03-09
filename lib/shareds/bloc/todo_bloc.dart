@@ -21,9 +21,21 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     );
   }
 
-  @override
-  TodoState? fromJson(Map<String, dynamic> json) {}
+  void onUpdateTask(AddTask event, Emitter<TodoState> emit) {
+    print(state.runtimeType);
+    emit(
+      TodoChanged(
+        taskList: state.taskList..add(event.task),
+      ),
+    );
+  }
 
-  @override
-  Map<String, dynamic>? toJson(TodoState state) {}
+  void onDeleteTask(AddTask event, Emitter<TodoState> emit) {
+    print(state.runtimeType);
+    emit(
+      TodoChanged(
+        taskList: state.taskList..add(event.task),
+      ),
+    );
+  }
 }
