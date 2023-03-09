@@ -1,5 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yaplist/screens/dashboard/dashboard_screen.dart';
+import 'package:yaplist/shareds/bloc/todo_bloc.dart';
 import 'package:yaplist/shareds/constants/assets.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/shareds/locale/locale.dart';
@@ -34,7 +37,10 @@ class YaplistApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       routes: Routes.routes,
       initialRoute: Routes.initialScreen,
-      // home: const DashboardScreeen(),
+      home: BlocProvider(
+        create: (context) => TodoBloc(),
+        child: const DashboardScreeen(),
+      ),
     );
   }
 }
