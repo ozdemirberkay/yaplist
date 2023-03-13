@@ -4,5 +4,7 @@
     "search": "Arama",
     "addTask": "Görev Ekle",
     "details": "Detaylar",
-    "delete": "Sil"
+    "delete": "Sil",
+    "task": "Görev",
+    "add": "Ekle"
 }

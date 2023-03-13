@@ -21,14 +21,12 @@ class InputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      textAlignVertical: TextAlignVertical.center,
       onChanged: onChanged,
       keyboardType: keyboardType,
       validator: validator,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.only(left: 10),
+        border: const OutlineInputBorder(),
         labelText: label,
-        errorStyle: const TextStyle(height: 0.7),
         suffixIcon: Icon(
           icon,
           size: 18,

@@ -6,10 +6,6 @@ class MasterButtonIcon extends StatelessWidget {
   final IconData icon;
   final bool loading;
   final bool disabled;
-  final Color borderColor;
-  final Color? textColor;
-  final Color? backgroundColor;
-  final Color? iconColor;
   final bool isUppercase;
 
   const MasterButtonIcon({
@@ -20,10 +16,6 @@ class MasterButtonIcon extends StatelessWidget {
     this.loading = false,
     this.disabled = false,
     this.isUppercase = true,
-    required this.borderColor,
-    this.textColor,
-    this.backgroundColor,
-    this.iconColor,
   }) : super(key: key);
 
   @override
@@ -32,31 +24,23 @@ class MasterButtonIcon extends StatelessWidget {
       onPressed: disabled || loading ? null : onPressed,
       icon: SizedBox(
         child: loading
-            ? SizedBox(
+            ? const SizedBox(
                 height: 20,
                 width: 20,
-                child:
-                    CircularProgressIndicator(strokeWidth: 2, color: iconColor),
+                child: CircularProgressIndicator(
+                    strokeWidth: 2, color: Colors.pink),
               )
             : Icon(
                 icon,
-                color: iconColor,
+                color: Colors.pink,
               ),
       ),
       label: Text(
         isUppercase ? label.toUpperCase() : label,
         textAlign: TextAlign.center,
-        style: TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: textColor,
-        ),
       ),
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor,
-        side: BorderSide(width: 1, color: borderColor),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       ),
     );
   }
