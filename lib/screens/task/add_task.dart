@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
-class AddTask extends StatelessWidget {
-  const AddTask({super.key});
+class AddTaskScreen extends StatelessWidget {
+  const AddTaskScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
