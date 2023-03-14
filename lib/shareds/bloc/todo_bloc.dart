@@ -13,16 +13,16 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   }
 
   void onAddTask(AddTask event, Emitter<TodoState> emit) {
-    print(state.runtimeType);
+    List<Task> newTaskList = state.taskList;
+    newTaskList.add(event.task);
     emit(
       TodoChanged(
-        taskList: state.taskList..add(event.task),
+        taskList: newTaskList,
       ),
     );
   }
 
   void onUpdateTask(AddTask event, Emitter<TodoState> emit) {
-    print(state.runtimeType);
     emit(
       TodoChanged(
         taskList: state.taskList..add(event.task),
@@ -31,7 +31,8 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   }
 
   void onDeleteTask(AddTask event, Emitter<TodoState> emit) {
-    print(state.runtimeType);
+    List<Task> newTaskList = state.taskList;
+    newTaskList.remove(event.task);
     emit(
       TodoChanged(
         taskList: state.taskList..add(event.task),
