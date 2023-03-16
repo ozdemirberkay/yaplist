@@ -6,7 +6,6 @@ class MasterButtonIcon extends StatelessWidget {
   final IconData icon;
   final bool loading;
   final bool disabled;
-  final bool isUppercase;
 
   const MasterButtonIcon({
     Key? key,
@@ -15,7 +14,6 @@ class MasterButtonIcon extends StatelessWidget {
     required this.icon,
     this.loading = false,
     this.disabled = false,
-    this.isUppercase = true,
   }) : super(key: key);
 
   @override
@@ -27,16 +25,12 @@ class MasterButtonIcon extends StatelessWidget {
             ? const SizedBox(
                 height: 20,
                 width: 20,
-                child: CircularProgressIndicator(
-                    strokeWidth: 2, color: Colors.pink),
+                child: CircularProgressIndicator(strokeWidth: 2),
               )
-            : Icon(
-                icon,
-                color: Colors.pink,
-              ),
+            : Icon(icon),
       ),
       label: Text(
-        isUppercase ? label.toUpperCase() : label,
+        label,
         textAlign: TextAlign.center,
       ),
       style: ElevatedButton.styleFrom(

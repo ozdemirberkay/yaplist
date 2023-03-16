@@ -8,35 +8,37 @@ part 'todo_state.dart';
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
   TodoBloc() : super(const TodoInitial(taskList: [])) {
     on<AddTask>(onAddTask);
-    on<UpdateTask>((event, emit) {});
-    on<DeleteTask>((event, emit) {});
+    on<UpdateTask>(onUpdateTask);
+    on<DeleteTask>(onDeleteTask);
   }
 
   void onAddTask(AddTask event, Emitter<TodoState> emit) {
-    List<Task> newTaskList = state.taskList;
+    List<Task> newTaskList = List.from(state.taskList);
     newTaskList.add(event.task);
     emit(
-      TodoChanged(
-        taskList: newTaskList,
-      ),
+      TodoChanged(taskList: newTaskList),
     );
   }
 
-  void onUpdateTask(AddTask event, Emitter<TodoState> emit) {
+  void onUpdateTask(UpdateTask event, Emitter<TodoState> emit) {
+    List<Task> newTaskList = List.from(state.taskList);
+    newTaskList.remove(event.task);
+    newTaskList.add(event.task);
+
+    // int index =
+    //     newTaskList.indexWhere((element) => element.id == event.task.id);
+
+    // newTaskList[index] == event.task;
     emit(
-      TodoChanged(
-        taskList: state.taskList..add(event.task),
-      ),
+      TodoChanged(taskList: newTaskList),
     );
   }
 
-  void onDeleteTask(AddTask event, Emitter<TodoState> emit) {
-    List<Task> newTaskList = state.taskList;
+  void onDeleteTask(DeleteTask event, Emitter<TodoState> emit) {
+    List<Task> newTaskList = List.from(state.taskList);
     newTaskList.remove(event.task);
     emit(
-      TodoChanged(
-        taskList: state.taskList..add(event.task),
-      ),
+      TodoChanged(taskList: newTaskList),
     );
   }
 }

@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:yaplist/models/task.dart';
+import 'package:yaplist/shareds/bloc/todo_bloc.dart';
 
 class TaskCard extends StatefulWidget {
   final Task task;
@@ -12,7 +14,11 @@ class TaskCard extends StatefulWidget {
 }
 
 class _TaskCardState extends State<TaskCard> {
-  void doNothing(BuildContext context) {}
+  void deleteTask(BuildContext context) {
+    context.read<TodoBloc>().add(DeleteTask(task: widget.task));
+  }
+
+  void updateTask(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +30,14 @@ class _TaskCardState extends State<TaskCard> {
           motion: const DrawerMotion(),
           children: [
             SlidableAction(
-              onPressed: doNothing,
+              onPressed: (context) {},
               backgroundColor: Colors.grey,
               foregroundColor: Colors.white,
               icon: Icons.info,
               label: tr("details"),
             ),
             SlidableAction(
-              onPressed: doNothing,
+              onPressed: deleteTask,
               backgroundColor: const Color(0xFFFE4A49),
               foregroundColor: Colors.white,
               icon: Icons.delete_forever,

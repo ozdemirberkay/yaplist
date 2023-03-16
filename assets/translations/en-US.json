@@ -4,5 +4,7 @@
     "search": "Search",
     "addTask": "Add Task",
     "details": "Details",
-    "delete": "Delete"
+    "delete": "Delete",
+    "task": "Task",
+    "add": "Add"
 }
