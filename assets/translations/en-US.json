@@ -6,5 +6,7 @@
     "details": "Details",
     "delete": "Delete",
     "task": "Task",
-    "add": "Add"
+    "add": "Add",
+    "select": "Select",
+    "selectDate": "Select Date"
 }

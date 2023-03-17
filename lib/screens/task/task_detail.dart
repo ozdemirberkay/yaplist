@@ -18,32 +18,42 @@ class TaskDetailScreen extends StatefulWidget {
 
 class _TaskDetailScreenState extends State<TaskDetailScreen> {
   TextEditingController taskController = TextEditingController();
-
-  DateTime date = DateTime(2016, 10, 26);
+  TextEditingController dateController = TextEditingController();
+  DateTime? selectedDate;
 
   void showDatePicker() {
-    showCupertinoModalPopup<void>(
+    showModalBottomSheet(
         context: context,
-        builder: (BuildContext context) => Container(
-              height: 216,
-              padding: const EdgeInsets.only(top: 6.0),
-              margin: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
-              color: CupertinoColors.systemBackground.resolveFrom(context),
-              child: SafeArea(
-                top: false,
-                child: CupertinoDatePicker(
-                  initialDateTime: date,
-                  mode: CupertinoDatePickerMode.date,
-                  use24hFormat: true,
-                  // This is called when the user changes the date.
-                  onDateTimeChanged: (DateTime newDate) {
-                    setState(() => date = newDate);
-                  },
+        builder: (BuildContext context) {
+          return SafeArea(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: CupertinoDatePicker(
+                    initialDateTime: DateTime.now(),
+                    mode: CupertinoDatePickerMode.date,
+                    onDateTimeChanged: (DateTime newDate) {
+                      String formattedDate =
+                          DateFormat('dd-MM-yyyy').format(newDate);
+                      dateController.text = formattedDate;
+                      selectedDate = newDate;
+                    },
+                  ),
                 ),
-              ),
-            ));
+                SizedBox(
+                  width: double.infinity,
+                  child: MasterButtonIcon(
+                      label: tr("select"),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: Icons.check),
+                )
+              ],
+            ),
+          );
+        });
   }
 
   @override
@@ -58,7 +68,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
             InputField(
               label: tr("task"),
               controller: taskController,
-              icon: Icons.task_outlined,
+              icon: Icons.task,
             ),
             const SizedBox(height: 10),
             const InputField(
@@ -66,17 +76,22 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
             ),
             const SizedBox(height: 10),
             InputField(
-              label: "tarih seç 111",
+              label: tr("selectDate"),
               onTap: showDatePicker,
+              controller: dateController,
               readOnly: true,
+              icon: Icons.date_range,
             ),
             const SizedBox(height: 10),
             MasterButtonIcon(
               label: tr("add"),
-              icon: Icons.check,
+              icon: Icons.calendar_month,
               onPressed: () {
-                Task task =
-                    Task(id: 1, title: taskController.text, isCompleted: false);
+                Task task = Task(
+                  id: 1,
+                  title: taskController.text,
+                  isCompleted: false,
+                );
                 context.read<TodoBloc>().add(AddTask(task: task));
               },
             ),

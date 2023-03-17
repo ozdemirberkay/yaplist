@@ -6,5 +6,7 @@
     "details": "Detaylar",
     "delete": "Sil",
     "task": "Görev",
-    "add": "Ekle"
+    "add": "Ekle",
+    "select": "Seç",
+    "selectDate": "Tarih Seç"
 }
