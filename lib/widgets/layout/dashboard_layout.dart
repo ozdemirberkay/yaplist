@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:yaplist/screens/task/add_task.dart';
+import 'package:yaplist/screens/task/task_detail.dart';
 
 class DashboardLayout extends StatelessWidget {
   final Widget body;
@@ -20,7 +20,7 @@ class DashboardLayout extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const AddTaskScreen(),
+            builder: (context) => const TaskDetailScreen(),
           ));
         },
         child: const Icon(

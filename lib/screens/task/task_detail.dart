@@ -8,19 +8,20 @@ import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
-class AddTaskScreen extends StatefulWidget {
-  const AddTaskScreen({super.key});
+class TaskDetailScreen extends StatefulWidget {
+  final Task? task;
+  const TaskDetailScreen({super.key, this.task});
 
   @override
-  State<AddTaskScreen> createState() => _AddTaskScreenState();
+  State<TaskDetailScreen> createState() => _TaskDetailScreenState();
 }
 
-class _AddTaskScreenState extends State<AddTaskScreen> {
+class _TaskDetailScreenState extends State<TaskDetailScreen> {
   TextEditingController taskController = TextEditingController();
 
   DateTime date = DateTime(2016, 10, 26);
 
-  void _showDialog() {
+  void showDatePicker() {
     showCupertinoModalPopup<void>(
         context: context,
         builder: (BuildContext context) => Container(
@@ -62,6 +63,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             const SizedBox(height: 10),
             const InputField(
               label: "Deneme123",
+            ),
+            const SizedBox(height: 10),
+            InputField(
+              label: "tarih seç 111",
+              onTap: showDatePicker,
+              readOnly: true,
             ),
             const SizedBox(height: 10),
             MasterButtonIcon(

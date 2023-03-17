@@ -7,6 +7,8 @@ class InputField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
   final TextInputType? keyboardType;
+  final VoidCallback? onTap;
+  final bool readOnly;
 
   const InputField(
       {super.key,
@@ -15,7 +17,9 @@ class InputField extends StatelessWidget {
       this.icon,
       this.validator,
       this.onChanged,
-      this.keyboardType});
+      this.keyboardType,
+      this.onTap,
+      this.readOnly = false});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,8 @@ class InputField extends StatelessWidget {
       onChanged: onChanged,
       keyboardType: keyboardType,
       validator: validator,
+      onTap: onTap,
+      readOnly: readOnly,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         labelText: label,
