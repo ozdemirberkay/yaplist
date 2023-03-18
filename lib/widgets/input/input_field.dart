@@ -33,10 +33,7 @@ class InputField extends StatelessWidget {
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         labelText: label,
-        suffixIcon: Icon(
-          icon,
-          size: 18,
-        ),
+        suffixIcon: Icon(icon),
       ),
     );
   }

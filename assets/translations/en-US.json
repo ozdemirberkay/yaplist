@@ -9,5 +9,6 @@
     "add": "Add",
     "select": "Select",
     "selectDate": "Select Date",
-    "category": "Category"
+    "category": "Category",
+    "pleaseEnterTask": "Please enter a task"
 }

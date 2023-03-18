@@ -48,10 +48,17 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                 label: tr("task"),
                 controller: titleController,
                 icon: Icons.task,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return tr("pleaseEnterTask");
+                  }
+                  return null;
+                },
               ),
               const SizedBox(height: 10),
               InputField(
                 label: tr("category"),
+                icon: Icons.category,
               ),
               const SizedBox(height: 10),
               InputField(
@@ -69,12 +76,13 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                 label: tr("add"),
                 icon: Icons.calendar_month,
                 onPressed: () {
-                  Task task = Task(
-                    id: 1,
-                    title: titleController.text,
-                    isCompleted: false,
-                  );
-                  context.read<TodoBloc>().add(AddTask(task: task));
+                  if (formKey.currentState!.validate()) {
+                    Task task = Task(
+                      id: 1,
+                      title: titleController.text,
+                    );
+                    context.read<TodoBloc>().add(AddTask(task: task));
+                  }
                 },
               ),
             ],

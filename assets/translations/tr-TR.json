@@ -9,5 +9,6 @@
     "add": "Ekle",
     "select": "Seç",
     "selectDate": "Tarih Seç",
-    "category": "Kategori"
+    "category": "Kategori",
+    "pleaseEnterTask": "Lütfen bir görev girin"
 }
