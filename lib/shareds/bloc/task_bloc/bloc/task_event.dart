@@ -1,19 +1,19 @@
-part of 'todo_bloc.dart';
+part of 'task_bloc.dart';
 
 @immutable
-abstract class TodoEvent {}
+abstract class TaskEvent {}
 
-class DeleteTask extends TodoEvent {
+class DeleteTask extends TaskEvent {
   final Task task;
   DeleteTask({required this.task});
 }
 
-class AddTask extends TodoEvent {
+class AddTask extends TaskEvent {
   final Task task;
   AddTask({required this.task});
 }
 
-class UpdateTask extends TodoEvent {
+class UpdateTask extends TaskEvent {
   final Task task;
   UpdateTask({required this.task});
 }

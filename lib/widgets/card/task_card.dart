@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:yaplist/models/task.dart';
-import 'package:yaplist/shareds/bloc/todo_bloc.dart';
+import 'package:yaplist/shareds/bloc/task_bloc/bloc/task_bloc.dart';
 
 class TaskCard extends StatefulWidget {
   final Task task;
@@ -15,7 +15,7 @@ class TaskCard extends StatefulWidget {
 
 class _TaskCardState extends State<TaskCard> {
   void deleteTask(BuildContext context) {
-    context.read<TodoBloc>().add(DeleteTask(task: widget.task));
+    context.read<TaskBloc>().add(DeleteTask(task: widget.task));
   }
 
   void updateTask(BuildContext context) {}

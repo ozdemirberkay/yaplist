@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yaplist/shareds/bloc/todo_bloc.dart';
+import 'package:yaplist/shareds/bloc/task_bloc/bloc/task_bloc.dart';
 import 'package:yaplist/shareds/constants/assets.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/shareds/locale/locale.dart';
@@ -16,7 +16,7 @@ Future<void> main() async {
       path: Assets.translations,
       fallbackLocale: AppLocale.fallbackLocale,
       child: BlocProvider(
-        create: (context) => TodoBloc(),
+        create: (context) => TaskBloc(),
         child: const YaplistApp(),
       ),
     ),

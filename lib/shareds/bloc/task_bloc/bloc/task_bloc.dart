@@ -2,25 +2,25 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
 
-part 'todo_event.dart';
-part 'todo_state.dart';
+part 'task_event.dart';
+part 'task_state.dart';
 
-class TodoBloc extends Bloc<TodoEvent, TodoState> {
-  TodoBloc() : super(const TodoInitial(taskList: [])) {
+class TaskBloc extends Bloc<TaskEvent, TaskState> {
+  TaskBloc() : super(const TaskInitial(taskList: [])) {
     on<AddTask>(onAddTask);
     on<UpdateTask>(onUpdateTask);
     on<DeleteTask>(onDeleteTask);
   }
 
-  void onAddTask(AddTask event, Emitter<TodoState> emit) {
+  void onAddTask(AddTask event, Emitter<TaskState> emit) {
     List<Task> newTaskList = List.from(state.taskList);
     newTaskList.add(event.task);
     emit(
-      TodoChanged(taskList: newTaskList),
+      TaskChanged(taskList: newTaskList),
     );
   }
 
-  void onUpdateTask(UpdateTask event, Emitter<TodoState> emit) {
+  void onUpdateTask(UpdateTask event, Emitter<TaskState> emit) {
     List<Task> newTaskList = List.from(state.taskList);
     newTaskList.remove(event.task);
     newTaskList.add(event.task);
@@ -30,15 +30,15 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
 
     // newTaskList[index] == event.task;
     emit(
-      TodoChanged(taskList: newTaskList),
+      TaskChanged(taskList: newTaskList),
     );
   }
 
-  void onDeleteTask(DeleteTask event, Emitter<TodoState> emit) {
+  void onDeleteTask(DeleteTask event, Emitter<TaskState> emit) {
     List<Task> newTaskList = List.from(state.taskList);
     newTaskList.remove(event.task);
     emit(
-      TodoChanged(taskList: newTaskList),
+      TaskChanged(taskList: newTaskList),
     );
   }
 }

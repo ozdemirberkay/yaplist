@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
-import 'package:yaplist/shareds/bloc/todo_bloc.dart';
+import 'package:yaplist/shareds/bloc/task_bloc/bloc/task_bloc.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
@@ -80,6 +80,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
               ),
               Container(
                 width: double.infinity,
+                padding: const EdgeInsets.all(4),
                 child: MasterButtonIcon(
                   label: tr("add"),
                   icon: Icons.calendar_month,
@@ -89,7 +90,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                         id: 1,
                         title: titleController.text,
                       );
-                      context.read<TodoBloc>().add(AddTask(task: task));
+                      context.read<TaskBloc>().add(AddTask(task: task));
                     }
                   },
                 ),

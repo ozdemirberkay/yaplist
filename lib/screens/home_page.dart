@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
-import 'package:yaplist/shareds/bloc/todo_bloc.dart';
+import 'package:yaplist/shareds/bloc/task_bloc/bloc/task_bloc.dart';
 import 'package:yaplist/widgets/card/task_card.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TodoBloc, TodoState>(
+    return BlocBuilder<TaskBloc, TaskState>(
       builder: (context, state) {
         List<Task> taskList = state.taskList;
 
