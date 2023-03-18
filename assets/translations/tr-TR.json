@@ -8,5 +8,6 @@
     "task": "Görev",
     "add": "Ekle",
     "select": "Seç",
-    "selectDate": "Tarih Seç"
+    "selectDate": "Tarih Seç",
+    "category": "Kategori"
 }

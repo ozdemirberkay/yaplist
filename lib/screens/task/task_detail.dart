@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/shareds/bloc/todo_bloc.dart';
+import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
@@ -17,43 +17,20 @@ class TaskDetailScreen extends StatefulWidget {
 }
 
 class _TaskDetailScreenState extends State<TaskDetailScreen> {
-  TextEditingController taskController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  TextEditingController titleController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   DateTime? selectedDate;
 
-  void showDatePicker() {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return SafeArea(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: CupertinoDatePicker(
-                    initialDateTime: DateTime.now(),
-                    mode: CupertinoDatePickerMode.date,
-                    onDateTimeChanged: (DateTime newDate) {
-                      String formattedDate =
-                          DateFormat('dd-MM-yyyy').format(newDate);
-                      dateController.text = formattedDate;
-                      selectedDate = newDate;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: MasterButtonIcon(
-                      label: tr("select"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: Icons.check),
-                )
-              ],
-            ),
-          );
-        });
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  onDateChanged(DateTime newDate) {
+    String formattedDate = DateFormat('dd-MM-yyyy').format(newDate);
+    dateController.text = formattedDate;
+    selectedDate = newDate;
   }
 
   @override
@@ -61,41 +38,47 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
     return Layout(
       title: tr("addTask"),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            InputField(
-              label: tr("task"),
-              controller: taskController,
-              icon: Icons.task,
-            ),
-            const SizedBox(height: 10),
-            const InputField(
-              label: "Deneme123",
-            ),
-            const SizedBox(height: 10),
-            InputField(
-              label: tr("selectDate"),
-              onTap: showDatePicker,
-              controller: dateController,
-              readOnly: true,
-              icon: Icons.date_range,
-            ),
-            const SizedBox(height: 10),
-            MasterButtonIcon(
-              label: tr("add"),
-              icon: Icons.calendar_month,
-              onPressed: () {
-                Task task = Task(
-                  id: 1,
-                  title: taskController.text,
-                  isCompleted: false,
-                );
-                context.read<TodoBloc>().add(AddTask(task: task));
-              },
-            ),
-          ],
+        padding: const EdgeInsets.all(10),
+        child: Form(
+          key: formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              InputField(
+                label: tr("task"),
+                controller: titleController,
+                icon: Icons.task,
+              ),
+              const SizedBox(height: 10),
+              InputField(
+                label: tr("category"),
+              ),
+              const SizedBox(height: 10),
+              InputField(
+                label: tr("selectDate"),
+                onTap: () {
+                  DatePickerModal.show(
+                      context: context, onDateTimeChanged: onDateChanged);
+                },
+                controller: dateController,
+                readOnly: true,
+                icon: Icons.date_range,
+              ),
+              const SizedBox(height: 10),
+              MasterButtonIcon(
+                label: tr("add"),
+                icon: Icons.calendar_month,
+                onPressed: () {
+                  Task task = Task(
+                    id: 1,
+                    title: titleController.text,
+                    isCompleted: false,
+                  );
+                  context.read<TodoBloc>().add(AddTask(task: task));
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yaplist/shareds/constants/constants.dart';
 
 class MasterButtonIcon extends StatelessWidget {
   final String label;
@@ -34,7 +35,7 @@ class MasterButtonIcon extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
       style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+        shape: RoundedRectangleBorder(borderRadius: Constants.borderRadius),
       ),
     );
   }

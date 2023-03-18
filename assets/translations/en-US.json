@@ -8,5 +8,6 @@
     "task": "Task",
     "add": "Add",
     "select": "Select",
-    "selectDate": "Select Date"
+    "selectDate": "Select Date",
+    "category": "Category"
 }

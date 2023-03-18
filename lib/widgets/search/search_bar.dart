@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:yaplist/shareds/constants/constants.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({super.key});
@@ -10,7 +11,7 @@ class SearchBar extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
       height: 40,
       width: double.infinity,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+      decoration: BoxDecoration(borderRadius: Constants.borderRadius),
       child: InkWell(
         onTap: () {},
         child: Row(
