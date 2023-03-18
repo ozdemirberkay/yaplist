@@ -5,15 +5,15 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/shareds/bloc/todo_bloc.dart';
 
-class TaskCard extends StatefulWidget {
+class CategoryCard extends StatefulWidget {
   final Task task;
-  const TaskCard({super.key, required this.task});
+  const CategoryCard({super.key, required this.task});
 
   @override
-  State<TaskCard> createState() => _TaskCardState();
+  State<CategoryCard> createState() => _CategoryCardState();
 }
 
-class _TaskCardState extends State<TaskCard> {
+class _CategoryCardState extends State<CategoryCard> {
   void deleteTask(BuildContext context) {
     context.read<TodoBloc>().add(DeleteTask(task: widget.task));
   }
@@ -47,29 +47,17 @@ class _TaskCardState extends State<TaskCard> {
         ),
         child: Container(
           padding: const EdgeInsets.all(6),
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(),
-            ),
-            // border: Border.all(color: Colors.pink),
-          ),
-          child: Row(
-            children: [
-              Checkbox(
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                onChanged: (value) {
-                  setState(() {
-                    widget.task.isCompleted = value!;
-                  });
-                },
-                value: widget.task.isCompleted,
+          decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              border: const Border.symmetric(
+                horizontal: BorderSide(color: Colors.grey),
+              )
+              // border: Border.all(color: Colors.pink),
               ),
-              Column(
-                children: [
-                  Text(
-                    widget.task.title,
-                  ),
-                ],
+          child: Column(
+            children: [
+              Text(
+                widget.task.title,
               ),
             ],
           ),

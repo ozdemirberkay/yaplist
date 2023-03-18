@@ -31,7 +31,7 @@ class MasterButtonIcon extends StatelessWidget {
             : Icon(icon),
       ),
       label: Text(
-        label,
+        label.toUpperCase(),
         textAlign: TextAlign.center,
       ),
       style: ElevatedButton.styleFrom(

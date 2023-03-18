@@ -10,5 +10,6 @@
     "select": "Seç",
     "selectDate": "Tarih Seç",
     "category": "Kategori",
-    "pleaseEnterTask": "Lütfen bir görev girin"
+    "pleaseEnterTask": "Lütfen bir görev girin",
+    "tasks": "Görevler"
 }

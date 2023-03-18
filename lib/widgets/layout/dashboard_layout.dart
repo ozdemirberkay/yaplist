@@ -34,8 +34,8 @@ class DashboardLayout extends StatelessWidget {
           label: tr("homePage"),
         ),
         BottomNavigationBarItem(
-          icon: const Icon(Icons.bar_chart),
-          label: tr("statistics"),
+          icon: const Icon(Icons.checklist),
+          label: tr("tasks"),
         ),
       ], currentIndex: index, onTap: onChanged),
       body: body,

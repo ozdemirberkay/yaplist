@@ -16,6 +16,7 @@ class Layout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        centerTitle: true,
         actions: actions,
       ),
       body: body,

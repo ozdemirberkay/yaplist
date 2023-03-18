@@ -10,5 +10,6 @@
     "select": "Select",
     "selectDate": "Select Date",
     "category": "Category",
-    "pleaseEnterTask": "Please enter a task"
+    "pleaseEnterTask": "Please enter a task",
+    "tasks": "Tasks"
 }

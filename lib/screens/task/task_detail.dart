@@ -42,49 +42,59 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
         child: Form(
           key: formKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              InputField(
-                label: tr("task"),
-                controller: titleController,
-                icon: Icons.task,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return tr("pleaseEnterTask");
-                  }
-                  return null;
-                },
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    InputField(
+                      label: tr("task"),
+                      controller: titleController,
+                      icon: Icons.task,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return tr("pleaseEnterTask");
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                    InputField(
+                      label: tr("category"),
+                      icon: Icons.category,
+                    ),
+                    const SizedBox(height: 10),
+                    InputField(
+                      label: tr("selectDate"),
+                      onTap: () {
+                        DatePickerModal.show(
+                            context: context, onDateTimeChanged: onDateChanged);
+                      },
+                      controller: dateController,
+                      readOnly: true,
+                      icon: Icons.date_range,
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                child: MasterButtonIcon(
+                  label: tr("add"),
+                  icon: Icons.calendar_month,
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      Task task = Task(
+                        id: 1,
+                        title: titleController.text,
+                      );
+                      context.read<TodoBloc>().add(AddTask(task: task));
+                    }
+                  },
+                ),
               ),
               const SizedBox(height: 10),
-              InputField(
-                label: tr("category"),
-                icon: Icons.category,
-              ),
-              const SizedBox(height: 10),
-              InputField(
-                label: tr("selectDate"),
-                onTap: () {
-                  DatePickerModal.show(
-                      context: context, onDateTimeChanged: onDateChanged);
-                },
-                controller: dateController,
-                readOnly: true,
-                icon: Icons.date_range,
-              ),
-              const SizedBox(height: 10),
-              MasterButtonIcon(
-                label: tr("add"),
-                icon: Icons.calendar_month,
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    Task task = Task(
-                      id: 1,
-                      title: titleController.text,
-                    );
-                    context.read<TodoBloc>().add(AddTask(task: task));
-                  }
-                },
-              ),
             ],
           ),
         ),

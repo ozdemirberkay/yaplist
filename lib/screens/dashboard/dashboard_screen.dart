@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yaplist/screens/home_page.dart';
+import 'package:yaplist/screens/tasks.dart';
 import 'package:yaplist/widgets/layout/dashboard_layout.dart';
 
 class DashboardScreeen extends StatefulWidget {
@@ -16,7 +17,8 @@ class _DashboardScreeenState extends State<DashboardScreeen> {
     if (_selectedIndex == 0) {
       return const HomePage();
     } else if (_selectedIndex == 1) {
-    } else if (_selectedIndex == 2) {}
+      return const Tasks();
+    }
     return Container();
   }
 
