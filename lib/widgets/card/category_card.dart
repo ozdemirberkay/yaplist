@@ -22,45 +22,42 @@ class _CategoryCardState extends State<CategoryCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 5),
-      child: Slidable(
-        key: ValueKey(widget.task.id),
-        endActionPane: ActionPane(
-          motion: const DrawerMotion(),
-          children: [
-            SlidableAction(
-              onPressed: (context) {},
-              backgroundColor: Colors.grey,
-              foregroundColor: Colors.white,
-              icon: Icons.info,
-              label: tr("details"),
+    return Slidable(
+      key: ValueKey(widget.task.id),
+      endActionPane: ActionPane(
+        motion: const DrawerMotion(),
+        children: [
+          SlidableAction(
+            onPressed: (context) {},
+            backgroundColor: Colors.grey,
+            foregroundColor: Colors.white,
+            icon: Icons.info,
+            label: tr("details"),
+          ),
+          SlidableAction(
+            onPressed: deleteTask,
+            backgroundColor: const Color(0xFFFE4A49),
+            foregroundColor: Colors.white,
+            icon: Icons.delete_forever,
+            label: tr("delete"),
+          ),
+        ],
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            border: const Border.symmetric(
+              horizontal: BorderSide(color: Colors.grey),
+            )
+            // border: Border.all(color: Colors.pink),
             ),
-            SlidableAction(
-              onPressed: deleteTask,
-              backgroundColor: const Color(0xFFFE4A49),
-              foregroundColor: Colors.white,
-              icon: Icons.delete_forever,
-              label: tr("delete"),
+        child: Column(
+          children: [
+            Text(
+              widget.task.title,
             ),
           ],
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              border: const Border.symmetric(
-                horizontal: BorderSide(color: Colors.grey),
-              )
-              // border: Border.all(color: Colors.pink),
-              ),
-          child: Column(
-            children: [
-              Text(
-                widget.task.title,
-              ),
-            ],
-          ),
         ),
       ),
     );

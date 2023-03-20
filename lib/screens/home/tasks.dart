@@ -1,3 +1,5 @@
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
@@ -20,7 +22,7 @@ class _TasksState extends State<Tasks> {
         List<Task> taskList = state.taskList;
 
         return Layout(
-          title: "asdasd",
+          title: tr("tasks"),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListView.builder(

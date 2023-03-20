@@ -64,12 +64,10 @@ class _TaskCardState extends State<TaskCard> {
                 },
                 value: widget.task.isCompleted,
               ),
-              Column(
-                children: [
-                  Text(
-                    widget.task.title,
-                  ),
-                ],
+              Expanded(
+                child: Text(
+                  widget.task.title,
+                ),
               ),
             ],
           ),

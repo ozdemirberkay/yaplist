@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yaplist/screens/home_page.dart';
-import 'package:yaplist/screens/tasks.dart';
+import 'package:yaplist/screens/home/home_page.dart';
+import 'package:yaplist/screens/home/tasks.dart';
 import 'package:yaplist/widgets/layout/dashboard_layout.dart';
 
 class DashboardScreeen extends StatefulWidget {
