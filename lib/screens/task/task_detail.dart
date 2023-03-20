@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
-import 'package:yaplist/shareds/bloc/task_bloc/bloc/task_bloc.dart';
+import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
-import 'package:yaplist/shareds/bloc/task_bloc/bloc/task_bloc.dart';
+import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 import 'package:yaplist/widgets/card/task_card.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
