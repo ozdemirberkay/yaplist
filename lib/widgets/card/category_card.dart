@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/category.dart';
+import 'package:yaplist/screens/home/tasks.dart';
+import 'package:yaplist/shareds/constants/constants.dart';
 
 class CategoryCard extends StatefulWidget {
   final Category category;
@@ -10,25 +12,24 @@ class CategoryCard extends StatefulWidget {
 }
 
 class _CategoryCardState extends State<CategoryCard> {
-  void updateTask(BuildContext context) {}
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(6),
-      decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          border: const Border.symmetric(
-            horizontal: BorderSide(color: Colors.grey),
-          )
-          // border: Border.all(color: Colors.pink),
-          ),
-      child: Column(
-        children: [
-          Text(
-            widget.category.name,
-          ),
-        ],
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Tasks(filterCategory: widget.category),
+        ));
+      },
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: widget.category.color,
+          borderRadius: Constants.borderRadius,
+        ),
+        width: MediaQuery.of(context).size.width / 3,
+        child: Text(
+          widget.category.name,
+        ),
       ),
     );
   }

@@ -58,6 +58,8 @@ class _TaskCardState extends State<TaskCard> {
               Checkbox(
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 onChanged: (value) {
+                  //TODO update state çağır
+
                   setState(() {
                     widget.task.isCompleted = value!;
                   });
