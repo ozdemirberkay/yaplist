@@ -34,12 +34,6 @@ class MasterButton extends StatelessWidget {
         label.toUpperCase(),
         textAlign: TextAlign.center,
       ),
-      style: ElevatedButton.styleFrom(
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        shape: RoundedRectangleBorder(
-          borderRadius: Constants.borderRadius,
-        ),
-      ),
     );
   }
 }

@@ -19,12 +19,6 @@ class MasterIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: disabled || loading ? null : onPressed,
-      style: ElevatedButton.styleFrom(
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        shape: RoundedRectangleBorder(
-          borderRadius: Constants.borderRadius,
-        ),
-      ),
       child: SizedBox(
         child: loading
             ? const SizedBox(
