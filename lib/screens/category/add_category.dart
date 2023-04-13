@@ -6,15 +6,15 @@ import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
-class CategoryDetailScreen extends StatefulWidget {
+class AddCategoryScreen extends StatefulWidget {
   final Category? category;
-  const CategoryDetailScreen({super.key, this.category});
+  const AddCategoryScreen({super.key, this.category});
 
   @override
-  State<CategoryDetailScreen> createState() => _CategoryDetailScreenState();
+  State<AddCategoryScreen> createState() => _AddCategoryScreenState();
 }
 
-class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
+class _AddCategoryScreenState extends State<AddCategoryScreen> {
   final formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController colorController = TextEditingController();

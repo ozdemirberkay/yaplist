@@ -1,3 +1,4 @@
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,15 +9,15 @@ import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
-class TaskDetailScreen extends StatefulWidget {
+class AddTaskScreen extends StatefulWidget {
   final Task? task;
-  const TaskDetailScreen({super.key, this.task});
+  const AddTaskScreen({super.key, this.task});
 
   @override
-  State<TaskDetailScreen> createState() => _TaskDetailScreenState();
+  State<AddTaskScreen> createState() => _AddTaskScreenState();
 }
 
-class _TaskDetailScreenState extends State<TaskDetailScreen> {
+class _AddTaskScreenState extends State<AddTaskScreen> {
   final formKey = GlobalKey<FormState>();
   TextEditingController titleController = TextEditingController();
   TextEditingController dateController = TextEditingController();

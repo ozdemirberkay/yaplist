@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:yaplist/screens/category/category_detail.dart';
+import 'package:yaplist/screens/category/add_category.dart';
 import 'package:yaplist/screens/dashboard/dashboard_screen.dart';
 import 'package:yaplist/screens/search/search_screen.dart';
-import 'package:yaplist/screens/task/task_detail.dart';
+import 'package:yaplist/screens/task/add_task.dart';
 
 class Routes {
   static String initialScreen = '/';
@@ -12,8 +12,8 @@ class Routes {
 
   static Map<String, WidgetBuilder> routes = {
     initialScreen: (context) => const DashboardScreeen(),
-    addTask: (context) => const TaskDetailScreen(),
+    addTask: (context) => const AddTaskScreen(),
     searchScreen: (context) => const SearchScreen(),
-    addCateogry: (context) => const CategoryDetailScreen(),
+    addCateogry: (context) => const AddCategoryScreen(),
   };
 }
