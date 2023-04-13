@@ -18,6 +18,7 @@ class DashboardLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        tooltip: tr("addTask"),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => const AddTaskScreen(),

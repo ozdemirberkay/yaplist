@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,7 +81,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(4),
-                child: MasterButtonIcon(
+                child: MasterButton(
                   label: tr("add"),
                   icon: Icons.calendar_month,
                   onPressed: () {

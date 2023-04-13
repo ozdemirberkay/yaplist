@@ -69,7 +69,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(4),
-                child: MasterButtonIcon(
+                child: MasterButton(
                   label: tr("add"),
                   icon: Icons.calendar_month,
                   onPressed: () {

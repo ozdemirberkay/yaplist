@@ -40,7 +40,7 @@ class DatePickerModal extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             width: double.infinity,
-            child: MasterButtonIcon(
+            child: MasterButton(
                 label: tr("select"),
                 onPressed: () {
                   Navigator.of(context).pop();

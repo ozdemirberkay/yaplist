@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:yaplist/shareds/constants/constants.dart';
 
-class MasterButton extends StatelessWidget {
-  final String label;
+class MasterIconButton extends StatelessWidget {
   final VoidCallback onPressed;
   final IconData icon;
   final bool loading;
   final bool disabled;
 
-  const MasterButton({
+  const MasterIconButton({
     Key? key,
-    required this.label,
     required this.onPressed,
     required this.icon,
     this.loading = false,
@@ -19,9 +17,15 @@ class MasterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
+    return ElevatedButton(
       onPressed: disabled || loading ? null : onPressed,
-      icon: SizedBox(
+      style: ElevatedButton.styleFrom(
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        shape: RoundedRectangleBorder(
+          borderRadius: Constants.borderRadius,
+        ),
+      ),
+      child: SizedBox(
         child: loading
             ? const SizedBox(
                 height: 20,
@@ -29,16 +33,6 @@ class MasterButton extends StatelessWidget {
                 child: CircularProgressIndicator(strokeWidth: 2),
               )
             : Icon(icon),
-      ),
-      label: Text(
-        label.toUpperCase(),
-        textAlign: TextAlign.center,
-      ),
-      style: ElevatedButton.styleFrom(
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        shape: RoundedRectangleBorder(
-          borderRadius: Constants.borderRadius,
-        ),
       ),
     );
   }

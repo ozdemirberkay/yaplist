@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
+import 'package:yaplist/widgets/button/master_icon_button.dart';
 import 'package:yaplist/widgets/card/category_box.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
@@ -30,20 +32,34 @@ class _HomePageState extends State<HomePage> {
 
         return Layout(
           title: "Yaplist",
-          body: SizedBox(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              scrollDirection: Axis.horizontal,
-              itemCount: categoryList.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.all(4),
-                  child: CategoryBox(
-                    category: categoryList[index],
+          body: Column(
+            children: [
+              Row(
+                children: [
+                  Text(tr("categories")),
+                  MasterIconButton(
+                    icon: Icons.add,
+                    onPressed: () {},
                   ),
-                );
-              },
-            ),
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categoryList.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: const EdgeInsets.all(4),
+                      child: CategoryBox(
+                        category: categoryList[index],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
           actions: [
             IconButton(
