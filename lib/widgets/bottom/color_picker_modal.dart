@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:yaplist/shareds/constants/constants.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/card/color_card.dart';
 
@@ -13,9 +12,6 @@ class ColorPickerModal extends StatelessWidget {
       {required BuildContext context,
       required Function(Color) onColorSelected}) {
     showModalBottomSheet(
-        shape: RoundedRectangleBorder(
-          borderRadius: Constants.borderRadius,
-        ),
         context: context,
         builder: (context) {
           return ColorPickerModal(

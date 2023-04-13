@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yaplist/shareds/constants/constants.dart';
 import 'package:yaplist/shareds/theme/appcolors.dart';
 
 class ThemeUtils {
@@ -44,6 +45,25 @@ class ThemeUtils {
       labelMedium: TextStyle(
         fontSize: 17.0,
         color: AppColors.kBlackColor,
+      ),
+    );
+  }
+
+  static ElevatedButtonThemeData get elevatedButtonTheme {
+    return ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        shape: RoundedRectangleBorder(
+          borderRadius: Constants.borderRadius,
+        ),
+      ),
+    );
+  }
+
+  static BottomSheetThemeData get bottomSheetTheme {
+    return BottomSheetThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: Constants.borderRadius,
       ),
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yaplist/shareds/constants/constants.dart';
 import 'package:yaplist/shareds/theme/appcolors.dart';
 import 'package:yaplist/shareds/theme/theme_utils.dart';
 
@@ -14,14 +13,8 @@ class YaplistTheme {
         secondary: AppColors.primaryColor,
         primary: AppColors.primaryColor,
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          shape: RoundedRectangleBorder(
-            borderRadius: Constants.borderRadius,
-          ),
-        ),
-      ),
+      elevatedButtonTheme: ThemeUtils.elevatedButtonTheme,
+      bottomSheetTheme: ThemeUtils.bottomSheetTheme,
     );
   }
 
@@ -35,14 +28,8 @@ class YaplistTheme {
         secondary: AppColors.primaryColor,
         primary: AppColors.primaryColor,
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          shape: RoundedRectangleBorder(
-            borderRadius: Constants.borderRadius,
-          ),
-        ),
-      ),
+      elevatedButtonTheme: ThemeUtils.elevatedButtonTheme,
+      bottomSheetTheme: ThemeUtils.bottomSheetTheme,
     );
   }
 }

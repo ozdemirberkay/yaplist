@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:yaplist/shareds/constants/constants.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 
 class DatePickerModal extends StatelessWidget {
@@ -12,9 +11,6 @@ class DatePickerModal extends StatelessWidget {
       {required BuildContext context,
       required Function(DateTime) onDateTimeChanged}) {
     showModalBottomSheet(
-        shape: RoundedRectangleBorder(
-          borderRadius: Constants.borderRadius,
-        ),
         context: context,
         builder: (context) {
           return DatePickerModal(
