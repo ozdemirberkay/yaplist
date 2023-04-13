@@ -11,5 +11,9 @@
     "selectDate": "Tarih Seç",
     "category": "Kategori",
     "pleaseEnterTask": "Lütfen bir görev girin",
-    "tasks": "Görevler"
+    "tasks": "Görevler",
+    "addCategory": "Kategori Ekle",
+    "pleaseEnterCategoryName": "Lütfen kategori adı girin",
+    "categoryColor": "Kategori Rengi",
+    "categoryName": "Kategori Adı"
 }

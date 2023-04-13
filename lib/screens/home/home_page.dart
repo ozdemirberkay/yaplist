@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
-import 'package:yaplist/widgets/button/master_button.dart';
-import 'package:yaplist/widgets/card/category_card.dart';
+import 'package:yaplist/shareds/constants/routes.dart';
+import 'package:yaplist/widgets/card/category_box.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return Container(
                   margin: const EdgeInsets.all(4),
-                  child: CategoryCard(
+                  child: CategoryBox(
                     category: categoryList[index],
                   ),
                 );
@@ -47,8 +47,10 @@ class _HomePageState extends State<HomePage> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search),
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.addCateogry);
+              },
+              icon: const Icon(Icons.add),
             )
           ],
         );

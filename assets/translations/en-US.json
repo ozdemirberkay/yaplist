@@ -11,5 +11,9 @@
     "selectDate": "Select Date",
     "category": "Category",
     "pleaseEnterTask": "Please enter a task",
-    "tasks": "Tasks"
+    "tasks": "Tasks",
+    "addCategory": "Add Category",
+    "pleaseEnterCategoryName": "Please enter category name",
+    "categoryColor": "Category Color",
+    "categoryName": "Category Name"
 }
