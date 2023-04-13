@@ -9,6 +9,7 @@ class InputField extends StatelessWidget {
   final TextInputType? keyboardType;
   final VoidCallback? onTap;
   final bool readOnly;
+  final Color? fillColor;
 
   const InputField(
       {super.key,
@@ -19,7 +20,8 @@ class InputField extends StatelessWidget {
       this.onChanged,
       this.keyboardType,
       this.onTap,
-      this.readOnly = false});
+      this.readOnly = false,
+      this.fillColor});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,8 @@ class InputField extends StatelessWidget {
         border: const OutlineInputBorder(),
         labelText: label,
         suffixIcon: Icon(icon),
+        fillColor: fillColor,
+        filled: true,
       ),
     );
   }

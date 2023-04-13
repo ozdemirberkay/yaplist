@@ -17,7 +17,7 @@ class AddCategoryScreen extends StatefulWidget {
 class _AddCategoryScreenState extends State<AddCategoryScreen> {
   final formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
-  TextEditingController colorController = TextEditingController();
+  Color? selectedColor;
 
   @override
   void initState() {
@@ -25,7 +25,9 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
   }
 
   void onColorSelected(Color color) {
-    colorController.text = color.toString();
+    setState(() {
+      selectedColor = color;
+    });
   }
 
   @override
@@ -62,6 +64,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                       },
                       readOnly: true,
                       icon: Icons.palette,
+                      fillColor: selectedColor,
                     ),
                   ],
                 ),
