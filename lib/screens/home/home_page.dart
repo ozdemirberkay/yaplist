@@ -34,24 +34,29 @@ class _HomePageState extends State<HomePage> {
           title: "Yaplist",
           body: Column(
             children: [
-              Row(
-                children: [
-                  Text(tr("categories")),
-                  MasterIconButton(
-                    icon: Icons.add,
-                    onPressed: () {},
-                  ),
-                ],
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(tr("categories")),
+                    MasterIconButton(
+                      icon: Icons.add,
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.addCateogry);
+                      },
+                    ),
+                  ],
+                ),
               ),
               Expanded(
                 child: ListView.builder(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   scrollDirection: Axis.horizontal,
                   itemCount: categoryList.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: const EdgeInsets.all(4),
+                      margin: const EdgeInsets.only(left: 6),
                       child: CategoryBox(
                         category: categoryList[index],
                       ),
@@ -61,14 +66,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.addCateogry);
-              },
-              icon: const Icon(Icons.add),
-            )
-          ],
         );
       },
     );
