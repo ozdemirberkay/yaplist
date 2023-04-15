@@ -1,7 +1,7 @@
 import 'package:yaplist/models/category.dart';
 
 class Task {
-  final int id;
+  final String id;
   String title;
   bool isCompleted;
   DateTime? date;

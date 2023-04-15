@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
+import 'package:yaplist/utilities/database_helper.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
@@ -87,10 +88,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       Task task = Task(
-                        id: 1,
+                        id: DatabaseHelper.generateUniqueId(),
                         title: titleController.text,
                       );
                       context.read<TaskBloc>().add(AddTask(task: task));
+                      Navigator.maybePop(context);
                     }
                   },
                 ),

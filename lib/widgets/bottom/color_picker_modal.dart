@@ -68,7 +68,7 @@ class _ColorPickerModalState extends State<ColorPickerModal> {
                 width: double.infinity,
                 child: MasterButton(
                     disabled: selectedColor == null,
-                    label: tr("select"),
+                    label: tr("confirm"),
                     onPressed: () {
                       widget.onColorSelected(selectedColor);
                       Navigator.of(context).pop();

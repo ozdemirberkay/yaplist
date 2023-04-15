@@ -16,5 +16,6 @@
     "pleaseEnterCategoryName": "Please enter category name",
     "categoryColor": "Category Color",
     "categoryName": "Category Name",
-    "categories": "Categories"
+    "categories": "Categories",
+    "confirm": "Confirm"
 }
