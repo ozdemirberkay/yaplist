@@ -24,7 +24,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
     super.initState();
   }
 
-  void onColorSelected(Color color) {
+  void onColorSelected(Color? color) {
     setState(() {
       selectedColor = color;
     });

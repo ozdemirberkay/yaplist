@@ -15,5 +15,6 @@
     "addCategory": "Kategori Ekle",
     "pleaseEnterCategoryName": "Lütfen kategori adı girin",
     "categoryColor": "Kategori Rengi",
-    "categoryName": "Kategori Adı"
+    "categoryName": "Kategori Adı",
+    "categories": "Kategoriler"
 }

@@ -29,6 +29,7 @@ class _TaskCardState extends State<TaskCard> {
         endActionPane: ActionPane(
           motion: const DrawerMotion(),
           children: [
+            //TODO colorsları appcolorsa ekle
             SlidableAction(
               onPressed: (context) {},
               backgroundColor: Colors.grey,

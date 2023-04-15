@@ -15,5 +15,6 @@
     "addCategory": "Add Category",
     "pleaseEnterCategoryName": "Please enter category name",
     "categoryColor": "Category Color",
-    "categoryName": "Category Name"
+    "categoryName": "Category Name",
+    "categories": "Categories"
 }

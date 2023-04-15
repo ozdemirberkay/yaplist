@@ -21,17 +21,16 @@ class DatePickerModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+    return SafeArea(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
             child: CupertinoDatePicker(
-                initialDateTime: DateTime.now(),
-                mode: CupertinoDatePickerMode.date,
-                onDateTimeChanged: onDateTimeChanged),
+              initialDateTime: DateTime.now(),
+              mode: CupertinoDatePickerMode.date,
+              onDateTimeChanged: onDateTimeChanged,
+            ),
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
