@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 import 'package:yaplist/utilities/database_helper.dart';
+import 'package:yaplist/widgets/bottom/category_picker_modal.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
+import 'package:yaplist/models/category.dart';
 
 class AddTaskScreen extends StatefulWidget {
   final Task? task;
@@ -28,10 +30,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     super.initState();
   }
 
-  onDateChanged(DateTime newDate) {
+  void onDateChanged(DateTime newDate) {
     String formattedDate = DateFormat('dd-MM-yyyy').format(newDate);
     dateController.text = formattedDate;
     selectedDate = newDate;
+  }
+
+  void onCategorySelected(Category newCategory) {
+    print("xxxx");
   }
 
   @override
@@ -63,6 +69,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     InputField(
                       label: tr("category"),
                       icon: Icons.category,
+                      onTap: () {
+                        CategoryPickerModal.show(
+                            context: context,
+                            onCategorySelected: onCategorySelected);
+                      },
+                      readOnly: true,
                     ),
                     const SizedBox(height: 10),
                     InputField(

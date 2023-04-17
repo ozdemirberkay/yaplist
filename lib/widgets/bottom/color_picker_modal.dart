@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yaplist/shareds/theme/appcolors.dart';
-import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/card/color_card.dart';
+import 'package:yaplist/widgets/text/modal_label.dart';
 
 class ColorPickerModal extends StatefulWidget {
   final Function(Color?) onColorSelected;
@@ -29,9 +29,8 @@ class _ColorPickerModalState extends State<ColorPickerModal> {
   Color? selectedColor;
 
   setSelectedColor(Color clickedColor) {
-    setState(() {
-      selectedColor = clickedColor;
-    });
+    widget.onColorSelected(clickedColor);
+    Navigator.of(context).pop();
   }
 
   @override
@@ -44,6 +43,7 @@ class _ColorPickerModalState extends State<ColorPickerModal> {
         builder: (context, scrollController) {
           return Column(
             children: [
+              ModalLabel(label: tr("chooseColor")),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -62,19 +62,6 @@ class _ColorPickerModalState extends State<ColorPickerModal> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                width: double.infinity,
-                child: MasterButton(
-                    disabled: selectedColor == null,
-                    label: tr("confirm"),
-                    onPressed: () {
-                      widget.onColorSelected(selectedColor);
-                      Navigator.of(context).pop();
-                    },
-                    icon: Icons.check),
-              )
             ],
           );
         },

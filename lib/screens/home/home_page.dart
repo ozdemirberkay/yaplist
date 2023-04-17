@@ -20,15 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (context, state) {
-        // List<Category> categoryList = state.categoryList;
-        List<Category> categoryList = [];
-
-        categoryList.add(Category(1, name: "Deneme", color: Colors.pink));
-        categoryList.add(Category(2, name: "Okul", color: Colors.cyan));
-        categoryList
-            .add(Category(3, name: "Kurs Taskları", color: Colors.green));
-        categoryList.add(Category(3,
-            name: "Bi ara yaparım bu taskların hepsini", color: Colors.yellow));
+        List<Category> categoryList = state.categoryList;
 
         return Layout(
           title: "Yaplist",

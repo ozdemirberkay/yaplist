@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Category {
-  final int id;
+  final String id;
   final String name;
-  final Color color;
+  final Color? color;
 
-  Category(this.id, {required this.name, required this.color});
+  Category({required this.id, required this.name, this.color = Colors.white});
 }

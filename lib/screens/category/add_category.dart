@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
+import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
+import 'package:yaplist/utilities/database_helper.dart';
 import 'package:yaplist/widgets/bottom/color_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
@@ -76,7 +79,17 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                   label: tr("add"),
                   icon: Icons.calendar_month,
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {}
+                    if (formKey.currentState!.validate()) {
+                      Category category = Category(
+                          id: DatabaseHelper.generateUniqueId(),
+                          name: nameController.text,
+                          color: selectedColor);
+
+                      context
+                          .read<CategoryBloc>()
+                          .add(AddCategory(category: category));
+                      Navigator.maybePop(context);
+                    }
                   },
                 ),
               ),
