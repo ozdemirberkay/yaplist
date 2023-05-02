@@ -54,8 +54,6 @@ class _ColorPickerModalState extends State<ColorPickerModal> {
                     itemBuilder: (context, index) {
                       return ColorCard(
                         color: AppColors.materialColors[index],
-                        selected:
-                            selectedColor == AppColors.materialColors[index],
                         onColorSelected: setSelectedColor,
                       );
                     },

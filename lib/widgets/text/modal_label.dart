@@ -16,7 +16,9 @@ class ModalLabel extends StatelessWidget {
             width: 50,
             height: 5,
             decoration: BoxDecoration(
-                borderRadius: Constants.borderRadius, color: Colors.amber),
+              borderRadius: Constants.borderRadius,
+              color: Colors.amber,
+            ),
           ),
           const SizedBox(height: 8),
           Text(

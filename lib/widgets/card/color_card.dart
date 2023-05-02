@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:yaplist/shareds/constants/constants.dart';
-import 'package:yaplist/shareds/theme/appcolors.dart';
 
 class ColorCard extends StatelessWidget {
   final Color color;
-  final bool selected;
   final Function(Color) onColorSelected;
   const ColorCard(
-      {super.key,
-      required this.color,
-      required this.selected,
-      required this.onColorSelected});
+      {super.key, required this.color, required this.onColorSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +29,6 @@ class ColorCard extends StatelessWidget {
           ],
         ),
         height: 40,
-        child: selected
-            ? Align(
-                alignment: Alignment.center,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.selectedGreenColor,
-                    borderRadius: Constants.borderRadius,
-                  ),
-                  child: const Icon(Icons.check),
-                ),
-              )
-            : const SizedBox(),
       ),
     );
   }

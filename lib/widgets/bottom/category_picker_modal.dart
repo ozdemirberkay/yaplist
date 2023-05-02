@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
+import 'package:yaplist/widgets/text/modal_label.dart';
 
 class CategoryPickerModal extends StatelessWidget {
   final Function(Category) onCategorySelected;
@@ -35,6 +36,7 @@ class CategoryPickerModal extends StatelessWidget {
             builder: (context, scrollController) {
               return Column(
                 children: [
+                  ModalLabel(label: tr("chooseCategory")),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
