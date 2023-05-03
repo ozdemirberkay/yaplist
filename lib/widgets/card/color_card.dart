@@ -18,17 +18,9 @@ class ColorCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: Constants.borderRadius,
           color: color,
-          boxShadow: [
-            //TODO colorsları appcolorsa ekle
-
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.7),
-              offset: const Offset(0, 2),
-              blurRadius: 2,
-            ),
-          ],
+          boxShadow: [Constants.shadow],
         ),
-        height: 40,
+        height: 45,
       ),
     );
   }

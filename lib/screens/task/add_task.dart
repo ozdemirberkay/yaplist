@@ -23,7 +23,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   final formKey = GlobalKey<FormState>();
   TextEditingController titleController = TextEditingController();
   TextEditingController dateController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
   DateTime? selectedDate;
+  Category? selectedCategory;
 
   @override
   void initState() {
@@ -37,7 +39,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   }
 
   void onCategorySelected(Category newCategory) {
-    print("xxxx");
+    categoryController.text = newCategory.name;
+    setState(() {
+      selectedCategory = newCategory;
+    });
   }
 
   @override
@@ -69,6 +74,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     InputField(
                       label: tr("category"),
                       icon: Icons.category,
+                      fillColor: selectedCategory?.color,
+                      controller: categoryController,
                       onTap: () {
                         CategoryPickerModal.show(
                             context: context,

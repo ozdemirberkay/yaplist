@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
+import 'package:yaplist/widgets/card/category_card.dart';
 import 'package:yaplist/widgets/text/modal_label.dart';
 
-class CategoryPickerModal extends StatelessWidget {
+class CategoryPickerModal extends StatefulWidget {
   final Function(Category) onCategorySelected;
   const CategoryPickerModal({super.key, required this.onCategorySelected});
 
@@ -20,6 +21,16 @@ class CategoryPickerModal extends StatelessWidget {
             onCategorySelected: onCategorySelected,
           );
         });
+  }
+
+  @override
+  State<CategoryPickerModal> createState() => _CategoryPickerModalState();
+}
+
+class _CategoryPickerModalState extends State<CategoryPickerModal> {
+  setSelectedCategory(Category selectedCategory) {
+    widget.onCategorySelected(selectedCategory);
+    Navigator.of(context).pop();
   }
 
   @override
@@ -44,24 +55,16 @@ class CategoryPickerModal extends StatelessWidget {
                         controller: scrollController,
                         shrinkWrap: true,
                         itemCount: categoryList.length,
+                        physics: const ClampingScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return Text(categoryList[index].name);
+                          return CategoryCard(
+                            category: categoryList[index],
+                            onCategorySelected: setSelectedCategory,
+                          );
                         },
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    width: double.infinity,
-                    child: MasterButton(
-                        label: tr("confirm"),
-                        onPressed: () {
-                          onCategorySelected(categoryList[0]);
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icons.check),
-                  )
                 ],
               );
             },

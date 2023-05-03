@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
+import 'package:yaplist/widgets/text/modal_label.dart';
 
 class DatePickerModal extends StatelessWidget {
   final Function(DateTime) onDateTimeChanged;
@@ -25,7 +26,9 @@ class DatePickerModal extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
+          ModalLabel(label: tr("selectDate")),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 4,
             child: CupertinoDatePicker(
               initialDateTime: DateTime.now(),
               mode: CupertinoDatePickerMode.date,
