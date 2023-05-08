@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
+import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/card/category_card.dart';
 import 'package:yaplist/widgets/text/modal_label.dart';
 
@@ -27,12 +28,45 @@ class CategoryPickerModal extends StatelessWidget {
     Navigator.of(context).pop();
   }
 
+  Widget renderPickCategory(
+      List<Category> categoryList, ScrollController scrollController) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          controller: scrollController,
+          shrinkWrap: true,
+          itemCount: categoryList.length,
+          physics: const ClampingScrollPhysics(),
+          itemBuilder: (context, index) {
+            return CategoryCard(
+              category: categoryList[index],
+              onCategorySelected: (selectedCategory) {
+                setSelectedCategory(selectedCategory, context);
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget renderEmptyCategory() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        //TODO label ve onPress güncelle
+        Text("asd"),
+        MasterButton(label: tr("add"), onPressed: () {}, icon: Icons.add),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (context, state) {
         List<Category> categoryList = state.categoryList;
-
         return SafeArea(
           child: DraggableScrollableSheet(
             initialChildSize: 1,
@@ -42,25 +76,9 @@ class CategoryPickerModal extends StatelessWidget {
               return Column(
                 children: [
                   ModalLabel(label: tr("chooseCategory")),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListView.builder(
-                        controller: scrollController,
-                        shrinkWrap: true,
-                        itemCount: categoryList.length,
-                        physics: const ClampingScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return CategoryCard(
-                            category: categoryList[index],
-                            onCategorySelected: (selectedCategory) {
-                              setSelectedCategory(selectedCategory, context);
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ),
+                  categoryList.isEmpty
+                      ? renderEmptyCategory()
+                      : renderPickCategory(categoryList, scrollController),
                 ],
               );
             },
