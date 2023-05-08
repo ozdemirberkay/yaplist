@@ -109,6 +109,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       Task task = Task(
                         id: DatabaseHelper.generateUniqueId(),
                         title: titleController.text,
+                        category: selectedCategory,
+                        date: selectedDate,
                       );
                       context.read<TaskBloc>().add(AddTask(task: task));
                       Navigator.maybePop(context);

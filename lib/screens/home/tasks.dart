@@ -7,15 +7,10 @@ import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 import 'package:yaplist/widgets/card/task_card.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
-class Tasks extends StatefulWidget {
+class Tasks extends StatelessWidget {
   final Category? filterCategory;
   const Tasks({super.key, this.filterCategory});
 
-  @override
-  State<Tasks> createState() => _TasksState();
-}
-
-class _TasksState extends State<Tasks> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TaskBloc, TaskState>(

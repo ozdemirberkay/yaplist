@@ -5,27 +5,20 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 
-class TaskCard extends StatefulWidget {
+class TaskCard extends StatelessWidget {
   final Task task;
   const TaskCard({super.key, required this.task});
 
-  @override
-  State<TaskCard> createState() => _TaskCardState();
-}
-
-class _TaskCardState extends State<TaskCard> {
   void deleteTask(BuildContext context) {
-    context.read<TaskBloc>().add(DeleteTask(task: widget.task));
+    context.read<TaskBloc>().add(DeleteTask(task: task));
   }
-
-  void updateTask(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 5),
       child: Slidable(
-        key: ValueKey(widget.task.id),
+        key: ValueKey(task.id),
         endActionPane: ActionPane(
           motion: const DrawerMotion(),
           children: [
@@ -48,25 +41,25 @@ class _TaskCardState extends State<TaskCard> {
         ),
         child: Container(
           padding: const EdgeInsets.all(6),
-          decoration: const BoxDecoration(
-            border: Border(
+          decoration: BoxDecoration(
+            border: const Border(
               bottom: BorderSide(),
             ),
-            // border: Border.all(color: Colors.pink),
+            color: task.category?.color,
           ),
           child: Row(
             children: [
               Checkbox(
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 onChanged: (value) {
-                  widget.task.isCompleted = value!;
-                  context.read<TaskBloc>().add(UpdateTask(task: widget.task));
+                  task.isCompleted = value!;
+                  context.read<TaskBloc>().add(UpdateTask(task: task));
                 },
-                value: widget.task.isCompleted,
+                value: task.isCompleted,
               ),
               Expanded(
                 child: Text(
-                  widget.task.title,
+                  task.title,
                 ),
               ),
             ],

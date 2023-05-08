@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
-import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/card/category_card.dart';
 import 'package:yaplist/widgets/text/modal_label.dart';
 
-class CategoryPickerModal extends StatefulWidget {
+class CategoryPickerModal extends StatelessWidget {
   final Function(Category) onCategorySelected;
   const CategoryPickerModal({super.key, required this.onCategorySelected});
 
@@ -23,13 +22,8 @@ class CategoryPickerModal extends StatefulWidget {
         });
   }
 
-  @override
-  State<CategoryPickerModal> createState() => _CategoryPickerModalState();
-}
-
-class _CategoryPickerModalState extends State<CategoryPickerModal> {
-  setSelectedCategory(Category selectedCategory) {
-    widget.onCategorySelected(selectedCategory);
+  setSelectedCategory(Category selectedCategory, BuildContext context) {
+    onCategorySelected(selectedCategory);
     Navigator.of(context).pop();
   }
 
@@ -59,7 +53,9 @@ class _CategoryPickerModalState extends State<CategoryPickerModal> {
                         itemBuilder: (context, index) {
                           return CategoryCard(
                             category: categoryList[index],
-                            onCategorySelected: setSelectedCategory,
+                            onCategorySelected: (selectedCategory) {
+                              setSelectedCategory(selectedCategory, context);
+                            },
                           );
                         },
                       ),
