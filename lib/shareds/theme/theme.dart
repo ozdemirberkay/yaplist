@@ -15,6 +15,7 @@ class YaplistTheme {
       ),
       elevatedButtonTheme: ThemeUtils.elevatedButtonTheme,
       bottomSheetTheme: ThemeUtils.bottomSheetTheme,
+      inputDecorationTheme: ThemeUtils.inputDecorationTheme,
     );
   }
 
@@ -30,6 +31,7 @@ class YaplistTheme {
       ),
       elevatedButtonTheme: ThemeUtils.elevatedButtonTheme,
       bottomSheetTheme: ThemeUtils.bottomSheetTheme,
+      inputDecorationTheme: ThemeUtils.inputDecorationTheme,
     );
   }
 }

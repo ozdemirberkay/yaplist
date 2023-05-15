@@ -10,6 +10,7 @@ class InputField extends StatelessWidget {
   final VoidCallback? onTap;
   final bool readOnly;
   final Color? fillColor;
+  final int maxLines;
 
   const InputField(
       {super.key,
@@ -21,7 +22,8 @@ class InputField extends StatelessWidget {
       this.keyboardType,
       this.onTap,
       this.readOnly = false,
-      this.fillColor});
+      this.fillColor,
+      this.maxLines = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +34,11 @@ class InputField extends StatelessWidget {
       validator: validator,
       onTap: onTap,
       readOnly: readOnly,
+      maxLines: maxLines,
       decoration: InputDecoration(
-        border: const OutlineInputBorder(),
         labelText: label,
         suffixIcon: Icon(icon),
         fillColor: fillColor,
-        filled: true,
       ),
     );
   }

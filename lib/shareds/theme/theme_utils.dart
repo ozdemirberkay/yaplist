@@ -67,4 +67,11 @@ class ThemeUtils {
       ),
     );
   }
+
+  static InputDecorationTheme get inputDecorationTheme {
+    return const InputDecorationTheme(
+      border: OutlineInputBorder(),
+      filled: true,
+    );
+  }
 }

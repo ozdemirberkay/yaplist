@@ -63,6 +63,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       label: tr("task"),
                       controller: titleController,
                       icon: Icons.task,
+                      maxLines: 5,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return tr("pleaseEnterTask");
