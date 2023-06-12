@@ -86,10 +86,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     ),
                     const SizedBox(height: 10),
                     InputField(
-                      label: tr("selectDate"),
+                      label: tr("date"),
                       onTap: () {
                         DatePickerModal.show(
-                            context: context, onDateTimeChanged: onDateChanged);
+                            context: context,
+                            onDateTimeChanged: onDateChanged,
+                            initialDate: selectedDate);
                       },
                       controller: dateController,
                       readOnly: true,

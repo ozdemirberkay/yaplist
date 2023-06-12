@@ -72,6 +72,7 @@ class ThemeUtils {
     return const InputDecorationTheme(
       border: OutlineInputBorder(),
       filled: true,
+      alignLabelWithHint: true,
     );
   }
 }

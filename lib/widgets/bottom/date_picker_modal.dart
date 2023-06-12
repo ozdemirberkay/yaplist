@@ -6,22 +6,28 @@ import 'package:yaplist/widgets/text/modal_label.dart';
 
 class DatePickerModal extends StatelessWidget {
   final Function(DateTime) onDateTimeChanged;
-  const DatePickerModal({super.key, required this.onDateTimeChanged});
+  final DateTime? initialDate;
+  const DatePickerModal(
+      {super.key, required this.onDateTimeChanged, this.initialDate});
 
   static void show(
       {required BuildContext context,
-      required Function(DateTime) onDateTimeChanged}) {
+      required Function(DateTime) onDateTimeChanged,
+      DateTime? initialDate}) {
     showModalBottomSheet(
         context: context,
         builder: (context) {
           return DatePickerModal(
             onDateTimeChanged: onDateTimeChanged,
+            initialDate: initialDate,
           );
         });
   }
 
   @override
   Widget build(BuildContext context) {
+    DateTime selectDate = initialDate ?? DateTime.now();
+
     return SafeArea(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -30,9 +36,11 @@ class DatePickerModal extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height / 4,
             child: CupertinoDatePicker(
-              initialDateTime: DateTime.now(),
+              initialDateTime: selectDate,
               mode: CupertinoDatePickerMode.date,
-              onDateTimeChanged: onDateTimeChanged,
+              onDateTimeChanged: (value) {
+                selectDate = value;
+              },
             ),
           ),
           Container(
@@ -41,6 +49,7 @@ class DatePickerModal extends StatelessWidget {
             child: MasterButton(
                 label: tr("select"),
                 onPressed: () {
+                  onDateTimeChanged(selectDate);
                   Navigator.of(context).pop();
                 },
                 icon: Icons.check),
