@@ -21,20 +21,31 @@ class AddTaskScreen extends StatefulWidget {
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
   final formKey = GlobalKey<FormState>();
-  TextEditingController titleController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
-  TextEditingController categoryController = TextEditingController();
+  late TextEditingController titleController;
+  late TextEditingController dateController;
+  late TextEditingController categoryController;
   DateTime? selectedDate;
   Category? selectedCategory;
 
   @override
   void initState() {
+    titleController = TextEditingController(text: widget.task?.title);
+    dateController = TextEditingController(text: formatDate(widget.task?.date));
+    categoryController =
+        TextEditingController(text: widget.task?.category?.name);
     super.initState();
   }
 
+  String formatDate(DateTime? dateTime) {
+    if (dateTime == null) {
+      return "";
+    }
+    String formattedDate = DateFormat('dd-MM-yyyy').format(dateTime);
+    return formattedDate;
+  }
+
   void onDateChanged(DateTime newDate) {
-    String formattedDate = DateFormat('dd-MM-yyyy').format(newDate);
-    dateController.text = formattedDate;
+    dateController.text = formatDate(newDate);
     selectedDate = newDate;
   }
 

@@ -79,6 +79,7 @@ class CategoryPickerModal extends StatelessWidget {
                   categoryList.isEmpty
                       ? renderEmptyCategory()
                       : renderPickCategory(categoryList, scrollController),
+                  const SizedBox(height: 6),
                 ],
               );
             },

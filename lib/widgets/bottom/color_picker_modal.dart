@@ -60,6 +60,7 @@ class _ColorPickerModalState extends State<ColorPickerModal> {
                   ),
                 ),
               ),
+              const SizedBox(height: 6),
             ],
           );
         },

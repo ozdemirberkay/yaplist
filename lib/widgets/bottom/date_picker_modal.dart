@@ -53,7 +53,8 @@ class DatePickerModal extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
                 icon: Icons.check),
-          )
+          ),
+          const SizedBox(height: 6),
         ],
       ),
     );
