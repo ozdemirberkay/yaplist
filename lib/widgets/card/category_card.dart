@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/category.dart';
-import 'package:yaplist/shareds/constants/constants.dart';
 
 class CategoryCard extends StatelessWidget {
   final Category category;
@@ -18,9 +17,7 @@ class CategoryCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
         decoration: BoxDecoration(
-          // borderRadius: Constants.borderRadius,
           color: category.color,
-          // boxShadow: [Constants.shadow],
         ),
         child: Text(category.name),
       ),

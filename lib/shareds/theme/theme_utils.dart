@@ -52,7 +52,7 @@ class ThemeUtils {
   static ElevatedButtonThemeData get lightElevatedButtonTheme {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        side: BorderSide(color: AppColors.primaryColorDark),
+        side: BorderSide(color: AppColors.primaryColorLight),
       ),
     );
   }
