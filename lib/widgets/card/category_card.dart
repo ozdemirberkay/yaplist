@@ -18,9 +18,9 @@ class CategoryCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
         decoration: BoxDecoration(
-          borderRadius: Constants.borderRadius,
+          // borderRadius: Constants.borderRadius,
           color: category.color,
-          boxShadow: [Constants.shadow],
+          // boxShadow: [Constants.shadow],
         ),
         child: Text(category.name),
       ),

@@ -17,12 +17,10 @@ class AppColors {
     },
   );
 
-  static Color primaryColor = const Color(0xff185CF7);
-  static Color transparentColor = Colors.transparent;
-  static Color optiyolGrey = const Color(0xff8181A5);
+  static Color primaryColor = const Color(0xff000000);
+  static Color greyColor = const Color(0xff8181A5);
   static Color kWhiteColor = const Color(0xffffffff);
   static Color kBlackColor = const Color(0xff000000);
-  static Color selectedGreenColor = const Color(0xff7CFC00);
 
   static List<ColorSwatch> materialColors = <ColorSwatch>[
     const ColorSwatch(

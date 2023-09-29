@@ -12,12 +12,12 @@ class ThemeUtils {
       ),
       bodySmall: TextStyle(
         fontSize: 17.0,
-        color: AppColors.optiyolGrey,
+        color: AppColors.greyColor,
         fontWeight: FontWeight.w500,
       ),
       titleMedium: TextStyle(
         fontSize: 17.0,
-        color: AppColors.optiyolGrey,
+        color: AppColors.greyColor,
       ),
       labelMedium: TextStyle(
         fontSize: 17.0,
@@ -35,12 +35,12 @@ class ThemeUtils {
       ),
       bodySmall: TextStyle(
         fontSize: 17.0,
-        color: AppColors.optiyolGrey,
+        color: AppColors.greyColor,
         fontWeight: FontWeight.w500,
       ),
       titleMedium: TextStyle(
         fontSize: 17.0,
-        color: AppColors.optiyolGrey,
+        color: AppColors.greyColor,
       ),
       labelMedium: TextStyle(
         fontSize: 17.0,
@@ -60,13 +60,13 @@ class ThemeUtils {
     );
   }
 
-  static BottomSheetThemeData get bottomSheetTheme {
-    return BottomSheetThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: Constants.borderRadius,
-      ),
-    );
-  }
+  // static BottomSheetThemeData get bottomSheetTheme {
+  //   return BottomSheetThemeData(
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: Constants.borderRadius,
+  //     ),
+  //   );
+  // }
 
   static InputDecorationTheme get inputDecorationTheme {
     return const InputDecorationTheme(

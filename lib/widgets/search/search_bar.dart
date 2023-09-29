@@ -11,7 +11,7 @@ class SearchBar extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
       height: 40,
       width: double.infinity,
-      decoration: BoxDecoration(borderRadius: Constants.borderRadius),
+      // decoration: BoxDecoration(borderRadius: Constants.borderRadius),
       child: InkWell(
         onTap: () {},
         child: Row(

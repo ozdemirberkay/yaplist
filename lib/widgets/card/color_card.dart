@@ -16,9 +16,9 @@ class ColorCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
         decoration: BoxDecoration(
-          borderRadius: Constants.borderRadius,
+          // borderRadius: Constants.borderRadius,
           color: color,
-          boxShadow: [Constants.shadow],
+          // boxShadow: [Constants.shadow],
         ),
         height: 45,
       ),
