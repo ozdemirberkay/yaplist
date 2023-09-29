@@ -29,10 +29,14 @@ class Tasks extends StatelessWidget {
               ),
             ),
           ),
+          leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
           actions: [
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.search),
+              icon: const Icon(Icons.filter_alt_outlined),
             )
           ],
         );

@@ -23,11 +23,9 @@ class _DashboardScreeenState extends State<DashboardScreeen> {
   }
 
   void onChanged(int index) {
-    setState(
-      () {
-        _selectedIndex = index;
-      },
-    );
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
