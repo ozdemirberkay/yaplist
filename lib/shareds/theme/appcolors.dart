@@ -17,7 +17,8 @@ class AppColors {
     },
   );
 
-  static Color primaryColor = const Color(0xff000000);
+  static Color primaryColorLight = const Color(0xff000000);
+  static Color primaryColorDark = const Color(0xffffffff);
   static Color greyColor = const Color(0xff8181A5);
   static Color kWhiteColor = const Color(0xffffffff);
   static Color kBlackColor = const Color(0xff000000);

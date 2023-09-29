@@ -44,7 +44,7 @@ class YaplistApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: YaplistTheme.light,
       darkTheme: YaplistTheme.dark,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       routes: Routes.routes,
       initialRoute: Routes.initialScreen,
     );

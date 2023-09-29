@@ -7,16 +7,13 @@ class YaplistTheme {
   static ThemeData get light {
     return ThemeData(
       useMaterial3: Constants.useMaterial3,
-      primaryColor: AppColors.primaryColor,
-      // textTheme: ThemeUtils.lightTextTheme,
-      // scaffoldBackgroundColor: AppColors.kWhiteColor,
-      // primarySwatch: AppColors.primarySwatchOptiyolBlue,
+      primaryColor: AppColors.primaryColorLight,
+      textTheme: ThemeUtils.lightTextTheme,
       colorScheme: ColorScheme.light(
-        secondary: AppColors.primaryColor,
-        primary: AppColors.primaryColor,
+        secondary: AppColors.primaryColorLight,
+        primary: AppColors.primaryColorLight,
       ),
-      // elevatedButtonTheme: ThemeUtils.elevatedButtonTheme,
-      // // bottomSheetTheme: ThemeUtils.bottomSheetTheme,
+      elevatedButtonTheme: ThemeUtils.lightElevatedButtonTheme,
       inputDecorationTheme: ThemeUtils.inputDecorationTheme,
     );
   }
@@ -24,16 +21,13 @@ class YaplistTheme {
   static ThemeData get dark {
     return ThemeData(
       useMaterial3: Constants.useMaterial3,
-      // primaryColor: AppColors.primaryColor,
-      // textTheme: ThemeUtils.darkTextTheme,
-      // scaffoldBackgroundColor: AppColors.kBlackColor,
-      // primarySwatch: AppColors.primarySwatchOptiyolBlue,
-      // colorScheme: ColorScheme.dark(
-      //   secondary: AppColors.primaryColor,
-      //   primary: AppColors.primaryColor,
-      // ),
-      // elevatedButtonTheme: ThemeUtils.elevatedButtonTheme,
-      // // bottomSheetTheme: ThemeUtils.bottomSheetTheme,
+      primaryColor: AppColors.primaryColorDark,
+      textTheme: ThemeUtils.darkTextTheme,
+      colorScheme: ColorScheme.dark(
+        secondary: AppColors.primaryColorDark,
+        primary: AppColors.primaryColorDark,
+      ),
+      elevatedButtonTheme: ThemeUtils.darkElevatedButtonTheme,
       inputDecorationTheme: ThemeUtils.inputDecorationTheme,
     );
   }

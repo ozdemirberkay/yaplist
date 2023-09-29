@@ -49,24 +49,21 @@ class ThemeUtils {
     );
   }
 
-  static ElevatedButtonThemeData get elevatedButtonTheme {
+  static ElevatedButtonThemeData get lightElevatedButtonTheme {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        shape: RoundedRectangleBorder(
-          borderRadius: Constants.borderRadius,
-        ),
+        side: BorderSide(color: AppColors.primaryColorDark),
       ),
     );
   }
 
-  // static BottomSheetThemeData get bottomSheetTheme {
-  //   return BottomSheetThemeData(
-  //     shape: RoundedRectangleBorder(
-  //       borderRadius: Constants.borderRadius,
-  //     ),
-  //   );
-  // }
+  static ElevatedButtonThemeData get darkElevatedButtonTheme {
+    return ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        side: BorderSide(color: AppColors.primaryColorDark),
+      ),
+    );
+  }
 
   static InputDecorationTheme get inputDecorationTheme {
     return const InputDecorationTheme(
