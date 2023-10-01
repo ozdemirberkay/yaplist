@@ -5,5 +5,22 @@ class Category {
   final String name;
   final Color? color;
 
-  Category({required this.id, required this.name, this.color = Colors.white});
+  Category({required this.id, required this.name, this.color});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'color': color?.value,
+    };
+  }
+
+  // JSON'dan geri çekme (Deserialization)
+  factory Category.fromJson(Map<String, dynamic> json) {
+    return Category(
+      id: json['id'],
+      name: json['name'],
+      color: json['color'] != null ? Color(json['color']) : null,
+    );
+  }
 }

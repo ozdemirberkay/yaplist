@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
 import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 import 'package:yaplist/shareds/constants/assets.dart';
@@ -10,6 +12,8 @@ import 'package:yaplist/shareds/theme/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+      storageDirectory: await getTemporaryDirectory());
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
