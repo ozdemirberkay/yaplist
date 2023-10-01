@@ -16,6 +16,8 @@ class CategoryBox extends StatelessWidget {
         decoration: BoxDecoration(
           color: category.color,
           borderRadius: Constants.borderRadius,
+          border: Border.all(
+              color: Theme.of(context).primaryColor.withOpacity(0.3)),
         ),
         width: MediaQuery.of(context).size.width / 3,
         child: Text(
