@@ -20,5 +20,6 @@
     "confirm": "Confirm",
     "chooseColor": "Choose Color",
     "chooseCategory": "Choose Category",
-    "date": "Date"
+    "date": "Date",
+    "categoryNotFound": "No category found. Would you like to add a new category?"
 }

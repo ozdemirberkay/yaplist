@@ -11,18 +11,18 @@ class ModalLabel extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0),
       child: Column(
         children: [
-          //TODO color fix
           Container(
             width: 50,
             height: 5,
             decoration: BoxDecoration(
               borderRadius: Constants.borderRadius,
-              color: Colors.amber,
+              color: Theme.of(context).primaryColor,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             label,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         ],
       ),

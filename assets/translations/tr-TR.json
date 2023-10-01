@@ -20,5 +20,6 @@
     "confirm": "Onayla",
     "chooseColor": "Renk Seç",
     "chooseCategory": "Kategori Seç",
-    "date": "Tarih"
+    "date": "Tarih",
+    "categoryNotFound": "Kategori bulunamadı. Yeni bir kategori eklemek ister misiniz?"
 }

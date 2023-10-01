@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/category.dart';
-import 'package:yaplist/screens/home/tasks.dart';
 import 'package:yaplist/shareds/constants/constants.dart';
 
 class CategoryBox extends StatelessWidget {
@@ -9,12 +8,9 @@ class CategoryBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO Category detail
     return InkWell(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Tasks(filterCategory: category),
-        ));
-      },
+      onTap: () {},
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(

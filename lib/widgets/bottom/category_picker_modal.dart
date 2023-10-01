@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
+import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/card/category_card.dart';
 import 'package:yaplist/widgets/text/modal_label.dart';
@@ -51,14 +52,22 @@ class CategoryPickerModal extends StatelessWidget {
     );
   }
 
-  Widget renderEmptyCategory() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        //TODO label ve onPress güncelle
-        Text("asd"),
-        MasterButton(label: tr("add"), onPressed: () {}, icon: Icons.add),
-      ],
+  Widget renderEmptyCategory(BuildContext context) {
+    return Expanded(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(tr("categoryNotFound"), textAlign: TextAlign.center),
+            MasterButton(
+                label: tr("addCategory"),
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.addCateogry);
+                },
+                icon: Icons.add),
+          ],
+        ),
+      ),
     );
   }
 
@@ -77,7 +86,7 @@ class CategoryPickerModal extends StatelessWidget {
                 children: [
                   ModalLabel(label: tr("chooseCategory")),
                   categoryList.isEmpty
-                      ? renderEmptyCategory()
+                      ? renderEmptyCategory(context)
                       : renderPickCategory(categoryList, scrollController),
                   const SizedBox(height: 6),
                 ],
