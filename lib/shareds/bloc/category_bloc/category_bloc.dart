@@ -14,30 +14,20 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   void onAddCategory(AddCategory event, Emitter<CategoryState> emit) {
     List<Category> newCategoryList = List.from(state.categoryList);
     newCategoryList.add(event.category);
-    emit(
-      CategoryChanged(categoryList: newCategoryList),
-    );
+    emit(CategoryChanged(categoryList: newCategoryList));
   }
 
   void onUpdateCategory(UpdateCategory event, Emitter<CategoryState> emit) {
     List<Category> newCategoryList = List.from(state.categoryList);
-    newCategoryList.remove(event.category);
-    newCategoryList.add(event.category);
-
-    // int index =
-    //     newCategoryList.indexWhere((element) => element.id == event.Category.id);
-
-    // newCategoryList[index] == event.Category;
-    emit(
-      CategoryChanged(categoryList: newCategoryList),
-    );
+    int index = newCategoryList
+        .indexWhere((element) => element.id == event.category.id);
+    newCategoryList[index] == event.category;
+    emit(CategoryChanged(categoryList: newCategoryList));
   }
 
   void onDeleteCategory(DeleteCategory event, Emitter<CategoryState> emit) {
     List<Category> newCategoryList = List.from(state.categoryList);
     newCategoryList.remove(event.category);
-    emit(
-      CategoryChanged(categoryList: newCategoryList),
-    );
+    emit(CategoryChanged(categoryList: newCategoryList));
   }
 }

@@ -22,13 +22,9 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
   void onUpdateTask(UpdateTask event, Emitter<TaskState> emit) {
     List<Task> newTaskList = List.from(state.taskList);
-    newTaskList.remove(event.task);
-    newTaskList.add(event.task);
-
-    // int index =
-    //     newTaskList.indexWhere((element) => element.id == event.task.id);
-
-    // newTaskList[index] == event.task;
+    int index =
+        newTaskList.indexWhere((element) => element.id == event.task.id);
+    newTaskList[index] == event.task;
     emit(
       TaskChanged(taskList: newTaskList),
     );

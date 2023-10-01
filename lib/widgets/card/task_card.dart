@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
+import 'package:yaplist/shareds/theme/appcolors.dart';
 
 class TaskCard extends StatelessWidget {
   final Task task;
@@ -22,18 +23,17 @@ class TaskCard extends StatelessWidget {
         endActionPane: ActionPane(
           motion: const DrawerMotion(),
           children: [
-            //TODO colorsları appcolorsa ekle
             SlidableAction(
               onPressed: (context) {},
-              backgroundColor: Colors.grey,
-              foregroundColor: Colors.white,
+              backgroundColor: AppColors.greyColor,
+              foregroundColor: AppColors.reversePrimaryColor(Theme.of(context)),
               icon: Icons.info,
               label: tr("details"),
             ),
             SlidableAction(
               onPressed: deleteTask,
-              backgroundColor: const Color(0xFFFE4A49),
-              foregroundColor: Colors.white,
+              backgroundColor: AppColors.redColor,
+              foregroundColor: AppColors.reversePrimaryColor(Theme.of(context)),
               icon: Icons.delete_forever,
               label: tr("delete"),
             ),
@@ -42,8 +42,8 @@ class TaskCard extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
-            border: const Border(
-              bottom: BorderSide(),
+            border: Border(
+              bottom: BorderSide(color: Theme.of(context).primaryColor),
             ),
             color: task.category?.color,
           ),

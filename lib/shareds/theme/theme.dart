@@ -8,7 +8,6 @@ class YaplistTheme {
     return ThemeData(
       useMaterial3: Constants.useMaterial3,
       primaryColor: AppColors.primaryColorLight,
-      // textTheme: ThemeUtils.lightTextTheme,
       colorScheme: ColorScheme.light(
         secondary: AppColors.primaryColorLight,
         primary: AppColors.primaryColorLight,
@@ -22,7 +21,6 @@ class YaplistTheme {
     return ThemeData(
       useMaterial3: Constants.useMaterial3,
       primaryColor: AppColors.primaryColorDark,
-      // textTheme: ThemeUtils.darkTextTheme,
       colorScheme: ColorScheme.dark(
         secondary: AppColors.primaryColorDark,
         primary: AppColors.primaryColorDark,
