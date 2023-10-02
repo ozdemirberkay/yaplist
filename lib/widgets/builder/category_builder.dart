@@ -12,19 +12,17 @@ class CategoryBuilder extends StatelessWidget {
     return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (context, state) {
         List<Category> categoryList = state.categoryList;
-        return Expanded(
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: categoryList.length,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: const EdgeInsets.only(left: 6),
-                child: CategoryBox(
-                  category: categoryList[index],
-                ),
-              );
-            },
-          ),
+        return ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: categoryList.length,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: const EdgeInsets.only(left: 6),
+              child: CategoryBox(
+                category: categoryList[index],
+              ),
+            );
+          },
         );
       },
     );

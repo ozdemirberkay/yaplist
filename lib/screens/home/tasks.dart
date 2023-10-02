@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:yaplist/screens/home/widget/builder/task_builder.dart';
+import 'package:yaplist/widgets/builder/task_builder.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
 class Tasks extends StatelessWidget {
