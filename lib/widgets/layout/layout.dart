@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Layout extends StatelessWidget {
   final Widget body;
+  final Widget? titleWidget;
   final String title;
   final List<Widget> actions;
   final Widget? leading;
@@ -11,13 +12,14 @@ class Layout extends StatelessWidget {
     this.actions = const [],
     required this.title,
     this.leading,
+    this.titleWidget,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: titleWidget ?? Text(title),
         centerTitle: true,
         actions: actions,
         leading: leading,

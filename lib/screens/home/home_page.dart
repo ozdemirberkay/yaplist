@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:yaplist/shareds/constants/yap_list_icon_icons.dart';
 import 'package:yaplist/widgets/builder/category_builder.dart';
 import 'package:yaplist/widgets/builder/task_builder.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Layout(
       title: "Yaplist",
+      titleWidget: const Icon(YapListIcon.yaplist, size: 40),
       body: Column(
         children: [
           Padding(
