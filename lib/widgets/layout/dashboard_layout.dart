@@ -22,9 +22,7 @@ class DashboardLayout extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, Routes.addTask);
         },
-        child: const Icon(
-          Icons.add,
-        ),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(items: <BottomNavigationBarItem>[
