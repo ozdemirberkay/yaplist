@@ -1,9 +1,9 @@
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/task.dart';
-import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
-import 'package:yaplist/utilities/database_helper.dart';
+import 'package:yaplist/utilities/date/date_helper.dart';
+import 'package:yaplist/utilities/task_manager.dart';
 import 'package:yaplist/widgets/bottom/category_picker_modal.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
@@ -11,41 +11,38 @@ import 'package:yaplist/widgets/input/input_field.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 import 'package:yaplist/models/category.dart';
 
-class AddTaskScreen extends StatefulWidget {
+class TaskManagerScreen extends StatefulWidget {
   final Task? task;
-  const AddTaskScreen({super.key, this.task});
+  const TaskManagerScreen({super.key, this.task});
 
   @override
-  State<AddTaskScreen> createState() => _AddTaskScreenState();
+  State<TaskManagerScreen> createState() => _TaskManagerScreenState();
 }
 
-class _AddTaskScreenState extends State<AddTaskScreen> {
+class _TaskManagerScreenState extends State<TaskManagerScreen> {
   final formKey = GlobalKey<FormState>();
   late TextEditingController titleController;
   late TextEditingController dateController;
   late TextEditingController categoryController;
   DateTime? selectedDate;
   Category? selectedCategory;
+  bool haveTask = false;
 
   @override
   void initState() {
     titleController = TextEditingController(text: widget.task?.title);
-    dateController = TextEditingController(text: formatDate(widget.task?.date));
+    dateController =
+        TextEditingController(text: DateHelper.formatDate(widget.task?.date));
     categoryController =
         TextEditingController(text: widget.task?.category?.name);
     super.initState();
-  }
-
-  String formatDate(DateTime? dateTime) {
-    if (dateTime == null) {
-      return "";
-    }
-    String formattedDate = DateFormat('dd-MM-yyyy').format(dateTime);
-    return formattedDate;
+    selectedCategory = widget.task?.category;
+    selectedDate = widget.task?.date;
+    haveTask = widget.task != null;
   }
 
   void onDateChanged(DateTime newDate) {
-    dateController.text = formatDate(newDate);
+    dateController.text = DateHelper.formatDate(newDate);
     selectedDate = newDate;
   }
 
@@ -59,7 +56,16 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Layout(
-      title: tr("addTask"),
+      title: tr("task"),
+      actions: [
+        if (haveTask)
+          IconButton(
+              onPressed: () {
+                TaskManager.deleteTask(context: context, task: widget.task!);
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.delete_forever))
+      ],
       body: Container(
         padding: const EdgeInsets.all(10),
         child: Form(
@@ -116,17 +122,18 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(4),
                 child: MasterButton(
-                  label: tr("add"),
+                  label: haveTask ? tr("update") : tr("add"),
                   icon: Icons.calendar_month,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      Task task = Task(
-                        id: DatabaseHelper.generateUniqueId(),
-                        title: titleController.text,
-                        category: selectedCategory,
-                        date: selectedDate,
-                      );
-                      context.read<TaskBloc>().add(AddTask(task: task));
+                      if (haveTask) {
+                        TaskManager.addTask(
+                            context: context,
+                            title: titleController.text,
+                            category: selectedCategory,
+                            date: selectedDate);
+                      }
+
                       Navigator.maybePop(context);
                     }
                   },

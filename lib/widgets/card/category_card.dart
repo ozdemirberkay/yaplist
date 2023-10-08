@@ -18,6 +18,8 @@ class CategoryCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
         decoration: BoxDecoration(
           color: category.color,
+          border: Border.all(
+              color: Theme.of(context).primaryColor.withOpacity(0.3)),
         ),
         child: Text(category.name),
       ),

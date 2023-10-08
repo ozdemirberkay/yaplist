@@ -20,7 +20,7 @@ class DashboardLayout extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         tooltip: tr("addTask"),
         onPressed: () {
-          Navigator.pushNamed(context, Routes.addTask);
+          Navigator.pushNamed(context, Routes.taskManager);
         },
         child: const Icon(Icons.add),
       ),
