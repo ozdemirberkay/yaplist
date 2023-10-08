@@ -10,7 +10,7 @@ class Tasks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Layout(
       title: tr("tasks"),
-      body: const Padding(padding: EdgeInsets.all(6.0), child: TaskBuilder()),
+      body: const TaskBuilder(),
       leading: IconButton(
         onPressed: () {},
         icon: const Icon(Icons.search),

@@ -9,18 +9,21 @@ class TaskBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TaskBloc, TaskState>(
-      builder: (context, state) {
-        List<Task> taskList = state.taskList;
+    return Padding(
+      padding: const EdgeInsets.all(6.0),
+      child: BlocBuilder<TaskBloc, TaskState>(
+        builder: (context, state) {
+          List<Task> taskList = state.taskList;
 
-        return ListView.builder(
-          shrinkWrap: true,
-          itemCount: taskList.length,
-          itemBuilder: (context, index) => TaskCard(
-            task: taskList[index],
-          ),
-        );
-      },
+          return ListView.builder(
+            shrinkWrap: true,
+            itemCount: taskList.length,
+            itemBuilder: (context, index) => TaskCard(
+              task: taskList[index],
+            ),
+          );
+        },
+      ),
     );
   }
 }
