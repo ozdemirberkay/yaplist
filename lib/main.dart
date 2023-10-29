@@ -9,6 +9,7 @@ import 'package:yaplist/shareds/constants/assets.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/shareds/locale/locale.dart';
 import 'package:yaplist/shareds/theme/theme.dart';
+import 'screens/unknown/unknown_route.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,6 +52,11 @@ class YaplistApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       routes: Routes.routes,
       initialRoute: Routes.initialScreen,
+      onUnknownRoute: (RouteSettings settings) {
+        return MaterialPageRoute<void>(
+            settings: settings,
+            builder: (BuildContext context) => const UnknwonRoute());
+      },
     );
   }
 }

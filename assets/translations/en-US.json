@@ -21,5 +21,6 @@
     "chooseColor": "Choose Color",
     "chooseCategory": "Choose Category",
     "date": "Date",
-    "categoryNotFound": "No category found. Would you like to add a new category?"
+    "categoryNotFound": "No category found. Would you like to add a new category?",
+    "pageNotFound": "Page Not Found"
 }

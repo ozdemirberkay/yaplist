@@ -21,5 +21,6 @@
     "chooseColor": "Renk Seç",
     "chooseCategory": "Kategori Seç",
     "date": "Tarih",
-    "categoryNotFound": "Kategori bulunamadı. Yeni bir kategori eklemek ister misiniz?"
+    "categoryNotFound": "Kategori bulunamadı. Yeni bir kategori eklemek ister misiniz?",
+    "pageNotFound": "Sayfa Bulunamadı"
 }
