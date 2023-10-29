@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/task.dart';
@@ -26,19 +25,20 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
   late TextEditingController categoryController;
   DateTime? selectedDate;
   Category? selectedCategory;
-  bool haveTask = false;
+  bool _haveTask = false;
+  Task? task;
 
   @override
   void initState() {
-    titleController = TextEditingController(text: widget.task?.title);
+    task = widget.task;
+    titleController = TextEditingController(text: task?.title);
     dateController =
-        TextEditingController(text: DateHelper.formatDate(widget.task?.date));
-    categoryController =
-        TextEditingController(text: widget.task?.category?.name);
+        TextEditingController(text: DateHelper.formatDate(task?.date));
+    categoryController = TextEditingController(text: task?.category?.name);
     super.initState();
-    selectedCategory = widget.task?.category;
-    selectedDate = widget.task?.date;
-    haveTask = widget.task != null;
+    selectedCategory = task?.category;
+    selectedDate = task?.date;
+    _haveTask = task != null;
   }
 
   void onDateChanged(DateTime newDate) {
@@ -58,10 +58,10 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
     return Layout(
       title: tr("task"),
       actions: [
-        if (haveTask)
+        if (_haveTask)
           IconButton(
               onPressed: () {
-                TaskManager.deleteTask(context: context, task: widget.task!);
+                TaskManager.deleteTask(context: context, task: task!);
                 Navigator.pop(context);
               },
               icon: const Icon(Icons.delete_forever))
@@ -122,18 +122,26 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(4),
                 child: MasterButton(
-                  label: haveTask ? tr("update") : tr("add"),
+                  label: _haveTask ? tr("update") : tr("add"),
                   icon: Icons.calendar_month,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      if (haveTask) {
+                      if (!_haveTask) {
                         TaskManager.addTask(
                             context: context,
                             title: titleController.text,
                             category: selectedCategory,
                             date: selectedDate);
-                      }
+                      } else {
+                        task!.title = titleController.text;
+                        task!.category = selectedCategory;
+                        task!.date = selectedDate;
 
+                        TaskManager.updateTask(
+                          context: context,
+                          task: task!,
+                        );
+                      }
                       Navigator.maybePop(context);
                     }
                   },

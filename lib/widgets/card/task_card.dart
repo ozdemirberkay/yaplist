@@ -1,10 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/screens/task/task_manager_screen.dart';
-import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 import 'package:yaplist/shareds/theme/appcolors.dart';
 import 'package:yaplist/utilities/task_manager.dart';
 
@@ -13,7 +11,7 @@ class TaskCard extends StatelessWidget {
   const TaskCard({super.key, required this.task});
 
   void deleteTask(BuildContext context) {
-    context.read<TaskBloc>().add(DeleteTask(task: task));
+    TaskManager.deleteTask(context: context, task: task);
   }
 
   @override

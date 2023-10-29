@@ -5,7 +5,7 @@ class Task {
   String title;
   bool isCompleted;
   DateTime? date;
-  final Category? category;
+  Category? category;
 
   Task(
       {required this.id,
