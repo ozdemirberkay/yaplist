@@ -62,7 +62,7 @@ class CategoryPickerModal extends StatelessWidget {
             MasterButton(
                 label: tr("addCategory"),
                 onPressed: () {
-                  Navigator.pushNamed(context, Routes.addCateogry);
+                  Navigator.pushNamed(context, Routes.categoryManager);
                 },
                 icon: Icons.add),
           ],

@@ -66,89 +66,84 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
               },
               icon: const Icon(Icons.delete_forever))
       ],
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: Form(
-          key: formKey,
-          child: Column(
-            children: [
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    InputField(
-                      label: tr("task"),
-                      controller: titleController,
-                      icon: Icons.task,
-                      maxLines: 5,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return tr("pleaseEnterTask");
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 10),
-                    InputField(
-                      label: tr("category"),
-                      icon: Icons.category,
-                      fillColor: selectedCategory?.color,
-                      controller: categoryController,
-                      onTap: () {
-                        CategoryPickerModal.show(
-                            context: context,
-                            onCategorySelected: onCategorySelected);
-                      },
-                      readOnly: true,
-                    ),
-                    const SizedBox(height: 10),
-                    InputField(
-                      label: tr("date"),
-                      onTap: () {
-                        DatePickerModal.show(
-                            context: context,
-                            onDateTimeChanged: onDateChanged,
-                            initialDate: selectedDate);
-                      },
-                      controller: dateController,
-                      readOnly: true,
-                      icon: Icons.date_range,
-                    ),
-                    const SizedBox(height: 10),
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(4),
-                child: MasterButton(
-                  label: _haveTask ? tr("update") : tr("add"),
-                  icon: Icons.calendar_month,
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      if (!_haveTask) {
-                        TaskManager.addTask(
-                            context: context,
-                            title: titleController.text,
-                            category: selectedCategory,
-                            date: selectedDate);
-                      } else {
-                        task!.title = titleController.text;
-                        task!.category = selectedCategory;
-                        task!.date = selectedDate;
-
-                        TaskManager.updateTask(
-                          context: context,
-                          task: task!,
-                        );
-                      }
-                      Navigator.maybePop(context);
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                InputField(
+                  label: tr("task"),
+                  controller: titleController,
+                  icon: Icons.task,
+                  maxLines: 5,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return tr("pleaseEnterTask");
                     }
+                    return null;
                   },
                 ),
-              ),
-              const SizedBox(height: 10),
-            ],
+                const SizedBox(height: 10),
+                InputField(
+                  label: tr("category"),
+                  icon: Icons.category,
+                  fillColor: selectedCategory?.color,
+                  controller: categoryController,
+                  onTap: () {
+                    CategoryPickerModal.show(
+                        context: context,
+                        onCategorySelected: onCategorySelected);
+                  },
+                  readOnly: true,
+                ),
+                const SizedBox(height: 10),
+                InputField(
+                  label: tr("date"),
+                  onTap: () {
+                    DatePickerModal.show(
+                        context: context,
+                        onDateTimeChanged: onDateChanged,
+                        initialDate: selectedDate);
+                  },
+                  controller: dateController,
+                  readOnly: true,
+                  icon: Icons.date_range,
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(4),
+                  child: MasterButton(
+                    label: _haveTask ? tr("update") : tr("add"),
+                    icon: Icons.calendar_month,
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        if (!_haveTask) {
+                          TaskManager.addTask(
+                              context: context,
+                              title: titleController.text,
+                              category: selectedCategory,
+                              date: selectedDate);
+                        } else {
+                          task!.title = titleController.text;
+                          task!.category = selectedCategory;
+                          task!.date = selectedDate;
+
+                          TaskManager.updateTask(
+                            context: context,
+                            task: task!,
+                          );
+                        }
+                        Navigator.maybePop(context);
+                      }
+                    },
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
+            ),
           ),
         ),
       ),

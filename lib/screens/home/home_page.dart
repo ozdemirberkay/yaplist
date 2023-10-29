@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
                 MasterIconButton(
                   icon: Icons.add,
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.addCateogry);
+                    Navigator.pushNamed(context, Routes.categoryManager);
                   },
                 ),
               ],
