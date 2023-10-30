@@ -5,8 +5,8 @@ import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/icon/home_icon.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
-class UnknwonRoute extends StatelessWidget {
-  const UnknwonRoute({super.key});
+class UnknownRoute extends StatelessWidget {
+  const UnknownRoute({super.key});
 
   @override
   Widget build(BuildContext context) {

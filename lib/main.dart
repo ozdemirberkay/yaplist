@@ -42,21 +42,20 @@ class YaplistApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Yaplist',
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      debugShowCheckedModeBanner: false,
-      theme: YaplistTheme.light,
-      darkTheme: YaplistTheme.dark,
-      themeMode: ThemeMode.light,
-      routes: Routes.routes,
-      initialRoute: Routes.initialScreen,
-      onUnknownRoute: (RouteSettings settings) {
-        return MaterialPageRoute<void>(
-            settings: settings,
-            builder: (BuildContext context) => const UnknwonRoute());
-      },
-    );
+        title: 'Yaplist',
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        debugShowCheckedModeBanner: false,
+        theme: YaplistTheme.light,
+        darkTheme: YaplistTheme.dark,
+        themeMode: ThemeMode.light,
+        routes: Routes.routes,
+        initialRoute: Routes.initialScreen,
+        onUnknownRoute: (RouteSettings settings) {
+          return MaterialPageRoute<void>(
+              settings: settings,
+              builder: (BuildContext context) => const UnknownRoute());
+        });
   }
 }
