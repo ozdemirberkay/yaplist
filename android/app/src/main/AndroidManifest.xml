@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.berkayozdemir.yaplist.yaplist">
+    package="com.berkayozdemir.yaplist">
    <application
         android:label="yaplist"
         android:name="${applicationName}"

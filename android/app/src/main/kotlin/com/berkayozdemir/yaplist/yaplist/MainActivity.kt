@@ -1,4 +1,4 @@
-package com.berkayozdemir.yaplist.yaplist
+package com.berkayozdemir.yaplist
 
 import io.flutter.embedding.android.FlutterActivity
 
