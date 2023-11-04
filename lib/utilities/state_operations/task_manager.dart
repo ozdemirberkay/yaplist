@@ -34,4 +34,13 @@ class TaskManager {
   }) {
     BlocProvider.of<TaskBloc>(context).add(DeleteTask(task: task));
   }
+
+  static void bulkUpdateTask({
+    required BuildContext context,
+    required List<Task> taskList,
+    required Category category,
+  }) {
+    BlocProvider.of<TaskBloc>(context)
+        .add(BulkUpdateTask(tasklist: taskList, category: category));
+  }
 }

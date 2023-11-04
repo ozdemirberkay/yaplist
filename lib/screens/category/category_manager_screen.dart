@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/category.dart';
-import 'package:yaplist/utilities/category_manager.dart';
+import 'package:yaplist/utilities/state_operations/category_manager.dart';
 import 'package:yaplist/widgets/bottom/color_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/input/input_field.dart';

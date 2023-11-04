@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/utilities/date/date_helper.dart';
-import 'package:yaplist/utilities/task_manager.dart';
+import 'package:yaplist/utilities/state_operations/task_manager.dart';
 import 'package:yaplist/widgets/bottom/category_picker_modal.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';

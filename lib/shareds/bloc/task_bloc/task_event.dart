@@ -1,4 +1,3 @@
-
 part of 'task_bloc.dart';
 
 @immutable
@@ -17,4 +16,13 @@ class AddTask extends TaskEvent {
 class UpdateTask extends TaskEvent {
   final Task task;
   UpdateTask({required this.task});
+}
+
+class BulkUpdateTask extends TaskEvent {
+  final List<Task> tasklist;
+  final Category category;
+  BulkUpdateTask({
+    required this.tasklist,
+    required this.category,
+  });
 }

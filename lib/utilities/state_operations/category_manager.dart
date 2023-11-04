@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
+import 'package:yaplist/models/task.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
+import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 import 'package:yaplist/utilities/database_helper.dart';
 
 class CategoryManager {
@@ -21,6 +23,7 @@ class CategoryManager {
   }) {
     BlocProvider.of<CategoryBloc>(context)
         .add(UpdateCategory(category: category));
+    _updateTasks(category: category, context: context);
   }
 
   static void deleteCategory({
@@ -29,5 +32,31 @@ class CategoryManager {
   }) {
     BlocProvider.of<CategoryBloc>(context)
         .add(DeleteCategory(category: category));
+    _updateTasks(category: category, context: context);
+  }
+
+  static _updateTasks({
+    required BuildContext context,
+    required Category category,
+  }) {
+    BlocProvider.of<TaskBloc>(context).add(
+      BulkUpdateTask(
+          category: category,
+          tasklist:
+              getTaskListFromCategory(category: category, context: context)),
+    );
+  }
+
+  static List<Task> getTaskListFromCategory({
+    required BuildContext context,
+    required Category category,
+  }) {
+    List<Task> tasklist = BlocProvider.of<TaskBloc>(context)
+        .state
+        .taskList
+        .where((element) => element.category?.id == category.id)
+        .toList();
+
+    return tasklist;
   }
 }
