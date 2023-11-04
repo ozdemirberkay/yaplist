@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/category.dart';
+import 'package:yaplist/models/filter/task_filter.dart';
 import 'package:yaplist/screens/category/category_manager_screen.dart';
 import 'package:yaplist/screens/task/task_manager_screen.dart';
 import 'package:yaplist/widgets/builder/task_builder.dart';
@@ -11,13 +12,12 @@ class CategoryDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO taskları kategoriye göre getir
     return Layout(
-      body: const TaskBuilder(),
+      body: TaskBuilder(
+        taskFilter: TaskFilter(category: category),
+      ),
       actions: [
         IconButton(
-          //TODO kategori düzenleme
-
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => CategoryManagerScreen(

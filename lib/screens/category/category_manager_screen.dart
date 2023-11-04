@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/category.dart';
+import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/utilities/state_operations/category_manager.dart';
 import 'package:yaplist/widgets/bottom/color_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
@@ -48,7 +49,8 @@ class _CategoryManagerScreenState extends State<CategoryManagerScreen> {
               onPressed: () {
                 CategoryManager.deleteCategory(
                     context: context, category: category!);
-                Navigator.pop(context);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, Routes.initialScreen, (route) => false);
               },
               icon: const Icon(Icons.delete_forever))
       ],
@@ -69,6 +71,7 @@ class _CategoryManagerScreenState extends State<CategoryManagerScreen> {
                     }
                     return null;
                   },
+                  maxLines: 2,
                 ),
                 const SizedBox(height: 10),
                 InputField(
