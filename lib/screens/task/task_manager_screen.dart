@@ -12,7 +12,8 @@ import 'package:yaplist/models/category.dart';
 
 class TaskManagerScreen extends StatefulWidget {
   final Task? task;
-  const TaskManagerScreen({super.key, this.task});
+  final Category? defaultCategory;
+  const TaskManagerScreen({super.key, this.task, this.defaultCategory});
 
   @override
   State<TaskManagerScreen> createState() => _TaskManagerScreenState();
@@ -34,9 +35,11 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
     titleController = TextEditingController(text: task?.title);
     dateController =
         TextEditingController(text: DateHelper.formatDate(task?.date));
-    categoryController = TextEditingController(text: task?.category?.name);
+    categoryController = TextEditingController(
+        text: widget.defaultCategory?.name ?? task?.category?.name);
     super.initState();
-    selectedCategory = task?.category;
+    selectedCategory =
+        selectedCategory = widget.defaultCategory ?? task?.category;
     selectedDate = task?.date;
     _haveTask = task != null;
   }
