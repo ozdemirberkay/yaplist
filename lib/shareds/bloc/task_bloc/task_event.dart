@@ -20,7 +20,7 @@ class UpdateTask extends TaskEvent {
 
 class BulkUpdateTask extends TaskEvent {
   final List<Task> tasklist;
-  final Category category;
+  final Category? category;
   BulkUpdateTask({
     required this.tasklist,
     required this.category,

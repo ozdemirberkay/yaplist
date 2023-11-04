@@ -23,7 +23,7 @@ class CategoryManager {
   }) {
     BlocProvider.of<CategoryBloc>(context)
         .add(UpdateCategory(category: category));
-    _updateTasks(category: category, context: context);
+    _updateTasks(category: category, context: context, newCategory: category);
   }
 
   static void deleteCategory({
@@ -32,16 +32,17 @@ class CategoryManager {
   }) {
     BlocProvider.of<CategoryBloc>(context)
         .add(DeleteCategory(category: category));
-    _updateTasks(category: category, context: context);
+    _updateTasks(category: category, context: context, newCategory: null);
   }
 
   static _updateTasks({
     required BuildContext context,
     required Category category,
+    required Category? newCategory,
   }) {
     BlocProvider.of<TaskBloc>(context).add(
       BulkUpdateTask(
-          category: category,
+          category: newCategory,
           tasklist:
               getTaskListFromCategory(category: category, context: context)),
     );
@@ -56,7 +57,6 @@ class CategoryManager {
         .taskList
         .where((element) => element.category?.id == category.id)
         .toList();
-
     return tasklist;
   }
 }

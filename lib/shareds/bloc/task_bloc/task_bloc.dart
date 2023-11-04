@@ -44,11 +44,11 @@ class TaskBloc extends HydratedBloc<TaskEvent, TaskState> {
     List<Task> newTaskList = List.from(state.taskList);
     List<Task> changedTaskList = event.tasklist;
 
-    newTaskList.map((element) {
+    for (var element in newTaskList) {
       if (changedTaskList.contains(element)) {
         element.category = event.category;
       }
-    });
+    }
 
     emit(
       TaskChanged(taskList: newTaskList),

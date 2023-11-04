@@ -22,5 +22,6 @@
     "chooseCategory": "Choose Category",
     "date": "Date",
     "categoryNotFound": "No category found. Would you like to add a new category?",
-    "pageNotFound": "Page Not Found"
+    "pageNotFound": "Page Not Found",
+    "update": "Update"
 }
