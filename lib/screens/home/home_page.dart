@@ -4,6 +4,7 @@ import 'package:yaplist/widgets/builder/category_builder.dart';
 import 'package:yaplist/widgets/builder/task_builder.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/widgets/button/master_icon_button.dart';
+import 'package:yaplist/widgets/drawer/home_drawer.dart';
 import 'package:yaplist/widgets/icon/home_icon.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 
@@ -15,6 +16,7 @@ class HomePage extends StatelessWidget {
     return Layout(
       title: "Yaplist",
       titleWidget: const HomeIcon(),
+      drawer: const HomeDrawer(),
       body: Column(
         children: [
           Padding(

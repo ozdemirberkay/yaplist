@@ -5,7 +5,7 @@ class HomeDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO düzenle ihtiyaça göre
+    //TODO ihtiyaçları ekle
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,

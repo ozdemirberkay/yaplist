@@ -6,6 +6,7 @@ class Layout extends StatelessWidget {
   final String title;
   final List<Widget> actions;
   final Widget? leading;
+  final Widget? drawer;
   const Layout({
     super.key,
     required this.body,
@@ -13,6 +14,7 @@ class Layout extends StatelessWidget {
     required this.title,
     this.leading,
     this.titleWidget,
+    this.drawer,
   });
 
   @override
@@ -24,6 +26,7 @@ class Layout extends StatelessWidget {
         actions: actions,
         leading: leading,
       ),
+      drawer: drawer,
       body: body,
     );
   }
