@@ -23,7 +23,10 @@ class HomePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(tr("categories")),
+                Text(
+                  tr("categories"),
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
                 MasterIconButton(
                   icon: Icons.add,
                   onPressed: () {
@@ -33,10 +36,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 6,
-            child: const CategoryBuilder(),
-          ),
+          const Expanded(child: CategoryBuilder()),
         ],
       ),
     );

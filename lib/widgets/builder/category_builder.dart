@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
+import 'package:yaplist/widgets/builder/empty_category_builder.dart';
 import 'package:yaplist/widgets/card/category_box.dart';
 
 class CategoryBuilder extends StatelessWidget {
@@ -12,16 +13,20 @@ class CategoryBuilder extends StatelessWidget {
     return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (context, state) {
         List<Category> categoryList = state.categoryList;
-        return ListView.builder(
-          scrollDirection: Axis.horizontal,
+
+        if (categoryList.isEmpty) {
+          return const EmptyCategoryBuilder();
+        }
+
+        return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2),
           itemCount: categoryList.length,
+          shrinkWrap: true,
           itemBuilder: (context, index) {
-            // TODO empty kısmını ve gridview düzenle
-            return Container(
-              margin: const EdgeInsets.only(left: 6),
-              child: CategoryBox(
-                category: categoryList[index],
-              ),
+            // TODO gridview düzenle
+            return CategoryBox(
+              category: categoryList[index],
             );
           },
         );

@@ -24,21 +24,19 @@ class TaskBuilder extends StatelessWidget with TaskFilterMixin {
                 filteredTaskList(taskList: taskList, filter: taskFilter!);
           }
           if (taskList.isEmpty) {
-            return Expanded(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(tr("taskNotFound"), textAlign: TextAlign.center),
-                    const SizedBox(height: 6),
-                    MasterButton(
-                        label: tr("addTask"),
-                        onPressed: () {
-                          Navigator.pushNamed(context, Routes.taskManager);
-                        },
-                        icon: Icons.add),
-                  ],
-                ),
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(tr("taskNotFound"), textAlign: TextAlign.center),
+                  const SizedBox(height: 6),
+                  MasterButton(
+                      label: tr("addTask"),
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.taskManager);
+                      },
+                      icon: Icons.add),
+                ],
               ),
             );
           }

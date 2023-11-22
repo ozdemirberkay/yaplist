@@ -25,7 +25,6 @@ class CategoryBox extends StatelessWidget {
           border: Border.all(
               color: Theme.of(context).primaryColor.withOpacity(0.3)),
         ),
-        width: MediaQuery.of(context).size.width / 3,
         child: Text(
           category.name,
         ),
