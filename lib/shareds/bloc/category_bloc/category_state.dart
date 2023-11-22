@@ -7,11 +7,9 @@ abstract class CategoryState {
 }
 
 class CategoryInitial extends CategoryState {
-  const CategoryInitial({required List<Category> categoryList})
-      : super(categoryList: categoryList);
+  const CategoryInitial({required super.categoryList});
 }
 
 class CategoryChanged extends CategoryState {
-  const CategoryChanged({required List<Category> categoryList})
-      : super(categoryList: categoryList);
+  const CategoryChanged({required super.categoryList});
 }

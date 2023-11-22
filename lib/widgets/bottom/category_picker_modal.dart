@@ -59,6 +59,7 @@ class CategoryPickerModal extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(tr("categoryNotFound"), textAlign: TextAlign.center),
+            const SizedBox(height: 6),
             MasterButton(
                 label: tr("addCategory"),
                 onPressed: () {

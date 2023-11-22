@@ -11,8 +11,8 @@ class DashboardLayout extends StatelessWidget {
     required this.body,
     required this.index,
     required this.onChanged,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

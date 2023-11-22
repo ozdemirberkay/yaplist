@@ -7,9 +7,9 @@ abstract class TaskState {
 }
 
 class TaskInitial extends TaskState {
-  const TaskInitial({required List<Task> taskList}) : super(taskList: taskList);
+  const TaskInitial({required super.taskList});
 }
 
 class TaskChanged extends TaskState {
-  const TaskChanged({required List<Task> taskList}) : super(taskList: taskList);
+  const TaskChanged({required super.taskList});
 }

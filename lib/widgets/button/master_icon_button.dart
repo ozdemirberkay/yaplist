@@ -7,12 +7,12 @@ class MasterIconButton extends StatelessWidget {
   final bool disabled;
 
   const MasterIconButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.icon,
     this.loading = false,
     this.disabled = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

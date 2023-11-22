@@ -3,7 +3,7 @@ import 'package:yaplist/shareds/constants/constants.dart';
 
 class ModalLabel extends StatelessWidget {
   final String label;
-  const ModalLabel({Key? key, required this.label}) : super(key: key);
+  const ModalLabel({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {
