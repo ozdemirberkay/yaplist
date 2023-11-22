@@ -1,7 +1,5 @@
 {
     "homePage": "Anasayfa",
-    "statistics": "İstatistik",
-    "search": "Arama",
     "addTask": "Görev Ekle",
     "details": "Detaylar",
     "delete": "Sil",
@@ -24,5 +22,6 @@
     "categoryNotFound": "Kategori bulunamadı.\nYeni bir kategori eklemek ister misiniz?",
     "pageNotFound": "Sayfa Bulunamadı",
     "update": "Güncelle",
-    "filters": "Filtreler"
+    "filters": "Filtreler",
+    "taskNotFound": "Görev bulunamadı.\nYeni bir görev eklemek ister misiniz?"
 }

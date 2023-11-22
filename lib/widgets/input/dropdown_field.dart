@@ -20,7 +20,7 @@ class DropdownField extends StatelessWidget {
           value: value,
           child: Column(
             children: [
-              Icon(Icons.earbuds),
+              const Icon(Icons.earbuds),
               Text(value),
             ],
           ),

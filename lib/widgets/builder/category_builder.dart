@@ -16,6 +16,7 @@ class CategoryBuilder extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: categoryList.length,
           itemBuilder: (context, index) {
+            // TODO empty kısmını ve gridview düzenle
             return Container(
               margin: const EdgeInsets.only(left: 6),
               child: CategoryBox(
