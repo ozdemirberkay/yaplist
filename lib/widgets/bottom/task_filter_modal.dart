@@ -95,15 +95,23 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
                   icon: Icons.date_range,
                 ),
                 const SizedBox(height: 10),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  width: double.infinity,
-                  child: MasterButton(
-                      label: tr("select"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: Icons.check),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    //TODO butonları ve pressleri düzelt
+                    MasterButton(
+                        label: tr("select"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icons.check),
+                    MasterButton(
+                        label: tr("select"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icons.check),
+                  ],
                 ),
                 const SizedBox(height: 6),
               ],
