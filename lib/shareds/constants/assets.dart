@@ -1,4 +1,5 @@
 class Assets {
-  static String logo = "assets/images/logo.png";
   static String translations = "assets/translations";
+  static String task = "assets/animations/task.json";
+  static String category = "assets/animations/category.json";
 }

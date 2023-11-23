@@ -31,6 +31,7 @@ dependencies:
   hydrated_bloc: ^9.1.2
   flutter_slidable: ^3.0.0
   path_provider: ^2.1.1
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +44,7 @@ flutter:
 
   assets:
     - assets/translations/
+    - assets/animations/
 
   fonts:
     - family: YapListIcon

@@ -19,9 +19,9 @@
     "chooseColor": "Renk Seç",
     "chooseCategory": "Kategori Seç",
     "date": "Tarih",
-    "categoryNotFound": "Kategori bulunamadı.\nYeni bir kategori eklemek ister misiniz?",
+    "categoryNotFound": "Kategori yok\nYeni bir kategori eklemek ister misiniz?",
     "pageNotFound": "Sayfa Bulunamadı",
     "update": "Güncelle",
     "filters": "Filtreler",
-    "taskNotFound": "Görev bulunamadı.\nYeni bir görev eklemek ister misiniz?"
+    "taskNotFound": "Görev yok\nYeni bir görev eklemek ister misiniz?"
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
-import 'package:yaplist/widgets/builder/empty_category_builder.dart';
+import 'package:yaplist/widgets/builder/empty/empty_category_builder.dart';
 import 'package:yaplist/widgets/card/category_card.dart';
 import 'package:yaplist/widgets/text/modal_label.dart';
 
