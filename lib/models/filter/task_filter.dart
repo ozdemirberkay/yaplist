@@ -30,7 +30,11 @@ mixin TaskFilterMixin {
         return false;
       }
 
-      if (filter.dateTime != null && task.date != filter.dateTime) {
+      if (filter.dateTime != null &&
+          task.date != null &&
+          (task.date!.year != filter.dateTime!.year ||
+              task.date!.month != filter.dateTime!.month ||
+              task.date!.day != filter.dateTime!.day)) {
         return false;
       }
 
