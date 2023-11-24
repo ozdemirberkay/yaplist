@@ -20,7 +20,7 @@ mixin TaskFilterMixin {
         return false;
       }
 
-      if (filter.completedDropdownModel != null &&
+      if (filter.completedDropdownModel?.data != null &&
           task.isCompleted != filter.completedDropdownModel!.data) {
         return false;
       }
