@@ -23,5 +23,11 @@
     "pageNotFound": "Sayfa Bulunamadı",
     "update": "Güncelle",
     "filters": "Filtreler",
-    "taskNotFound": "Görev yok\nYeni bir görev eklemek ister misiniz?"
+    "taskNotFound": "Görev yok\nYeni bir görev eklemek ister misiniz?",
+    "reset": "Sıfırla",
+    "apply": "Onayla",
+    "status": "Durum",
+    "all": "Hepsi",
+    "completed": "Tamamlanmış",
+    "incomplete": "Tamamlanmamış"
 }

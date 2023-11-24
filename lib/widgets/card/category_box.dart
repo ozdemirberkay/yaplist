@@ -25,8 +25,12 @@ class CategoryBox extends StatelessWidget {
           border: Border.all(
               color: Theme.of(context).primaryColor.withOpacity(0.3)),
         ),
-        child: Text(
-          category.name,
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(
+            category.name,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
         ),
       ),
     );

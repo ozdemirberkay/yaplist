@@ -20,11 +20,15 @@ class CategoryBuilder extends StatelessWidget {
 
         return GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            childAspectRatio: 1.5,
+          ),
           itemCount: categoryList.length,
           shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           itemBuilder: (context, index) {
-            // TODO gridview düzenle
             return CategoryBox(
               category: categoryList[index],
             );

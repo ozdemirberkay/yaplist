@@ -1,21 +1,33 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yaplist/models/category.dart';
+import 'package:yaplist/models/filter/dropdown_model.dart';
+import 'package:yaplist/models/filter/task_filter.dart';
 import 'package:yaplist/utilities/date/date_helper.dart';
 import 'package:yaplist/widgets/bottom/category_picker_modal.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
+import 'package:yaplist/widgets/input/dropdown_field.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
 import 'package:yaplist/widgets/text/modal_label.dart';
 
 class TaskFilterModal extends StatefulWidget {
-  const TaskFilterModal({super.key});
+  final Function(TaskFilter?) onFilterChanged;
+  final TaskFilter? taskFilter;
+  const TaskFilterModal(
+      {super.key, required this.onFilterChanged, required this.taskFilter});
 
-  static void show({required BuildContext context}) {
+  static void show(
+      {required BuildContext context,
+      required Function(TaskFilter?) onFilterChanged,
+      required TaskFilter? taskFilter}) {
     showModalBottomSheet(
         context: context,
         builder: (context) {
-          return const TaskFilterModal();
+          return TaskFilterModal(
+            onFilterChanged: onFilterChanged,
+            taskFilter: taskFilter,
+          );
         });
   }
 
@@ -29,6 +41,20 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
   late TextEditingController categoryController = TextEditingController();
   DateTime? selectedDate;
   Category? selectedCategory;
+  bool? completed;
+
+  @override
+  void initState() {
+    super.initState();
+    titleController = TextEditingController(text: widget.taskFilter?.name);
+    dateController = TextEditingController(
+        text: DateHelper.formatDate(widget.taskFilter?.dateTime));
+    categoryController =
+        TextEditingController(text: widget.taskFilter?.category?.name);
+    selectedCategory = selectedCategory = widget.taskFilter?.category;
+    selectedDate = widget.taskFilter?.dateTime;
+    completed = widget.taskFilter?.completed;
+  }
 
   void onDateChanged(DateTime newDate) {
     dateController.text = DateHelper.formatDate(newDate);
@@ -41,6 +67,12 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
       selectedCategory = newCategory;
     });
   }
+
+  List<DropdownModel> dropdownModelList = [
+    DropdownModel(title: tr("all"), data: null),
+    DropdownModel(title: tr("incomplete"), data: false),
+    DropdownModel(title: tr("completed"), data: true),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +92,6 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
                   label: tr("task"),
                   controller: titleController,
                   icon: Icons.task,
-                  maxLines: 5,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return tr("pleaseEnterTask");
@@ -95,19 +126,34 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
                   icon: Icons.date_range,
                 ),
                 const SizedBox(height: 10),
+                DropdownField(
+                  label: tr("status"),
+                  items: dropdownModelList,
+                  onChanged: (DropdownModel? value) {
+                    completed = value?.data;
+                  },
+                ),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    //TODO butonları ve pressleri düzelt
                     MasterButton(
-                        label: tr("select"),
+                        label: tr("reset"),
                         onPressed: () {
+                          widget.onFilterChanged(null);
                           Navigator.of(context).pop();
                         },
-                        icon: Icons.check),
+                        icon: Icons.clear),
+                    const SizedBox(width: 10),
                     MasterButton(
-                        label: tr("select"),
+                        label: tr("apply"),
                         onPressed: () {
+                          widget.onFilterChanged(TaskFilter(
+                              category: selectedCategory,
+                              completed: completed,
+                              dateTime: selectedDate,
+                              name: titleController.text));
                           Navigator.of(context).pop();
                         },
                         icon: Icons.check),

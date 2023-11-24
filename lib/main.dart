@@ -49,7 +49,7 @@ class YaplistApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: YaplistTheme.light,
         darkTheme: YaplistTheme.dark,
-        themeMode: ThemeMode.dark,
+        themeMode: ThemeMode.system,
         routes: Routes.routes,
         initialRoute: Routes.initialScreen,
         onUnknownRoute: (RouteSettings settings) {

@@ -23,5 +23,11 @@
     "pageNotFound": "Page Not Found",
     "update": "Update",
     "filters": "Filreler",
-    "taskNotFound": "There are no task\nWould you like to add a new task?"
+    "taskNotFound": "There are no task\nWould you like to add a new task",
+    "reset": "Reset",
+    "apply": "Apply",
+    "status": "Status",
+    "all": "All",
+    "completed": "Completed",
+    "incomplete": "Incomplete"
 }

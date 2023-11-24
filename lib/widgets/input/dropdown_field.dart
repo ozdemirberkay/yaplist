@@ -1,36 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:yaplist/models/filter/dropdown_model.dart';
 
 class DropdownField extends StatelessWidget {
   final String label;
-  final IconData? icon;
-  final ValueChanged<dynamic>? onChanged;
+  final ValueChanged<DropdownModel?>? onChanged;
+  final List<DropdownModel> items;
 
   const DropdownField({
     super.key,
     required this.label,
-    this.icon,
     this.onChanged,
+    required this.items,
   });
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
-      items: <String>['A', 'B', 'C', 'D'].map((String value) {
-        return DropdownMenuItem<String>(
+      items: items.map((DropdownModel value) {
+        return DropdownMenuItem<DropdownModel>(
           value: value,
-          child: Column(
-            children: [
-              const Icon(Icons.earbuds),
-              Text(value),
-            ],
-          ),
+          child: Text(value.title),
         );
       }).toList(),
-      // items: items,
       onChanged: onChanged,
       decoration: InputDecoration(
         labelText: label,
-        suffixIcon: Icon(icon),
       ),
     );
   }
