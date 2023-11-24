@@ -41,7 +41,7 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
   late TextEditingController categoryController = TextEditingController();
   DateTime? selectedDate;
   Category? selectedCategory;
-  bool? completed;
+  CompletedDropdownModel? completedDropdownModel;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
         TextEditingController(text: widget.taskFilter?.category?.name);
     selectedCategory = selectedCategory = widget.taskFilter?.category;
     selectedDate = widget.taskFilter?.dateTime;
-    completed = widget.taskFilter?.completed;
+    completedDropdownModel = widget.taskFilter?.completedDropdownModel;
   }
 
   void onDateChanged(DateTime newDate) {
@@ -68,10 +68,10 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
     });
   }
 
-  List<DropdownModel> dropdownModelList = [
-    DropdownModel(title: tr("all"), data: null),
-    DropdownModel(title: tr("incomplete"), data: false),
-    DropdownModel(title: tr("completed"), data: true),
+  List<CompletedDropdownModel> dropdownModelList = [
+    CompletedDropdownModel(title: tr("all"), data: null),
+    CompletedDropdownModel(title: tr("incomplete"), data: false),
+    CompletedDropdownModel(title: tr("completed"), data: true),
   ];
 
   @override
@@ -129,9 +129,10 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
                 DropdownField(
                   label: tr("status"),
                   items: dropdownModelList,
-                  onChanged: (DropdownModel? value) {
-                    completed = value?.data;
+                  onChanged: (CompletedDropdownModel? value) {
+                    completedDropdownModel = value;
                   },
+                  value: completedDropdownModel,
                 ),
                 const SizedBox(height: 10),
                 Row(
@@ -151,7 +152,7 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
                         onPressed: () {
                           widget.onFilterChanged(TaskFilter(
                               category: selectedCategory,
-                              completed: completed,
+                              completedDropdownModel: completedDropdownModel,
                               dateTime: selectedDate,
                               name: titleController.text));
                           Navigator.of(context).pop();

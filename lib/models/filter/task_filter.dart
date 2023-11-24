@@ -1,13 +1,15 @@
 import 'package:yaplist/models/category.dart';
+import 'package:yaplist/models/filter/dropdown_model.dart';
 import 'package:yaplist/models/task.dart';
 
 class TaskFilter {
   final Category? category;
-  final bool? completed;
+  final CompletedDropdownModel? completedDropdownModel;
   final String? name;
   final DateTime? dateTime;
 
-  TaskFilter({this.category, this.completed, this.name, this.dateTime});
+  TaskFilter(
+      {this.category, this.completedDropdownModel, this.name, this.dateTime});
 }
 
 mixin TaskFilterMixin {
@@ -18,7 +20,8 @@ mixin TaskFilterMixin {
         return false;
       }
 
-      if (filter.completed != null && task.isCompleted != filter.completed) {
+      if (filter.completedDropdownModel != null &&
+          task.isCompleted != filter.completedDropdownModel!.data) {
         return false;
       }
 
