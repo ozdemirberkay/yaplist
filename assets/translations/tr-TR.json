@@ -1,7 +1,7 @@
 {
     "homePage": "Anasayfa",
     "addTask": "Görev Ekle",
-    "details": "Detaylar",
+    "detail": "Detay",
     "delete": "Sil",
     "task": "Görev",
     "add": "Ekle",
@@ -29,5 +29,9 @@
     "status": "Durum",
     "all": "Hepsi",
     "completed": "Tamamlanmış",
-    "incomplete": "Tamamlanmamış"
+    "incomplete": "Tamamlanmamış",
+    "theme": "Tema",
+    "dark": "Karanlık",
+    "light": "Aydınlık",
+    "system": "Sistem"
 }

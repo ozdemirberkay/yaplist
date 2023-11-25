@@ -31,7 +31,7 @@ class TaskCard extends StatelessWidget {
               backgroundColor: AppColors.greyColor,
               foregroundColor: AppColors.reversePrimaryColor(Theme.of(context)),
               icon: Icons.info,
-              label: tr("details"),
+              label: tr("detail"),
             ),
             SlidableAction(
               onPressed: deleteTask,

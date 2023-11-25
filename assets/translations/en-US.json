@@ -1,7 +1,7 @@
 {
     "homePage": "Home",
     "addTask": "Add Task",
-    "details": "Details",
+    "detail": "Detail",
     "delete": "Delete",
     "task": "Task",
     "add": "Add",
@@ -29,5 +29,9 @@
     "status": "Status",
     "all": "All",
     "completed": "Completed",
-    "incomplete": "Incomplete"
+    "incomplete": "Incomplete",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
 }

@@ -1,39 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:yaplist/widgets/drawer/widget/theme_changer_button.dart';
+import 'package:yaplist/widgets/icon/home_icon.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //TODO ihtiyaçları ekle
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.zero,
-        children: const <Widget>[
+        children: [
           DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
+            curve: Curves.bounceIn,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const HomeIcon(size: 65),
+                const SizedBox(height: 5),
+                Text(
+                  'Yaplist',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ],
             ),
-            child: Text(
-              'Drawer Header',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
-            ),
           ),
-          ListTile(
-            leading: Icon(Icons.message),
-            title: Text('Messages'),
-          ),
-          ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Profile'),
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-          ),
+          const ThemeChangerButton()
         ],
       ),
     );
