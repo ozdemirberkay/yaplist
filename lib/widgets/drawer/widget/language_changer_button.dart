@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/shareds/locale/locale.dart';
 
 class LanguageChangerButton extends StatefulWidget {
@@ -38,6 +39,8 @@ class _LanguageChangerButtonState extends State<LanguageChangerButton> {
       groupValue: locale,
       onChanged: (value) {
         context.setLocale(locale);
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil(Routes.initialScreen, (route) => false);
       },
     );
   }

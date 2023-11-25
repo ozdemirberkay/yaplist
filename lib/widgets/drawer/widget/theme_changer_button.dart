@@ -4,22 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/shareds/bloc/settings_bloc/settings_bloc.dart';
 import 'package:yaplist/utilities/state_operations/settings_manager.dart';
 
-List<(ThemeMode, String)> themeModes = <(ThemeMode, String)>[
-  (ThemeMode.system, tr("system")),
-  (ThemeMode.dark, tr("dark")),
-  (ThemeMode.light, tr("light")),
-];
-
-class ThemeChangerButton extends StatefulWidget {
+class ThemeChangerButton extends StatelessWidget {
   const ThemeChangerButton({super.key});
 
   @override
-  State<ThemeChangerButton> createState() => _ThemeChangerButtonState();
-}
-
-class _ThemeChangerButtonState extends State<ThemeChangerButton> {
-  @override
   Widget build(BuildContext context) {
+    List<(ThemeMode, String)> themeModes = <(ThemeMode, String)>[
+      (ThemeMode.system, tr("system")),
+      (ThemeMode.dark, tr("dark")),
+      (ThemeMode.light, tr("light")),
+    ];
     return BlocBuilder<SettingsBloc, SettingsState>(
       builder: (context, state) {
         ThemeMode actual = state.settings.themeMode;
