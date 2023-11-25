@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
+import 'package:yaplist/shareds/bloc/settings_bloc/settings_bloc.dart';
 import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 import 'package:yaplist/shareds/constants/assets.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
@@ -29,6 +30,9 @@ Future<void> main() async {
           BlocProvider(
             create: (context) => CategoryBloc(),
           ),
+          BlocProvider(
+            create: (context) => SettingsBloc(),
+          ),
         ],
         child: const YaplistApp(),
       ),
@@ -41,21 +45,25 @@ class YaplistApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Yaplist',
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        debugShowCheckedModeBanner: false,
-        theme: YaplistTheme.light,
-        darkTheme: YaplistTheme.dark,
-        themeMode: ThemeMode.system,
-        routes: Routes.routes,
-        initialRoute: Routes.initialScreen,
-        onUnknownRoute: (RouteSettings settings) {
-          return MaterialPageRoute<void>(
-              settings: settings,
-              builder: (BuildContext context) => const UnknownRoute());
-        });
+    return BlocBuilder<SettingsBloc, SettingsState>(
+      builder: (context, state) {
+        return MaterialApp(
+            title: 'Yaplist',
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            debugShowCheckedModeBanner: false,
+            theme: YaplistTheme.light,
+            darkTheme: YaplistTheme.dark,
+            themeMode: state.settings.themeMode,
+            routes: Routes.routes,
+            initialRoute: Routes.initialScreen,
+            onUnknownRoute: (RouteSettings settings) {
+              return MaterialPageRoute<void>(
+                  settings: settings,
+                  builder: (BuildContext context) => const UnknownRoute());
+            });
+      },
+    );
   }
 }
