@@ -82,86 +82,88 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
         minChildSize: 1,
         expand: false,
         builder: (context, scrollController) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              children: [
-                ModalLabel(label: tr("filters")),
-                const SizedBox(height: 6),
-                InputField(
-                  label: tr("task"),
-                  controller: titleController,
-                  icon: Icons.task,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return tr("pleaseEnterTask");
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 10),
-                InputField(
-                  label: tr("category"),
-                  icon: Icons.category,
-                  fillColor: selectedCategory?.color,
-                  controller: categoryController,
-                  onTap: () {
-                    CategoryPickerModal.show(
-                        context: context,
-                        onCategorySelected: onCategorySelected);
-                  },
-                  readOnly: true,
-                ),
-                const SizedBox(height: 10),
-                InputField(
-                  label: tr("date"),
-                  onTap: () {
-                    DatePickerModal.show(
-                        context: context,
-                        onDateTimeChanged: onDateChanged,
-                        initialDate: selectedDate);
-                  },
-                  controller: dateController,
-                  readOnly: true,
-                  icon: Icons.date_range,
-                ),
-                const SizedBox(height: 10),
-                DropdownField(
-                  label: tr("status"),
-                  items: dropdownModelList,
-                  onChanged: (CompletedDropdownModel? value) {
-                    completedDropdownModel = value;
-                  },
-                  value: completedDropdownModel,
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    MasterButton(
-                        label: tr("reset"),
-                        onPressed: () {
-                          widget.onFilterChanged(null);
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icons.clear),
-                    const SizedBox(width: 10),
-                    MasterButton(
-                        label: tr("apply"),
-                        onPressed: () {
-                          widget.onFilterChanged(TaskFilter(
-                              category: selectedCategory,
-                              completedDropdownModel: completedDropdownModel,
-                              dateTime: selectedDate,
-                              name: titleController.text));
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icons.check),
-                  ],
-                ),
-                const SizedBox(height: 6),
-              ],
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                children: [
+                  ModalLabel(label: tr("filters")),
+                  const SizedBox(height: 6),
+                  InputField(
+                    label: tr("task"),
+                    controller: titleController,
+                    icon: Icons.task,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return tr("pleaseEnterTask");
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  InputField(
+                    label: tr("category"),
+                    icon: Icons.category,
+                    fillColor: selectedCategory?.color,
+                    controller: categoryController,
+                    onTap: () {
+                      CategoryPickerModal.show(
+                          context: context,
+                          onCategorySelected: onCategorySelected);
+                    },
+                    readOnly: true,
+                  ),
+                  const SizedBox(height: 10),
+                  InputField(
+                    label: tr("date"),
+                    onTap: () {
+                      DatePickerModal.show(
+                          context: context,
+                          onDateTimeChanged: onDateChanged,
+                          initialDate: selectedDate);
+                    },
+                    controller: dateController,
+                    readOnly: true,
+                    icon: Icons.date_range,
+                  ),
+                  const SizedBox(height: 10),
+                  DropdownField(
+                    label: tr("status"),
+                    items: dropdownModelList,
+                    onChanged: (CompletedDropdownModel? value) {
+                      completedDropdownModel = value;
+                    },
+                    value: completedDropdownModel,
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      MasterButton(
+                          label: tr("reset"),
+                          onPressed: () {
+                            widget.onFilterChanged(null);
+                            Navigator.of(context).pop();
+                          },
+                          icon: Icons.clear),
+                      const SizedBox(width: 10),
+                      MasterButton(
+                          label: tr("apply"),
+                          onPressed: () {
+                            widget.onFilterChanged(TaskFilter(
+                                category: selectedCategory,
+                                completedDropdownModel: completedDropdownModel,
+                                dateTime: selectedDate,
+                                name: titleController.text));
+                            Navigator.of(context).pop();
+                          },
+                          icon: Icons.check),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                ],
+              ),
             ),
           );
         },
