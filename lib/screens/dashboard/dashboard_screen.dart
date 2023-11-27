@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yaplist/screens/home/home_page.dart';
 import 'package:yaplist/screens/home/tasks.dart';
+import 'package:yaplist/shareds/quick_actions/quick_actions_manager.dart';
 import 'package:yaplist/widgets/layout/dashboard_layout.dart';
 
 class DashboardScreeen extends StatefulWidget {
@@ -30,10 +31,12 @@ class _DashboardScreeenState extends State<DashboardScreeen> {
 
   @override
   Widget build(BuildContext context) {
-    return DashboardLayout(
-      body: _dashboardBody(),
-      index: _selectedIndex,
-      onChanged: onChanged,
+    return QuickActionsManagerScreen(
+      child: DashboardLayout(
+        body: _dashboardBody(),
+        index: _selectedIndex,
+        onChanged: onChanged,
+      ),
     );
   }
 }
