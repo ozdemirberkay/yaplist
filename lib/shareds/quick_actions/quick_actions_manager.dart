@@ -8,13 +8,11 @@ class _QuickActionManager {
     QuickActions quickActions = const QuickActions();
 
     final ShortcutItem addTaskShortcutItem = ShortcutItem(
-        type: Routes.taskManager,
-        localizedTitle: tr("addTask"),
-        icon: "yaplist");
+        type: Routes.taskManager, localizedTitle: tr("addTask"), icon: "task");
     final ShortcutItem addCategoryShortcutItem = ShortcutItem(
         type: Routes.categoryManager,
         localizedTitle: tr("addCategory"),
-        icon: "yaplist");
+        icon: "category");
     quickActions
         .setShortcutItems([addTaskShortcutItem, addCategoryShortcutItem]);
     quickActions.initialize(handler);
