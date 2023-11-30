@@ -21,6 +21,7 @@ dependencies:
   lottie: ^2.7.0
   quick_actions: ^1.0.6
   flutter_native_splash: ^2.3.6
+  google_mobile_ads: ^3.1.0
 
 dev_dependencies:
   flutter_test:

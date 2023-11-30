@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yaplist/shareds/ads/ads_manager.dart';
 import 'package:yaplist/widgets/drawer/widget/language_changer_button.dart';
 import 'package:yaplist/widgets/drawer/widget/theme_changer_button.dart';
 import 'package:yaplist/widgets/icon/home_icon.dart';
@@ -27,13 +28,16 @@ class HomeDrawer extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(left: 10),
-            child: const Column(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ThemeChangerButton(),
-                SizedBox(height: 20),
-                LanguageChangerButton(),
+                const ThemeChangerButton(),
+                const SizedBox(height: 20),
+                const LanguageChangerButton(),
+                const SizedBox(height: 20),
+                BannerAdManager.instance.loadAndShowAd(),
+                const SizedBox(height: 10),
               ],
             ),
           ),
