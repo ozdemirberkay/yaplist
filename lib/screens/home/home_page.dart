@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:yaplist/shareds/ads/ads_manager.dart';
 import 'package:yaplist/widgets/builder/category_builder.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/widgets/button/master_icon_button.dart';
@@ -30,6 +31,7 @@ class HomePage extends StatelessWidget {
                 MasterIconButton(
                   icon: Icons.add,
                   onPressed: () {
+                    InterstitialAdManager.instance.loadAndShowAd();
                     Navigator.pushNamed(context, Routes.categoryManager);
                   },
                 ),

@@ -16,7 +16,7 @@ mixin TaskFilterMixin {
   List<Task> filteredTaskList(
       {required List<Task> taskList, required TaskFilter filter}) {
     return taskList.where((task) {
-      if (filter.category != null && task.category != filter.category) {
+      if (filter.category != null && task.category?.id != filter.category?.id) {
         return false;
       }
 

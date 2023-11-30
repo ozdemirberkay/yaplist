@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:yaplist/models/category.dart';
 import 'package:yaplist/models/filter/dropdown_model.dart';
 import 'package:yaplist/models/filter/task_filter.dart';
+import 'package:yaplist/shareds/ads/ads_manager.dart';
 import 'package:yaplist/utilities/date/date_helper.dart';
 import 'package:yaplist/widgets/bottom/category_picker_modal.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
@@ -161,6 +162,8 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
                           icon: Icons.check),
                     ],
                   ),
+                  const SizedBox(height: 6),
+                  BannerAdManager.instance.loadAndShowAd(),
                   const SizedBox(height: 6),
                 ],
               ),

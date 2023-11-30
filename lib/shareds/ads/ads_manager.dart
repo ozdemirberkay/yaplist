@@ -4,14 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class InterstitialAdManager {
+  static final InterstitialAdManager _instance =
+      InterstitialAdManager._internal();
+  static InterstitialAdManager get instance => _instance;
+  InterstitialAdManager._internal();
+
   InterstitialAd? _interstitialAd;
 
   final String _adUnitId = Platform.isAndroid
       ? 'ca-app-pub-8385820706890324/3284865232'
       : 'ca-app-pub-8385820706890324/7424254946';
 
-  void loadAd() {
-    InterstitialAd.load(
+  Future<void> _loadAd() async {
+    await InterstitialAd.load(
         adUnitId: _adUnitId,
         request: const AdRequest(),
         adLoadCallback: InterstitialAdLoadCallback(
@@ -19,12 +24,13 @@ class InterstitialAdManager {
             _interstitialAd = ad;
           },
           onAdFailedToLoad: (LoadAdError error) {
-            print(error);
+            _interstitialAd = null;
           },
         ));
   }
 
-  void showAd() {
+  Future<void> loadAndShowAd() async {
+    await _loadAd();
     if (_interstitialAd != null) {
       _interstitialAd!.show();
     }
@@ -32,9 +38,11 @@ class InterstitialAdManager {
 }
 
 class BannerAdManager {
-  BannerAd? _bannerAd;
-  bool _isLoaded = false;
+  static final BannerAdManager _instance = BannerAdManager._internal();
+  static BannerAdManager get instance => _instance;
+  BannerAdManager._internal();
 
+  BannerAd? _bannerAd;
   final adUnitId = Platform.isAndroid
       ? 'ca-app-pub-8385820706890324/9757902109'
       : 'ca-app-pub-8385820706890324/9527674109';
@@ -45,19 +53,16 @@ class BannerAdManager {
       request: const AdRequest(),
       size: AdSize.fullBanner,
       listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          _isLoaded = true;
-        },
+        onAdLoaded: (ad) {},
         onAdFailedToLoad: (ad, err) {
-          print(err);
-
+          _bannerAd = null;
           ad.dispose();
         },
       ),
     )..load();
   }
 
-  Widget getBannerAd() {
+  Widget loadAndShowAd() {
     loadAd();
     if (_bannerAd == null) {
       return Container();
