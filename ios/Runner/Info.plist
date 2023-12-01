@@ -53,8 +53,8 @@
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
 		<key>UIStatusBarHidden</key>
-		<false/>
+		<true/>
 		<key>GADApplicationIdentifier</key>
-			<string>ca-app-pub-8385820706890324~5004252964</string>
+		<string>ca-app-pub-8385820706890324~5004252964</string>
 	</dict>
 </plist>
