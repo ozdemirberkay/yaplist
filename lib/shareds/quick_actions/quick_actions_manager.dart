@@ -29,10 +29,17 @@ class QuickActionsManagerScreen extends StatefulWidget {
 }
 
 class _QuickActionsManagerScreenState extends State<QuickActionsManagerScreen> {
+  bool loaded = false;
+
   @override
   void initState() {
     _QuickActionManager.initialize(handler: (String type) {
-      Navigator.pushNamed(context, type);
+      if (!loaded) {
+        Navigator.pushNamed(context, type);
+        loaded = true;
+      }
+      Future.delayed(const Duration(seconds: 3))
+          .then((value) => loaded = false);
     });
     super.initState();
   }
