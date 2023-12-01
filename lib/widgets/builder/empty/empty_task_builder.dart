@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -12,17 +11,15 @@ class EmptyTaskBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double size = min(MediaQuery.sizeOf(context).height,
-            MediaQuery.sizeOf(context).width) /
-        2;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(
-            Assets.task,
-            width: size,
-          ),
+          if (MediaQuery.orientationOf(context) == Orientation.portrait)
+            Lottie.asset(
+              Assets.task,
+              width: MediaQuery.sizeOf(context).width / 2,
+            ),
           Text(tr("taskNotFound"), textAlign: TextAlign.center),
           const SizedBox(height: 6),
           MasterButton(

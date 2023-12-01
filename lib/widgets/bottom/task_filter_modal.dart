@@ -84,6 +84,7 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
         expand: false,
         builder: (context, scrollController) {
           return SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
