@@ -9,12 +9,12 @@ class _QuickActionManager {
 
     final ShortcutItem addTaskShortcutItem = ShortcutItem(
         type: Routes.taskManager, localizedTitle: tr("addTask"), icon: "task");
-    final ShortcutItem addCategoryShortcutItem = ShortcutItem(
-        type: Routes.categoryManager,
-        localizedTitle: tr("addCategory"),
-        icon: "category");
-    quickActions
-        .setShortcutItems([addTaskShortcutItem, addCategoryShortcutItem]);
+
+    // final ShortcutItem addCategoryShortcutItem = ShortcutItem(
+    //     type: Routes.categoryManager,
+    //     localizedTitle: tr("addCategory"),
+    //     icon: "category");
+    quickActions.setShortcutItems([addTaskShortcutItem]);
     quickActions.initialize(handler);
   }
 }
