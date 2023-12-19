@@ -9,7 +9,7 @@ class Routes {
   static String categoryManager = '/categoryManager';
 
   static Map<String, WidgetBuilder> routes = {
-    initialScreen: (context) => const DashboardScreeen(),
+    initialScreen: (context) => const DashboardScreen(),
     taskManager: (context) => const TaskManagerScreen(),
     categoryManager: (context) => const CategoryManagerScreen(),
   };

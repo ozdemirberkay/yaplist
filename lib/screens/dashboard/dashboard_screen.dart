@@ -4,14 +4,14 @@ import 'package:yaplist/screens/home/tasks.dart';
 import 'package:yaplist/shareds/quick_actions/quick_actions_manager.dart';
 import 'package:yaplist/widgets/layout/dashboard_layout.dart';
 
-class DashboardScreeen extends StatefulWidget {
-  const DashboardScreeen({super.key});
+class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
 
   @override
-  State<DashboardScreeen> createState() => _DashboardScreeenState();
+  State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _DashboardScreeenState extends State<DashboardScreeen> {
+class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
 
   Widget _dashboardBody() {
