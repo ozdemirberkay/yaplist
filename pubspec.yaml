@@ -3,10 +3,10 @@ description: Task management application.
 
 publish_to: "none"
 
-version: 1.0.6+6
+version: 1.0.7+7
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.4.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -18,16 +18,16 @@ dependencies:
   hydrated_bloc: ^9.1.2
   flutter_slidable: ^3.0.0
   path_provider: ^2.1.1
-  lottie: ^2.7.0
+  lottie: ^3.2.0
   quick_actions: ^1.0.6
   flutter_native_splash: ^2.3.6
-  google_mobile_ads: ^3.1.0
+  google_mobile_ads: ^5.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
 
 flutter_native_splash:
   color: "#ffffff"
