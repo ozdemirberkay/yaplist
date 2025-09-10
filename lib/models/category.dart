@@ -11,7 +11,7 @@ class Category {
     return {
       'id': id,
       'name': name,
-      'color': color,
+      'color': color?.toARGB32(),
     };
   }
 
