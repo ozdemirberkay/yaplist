@@ -19,7 +19,7 @@ class CategoryCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: category.color,
           border: Border.all(
-              color: Theme.of(context).primaryColor.withOpacity(0.3)),
+              color: Theme.of(context).primaryColor.withValues(alpha: 0.3)),
         ),
         child: Text(category.name),
       ),

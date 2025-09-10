@@ -28,7 +28,7 @@ class ColorPickerModal extends StatefulWidget {
 class _ColorPickerModalState extends State<ColorPickerModal> {
   Color? selectedColor;
 
-  setSelectedColor(Color clickedColor) {
+  void setSelectedColor(Color clickedColor) {
     widget.onColorSelected(clickedColor);
     Navigator.of(context).pop();
   }

@@ -27,8 +27,6 @@ class ThemeModeConverter {
         return 'dark';
       case ThemeMode.system:
         return 'system';
-      default:
-        return 'system';
     }
   }
 

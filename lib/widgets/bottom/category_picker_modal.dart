@@ -23,7 +23,7 @@ class CategoryPickerModal extends StatelessWidget {
         });
   }
 
-  setSelectedCategory(Category selectedCategory, BuildContext context) {
+  void setSelectedCategory(Category selectedCategory, BuildContext context) {
     onCategorySelected(selectedCategory);
     Navigator.of(context).pop();
   }

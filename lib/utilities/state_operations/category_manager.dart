@@ -35,7 +35,7 @@ class CategoryManager {
     _updateTasks(category: category, context: context, newCategory: null);
   }
 
-  static _updateTasks({
+  static void _updateTasks({
     required BuildContext context,
     required Category category,
     required Category? newCategory,

@@ -32,16 +32,18 @@ class _LanguageChangerButtonState extends State<LanguageChangerButton> {
   }
 
   Widget localeRadioButton({required Locale locale}) {
-    return RadioListTile(
-      contentPadding: EdgeInsets.zero,
-      title: Text(AppLocale.localeNames[locale.languageCode]!),
-      value: context.locale,
+    return RadioGroup(
       groupValue: locale,
       onChanged: (value) {
         context.setLocale(locale);
         Navigator.of(context)
             .pushNamedAndRemoveUntil(Routes.initialScreen, (route) => false);
       },
+      child: RadioListTile(
+        contentPadding: EdgeInsets.zero,
+        title: Text(AppLocale.localeNames[locale.languageCode]!),
+        value: context.locale,
+      ),
     );
   }
 }

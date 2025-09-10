@@ -17,7 +17,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
   HydratedBloc.storage = await HydratedStorage.build(
-      storageDirectory: await getTemporaryDirectory());
+      storageDirectory: HydratedStorageDirectory(
+          await getTemporaryDirectory().then((value) => value.path)));
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
