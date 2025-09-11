@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "LaunchImage.png",
+      "filename" : "iconblack.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "LaunchImageDark.png",
+      "filename" : "iconwhite.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +25,7 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "LaunchImageDark 1.png",
+      "filename" : "iconwhite 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
