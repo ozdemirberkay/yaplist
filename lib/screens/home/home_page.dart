@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:yaplist/screens/home/components/focus_mode_button.dart';
 import 'package:yaplist/shareds/ads/ads_manager.dart';
 import 'package:yaplist/widgets/builder/category_builder.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
@@ -19,6 +20,7 @@ class HomePage extends StatelessWidget {
       drawer: const HomeDrawer(),
       body: Column(
         children: [
+          FocusModeButton(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
             child: Row(

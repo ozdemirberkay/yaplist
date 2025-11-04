@@ -34,5 +34,10 @@
     "dark": "Karanlık",
     "light": "Aydınlık",
     "system": "Sistem",
-    "language": "Dil"
+    "language": "Dil",
+    "focusMode": "Odak Modu",
+    "focusDescription": "Hedeflerini pomodoro tekniği ile tamamla.",
+    "pomodoro": "Pomodoro",
+    "shortBreak": "Kısa Mola",
+    "longBreak": "Uzun Mola"
 }

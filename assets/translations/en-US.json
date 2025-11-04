@@ -34,5 +34,10 @@
     "dark": "Dark",
     "light": "Light",
     "system": "System",
-    "language": "Language"
+    "language": "Language",
+    "focusMode": "Focus Mode",
+    "focusDescription": "Complete your goals with the pomodoro technique.",
+    "pomodoro": "Pomodoro",
+    "shortBreak": "Short Break",
+    "longBreak": "Long Break"
 }
