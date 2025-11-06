@@ -39,5 +39,7 @@
     "focusDescription": "Complete your goals with the pomodoro technique.",
     "pomodoro": "Pomodoro",
     "shortBreak": "Short Break",
-    "longBreak": "Long Break"
+    "longBreak": "Long Break",
+    "selectGoal": "Select Goal",
+    "chooseTask": "Choose Task"
 }

@@ -39,5 +39,7 @@
     "focusDescription": "Hedeflerini pomodoro tekniği ile tamamla.",
     "pomodoro": "Pomodoro",
     "shortBreak": "Kısa Mola",
-    "longBreak": "Uzun Mola"
+    "longBreak": "Uzun Mola",
+    "selectGoal": "Hedef Seç",
+    "chooseTask": "Görev Seç"
 }

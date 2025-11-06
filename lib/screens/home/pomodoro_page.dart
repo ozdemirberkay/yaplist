@@ -1,7 +1,11 @@
 import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:yaplist/widgets/bottom/task_picker_modal.dart';
+import 'package:yaplist/widgets/button/master_button.dart';
+import 'package:yaplist/widgets/card/task_card.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
+import 'package:yaplist/models/task.dart';
 
 class PomodoroPage extends StatefulWidget {
   const PomodoroPage({super.key});
@@ -12,7 +16,7 @@ class PomodoroPage extends StatefulWidget {
 
 class _PomodoroPageState extends State<PomodoroPage> {
   Map<PomodoroMode, int> modes = {
-    PomodoroMode.pomodoro: 25,
+    PomodoroMode.focusMode: 25,
     PomodoroMode.shortBreak: 5,
     PomodoroMode.longBreak: 15,
   };
@@ -20,13 +24,13 @@ class _PomodoroPageState extends State<PomodoroPage> {
   int _minutoToSeconds(int minutes) => minutes * 60;
 
   final List<PomodoroMode> modesSequenceList = [
-    PomodoroMode.pomodoro,
+    PomodoroMode.focusMode,
     PomodoroMode.shortBreak,
-    PomodoroMode.pomodoro,
+    PomodoroMode.focusMode,
     PomodoroMode.shortBreak,
-    PomodoroMode.pomodoro,
+    PomodoroMode.focusMode,
     PomodoroMode.shortBreak,
-    PomodoroMode.pomodoro,
+    PomodoroMode.focusMode,
     PomodoroMode.longBreak,
   ];
 
@@ -40,8 +44,9 @@ class _PomodoroPageState extends State<PomodoroPage> {
   late int _currentDurationSeconds;
 
   bool _isRunning = false;
-  PomodoroMode _mode = PomodoroMode.pomodoro;
+  PomodoroMode _mode = PomodoroMode.focusMode;
   Timer? _timer;
+  Task? _selectedTask;
 
   @override
   void initState() {
@@ -121,59 +126,89 @@ class _PomodoroPageState extends State<PomodoroPage> {
             ? MediaQuery.sizeOf(context).width
             : MediaQuery.sizeOf(context).height;
     return Layout(
-      title: tr('focusMode'),
+      title: tr(_mode.name.toString()),
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                SizedBox(
-                  width: lowestSize * 0.6,
-                  height: lowestSize * 0.6,
-                  child: CircularProgressIndicator(
-                    value: _progress(),
-                    strokeWidth: 10,
-                    backgroundColor: Theme.of(context).primaryColor,
-                    color: Colors.green,
-                  ),
-                ),
-                Column(mainAxisSize: MainAxisSize.min, children: [
-                  Text(
-                    tr(_mode.name.toString()),
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+            Expanded(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  SizedBox(
+                    width: lowestSize * 0.6,
+                    height: lowestSize * 0.6,
+                    child: CircularProgressIndicator(
+                      value: _progress(),
+                      strokeWidth: 20,
+                      backgroundColor:
+                          Theme.of(context).primaryColor.withAlpha(200),
+                      color: Colors.green,
                     ),
                   ),
-                  Text(
-                    _formatTime(_secondsRemaining),
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
-                  ),
-                  Row(
+                  Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      IconButton(
-                        onPressed: _startPause,
-                        icon: Icon(
-                            _isRunning ? Icons.pause_circle : Icons.play_circle,
-                            size: 30),
+                      Text(
+                        _formatTime(_secondsRemaining),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 36),
                       ),
-                      IconButton(
-                        onPressed: _reset,
-                        icon: Icon(Icons.refresh, size: 30),
-                      ),
-                      IconButton(
-                        onPressed: _switchMode,
-                        icon: Icon(Icons.skip_next, size: 30),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            onPressed: _startPause,
+                            icon: Icon(
+                                _isRunning
+                                    ? Icons.pause_circle
+                                    : Icons.play_circle,
+                                size: 30),
+                          ),
+                          IconButton(
+                            onPressed: _reset,
+                            icon: Icon(Icons.refresh, size: 30),
+                          ),
+                          IconButton(
+                            onPressed: _switchMode,
+                            icon: Icon(Icons.skip_next, size: 30),
+                          ),
+                        ],
                       ),
                     ],
-                  )
-                ]),
-              ],
+                  ),
+                ],
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 12),
+                  child: _selectedTask != null
+                      ? TaskCard(
+                          task: _selectedTask!,
+                          disableTaskOperations: true,
+                        )
+                      : MasterButton(
+                          label: tr("selectGoal"),
+                          onPressed: () {
+                            TaskPickerModal.show(
+                                context: context,
+                                onTaskSelected: (task) {
+                                  setState(() {
+                                    _selectedTask = task;
+                                  });
+                                });
+                          },
+                          icon: Icons.checklist,
+                        ),
+                ),
+              ),
             ),
           ],
         ),
@@ -182,4 +217,4 @@ class _PomodoroPageState extends State<PomodoroPage> {
   }
 }
 
-enum PomodoroMode { pomodoro, shortBreak, longBreak }
+enum PomodoroMode { focusMode, shortBreak, longBreak }

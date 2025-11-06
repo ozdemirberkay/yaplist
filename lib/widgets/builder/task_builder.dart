@@ -9,7 +9,13 @@ import 'package:yaplist/widgets/card/task_card.dart';
 
 class TaskBuilder extends StatelessWidget with TaskFilterMixin {
   final TaskFilter? taskFilter;
-  const TaskBuilder({super.key, this.taskFilter});
+  final Function(Task)? onTaskSelected;
+  final bool disableTaskOperations;
+  const TaskBuilder(
+      {super.key,
+      this.taskFilter,
+      this.onTaskSelected,
+      this.disableTaskOperations = false});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +36,14 @@ class TaskBuilder extends StatelessWidget with TaskFilterMixin {
             itemCount: taskList.length + 1,
             itemBuilder: (context, index) {
               if (index == taskList.length) {
-                return BannerAdManager.instance.loadAndShowAd();
+                return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: BannerAdManager.instance.loadAndShowAd());
               }
               return TaskCard(
                 task: taskList[index],
+                onTaskSelected: onTaskSelected,
+                disableTaskOperations: disableTaskOperations,
               );
             },
           );

@@ -8,7 +8,14 @@ import 'package:yaplist/utilities/state_operations/task_manager.dart';
 
 class TaskCard extends StatelessWidget {
   final Task task;
-  const TaskCard({super.key, required this.task});
+  final bool disableTaskOperations;
+  final Function(Task)? onTaskSelected;
+
+  const TaskCard(
+      {super.key,
+      required this.task,
+      this.onTaskSelected,
+      this.disableTaskOperations = false});
 
   void deleteTask(BuildContext context) {
     TaskManager.deleteTask(context: context, task: task);
@@ -18,54 +25,64 @@ class TaskCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 5),
-      child: Slidable(
-        key: ValueKey(task.id),
-        endActionPane: ActionPane(
-          motion: const DrawerMotion(),
-          children: [
-            SlidableAction(
-              onPressed: (context) {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => TaskManagerScreen(task: task)));
-              },
-              backgroundColor: AppColors.greyColor,
-              foregroundColor: AppColors.reversePrimaryColor(Theme.of(context)),
-              icon: Icons.info,
-              label: tr("detail"),
-            ),
-            SlidableAction(
-              onPressed: deleteTask,
-              backgroundColor: AppColors.redColor,
-              foregroundColor: AppColors.reversePrimaryColor(Theme.of(context)),
-              icon: Icons.delete_forever,
-              label: tr("delete"),
-            ),
-          ],
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: Theme.of(context).primaryColor),
-            ),
-            color: task.category?.color,
-          ),
-          child: Row(
+      child: InkWell(
+        onTap: onTaskSelected != null ? () => onTaskSelected!(task) : null,
+        child: Slidable(
+          key: ValueKey(task.id),
+          enabled: !disableTaskOperations,
+          endActionPane: ActionPane(
+            motion: const DrawerMotion(),
             children: [
-              Checkbox(
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                onChanged: (value) {
-                  task.isCompleted = value!;
-                  TaskManager.updateTask(context: context, task: task);
+              SlidableAction(
+                onPressed: (context) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => TaskManagerScreen(task: task)));
                 },
-                value: task.isCompleted,
+                backgroundColor: AppColors.greyColor,
+                foregroundColor:
+                    AppColors.reversePrimaryColor(Theme.of(context)),
+                icon: Icons.info,
+                label: tr("detail"),
               ),
-              Expanded(
-                child: Text(
-                  task.title,
-                ),
+              SlidableAction(
+                onPressed: deleteTask,
+                backgroundColor: AppColors.redColor,
+                foregroundColor:
+                    AppColors.reversePrimaryColor(Theme.of(context)),
+                icon: Icons.delete_forever,
+                label: tr("delete"),
               ),
             ],
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: Theme.of(context).primaryColor),
+              ),
+              color: task.category?.color,
+            ),
+            child: Row(
+              children: [
+                if (!disableTaskOperations)
+                  Checkbox(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    onChanged: (value) {
+                      task.isCompleted = value!;
+                      TaskManager.updateTask(context: context, task: task);
+                    },
+                    value: task.isCompleted,
+                  ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      task.title,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
