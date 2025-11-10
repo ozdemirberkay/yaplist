@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:yaplist/shareds/ads/ads_manager.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
 
 class DashboardLayout extends StatelessWidget {
@@ -21,7 +20,6 @@ class DashboardLayout extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         tooltip: tr("addTask"),
         onPressed: () {
-          InterstitialAdManager.instance.loadAndShowAd();
           Navigator.pushNamed(context, Routes.taskManager);
         },
         child: const Icon(Icons.add),
