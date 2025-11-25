@@ -18,19 +18,37 @@ class CategoryBox extends StatelessWidget {
         ));
       },
       child: Container(
-        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: category.color,
           borderRadius: Constants.borderRadius,
-          border: Border.all(
-              color: Theme.of(context).primaryColor.withValues(alpha: 0.3)),
         ),
-        child: Align(
-          alignment: Alignment.center,
-          child: Text(
-            category.name,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
+        child: Stack(
+          children: [
+            Positioned(
+              right: -20,
+              top: -20,
+              child: Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.1),
+                  shape: BoxShape.circle,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  category.name,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

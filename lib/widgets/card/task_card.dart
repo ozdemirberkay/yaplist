@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/screens/task/task_manager_screen.dart';
+import 'package:yaplist/shareds/constants/constants.dart';
 import 'package:yaplist/shareds/theme/appcolors.dart';
 import 'package:yaplist/utilities/state_operations/task_manager.dart';
 
@@ -24,14 +25,20 @@ class TaskCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 5),
+      margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
+      decoration: BoxDecoration(
+        borderRadius: Constants.borderRadius,
+        border: Border.all(
+          color: task.category?.color ?? Theme.of(context).primaryColor,
+        ),
+      ),
       child: InkWell(
         onTap: onTaskSelected != null ? () => onTaskSelected!(task) : null,
         child: Slidable(
           key: ValueKey(task.id),
           enabled: !disableTaskOperations,
           endActionPane: ActionPane(
-            motion: const DrawerMotion(),
+            motion: const ScrollMotion(),
             children: [
               SlidableAction(
                 onPressed: (context) {
@@ -57,10 +64,13 @@ class TaskCard extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
+              borderRadius: Constants.borderRadius,
               border: Border(
-                bottom: BorderSide(color: Theme.of(context).primaryColor),
+                left: BorderSide(
+                  color: task.category?.color ?? Theme.of(context).primaryColor,
+                  width: 8,
+                ),
               ),
-              color: task.category?.color,
             ),
             child: Row(
               children: [
@@ -75,9 +85,10 @@ class TaskCard extends StatelessWidget {
                   ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(6.0),
                     child: Text(
                       task.title,
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),

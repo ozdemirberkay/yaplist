@@ -160,16 +160,14 @@ class _PomodoroPageState extends State<PomodoroPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            onPressed: _startPause,
-                            icon: Icon(
-                                _isRunning
-                                    ? Icons.pause_circle
-                                    : Icons.play_circle,
-                                size: 30),
-                          ),
-                          IconButton(
                             onPressed: _reset,
                             icon: Icon(Icons.refresh, size: 30),
+                          ),
+                          IconButton(
+                            onPressed: _startPause,
+                            icon: Icon(
+                                _isRunning ? Icons.pause : Icons.play_arrow,
+                                size: 30),
                           ),
                           IconButton(
                             onPressed: _switchMode,
@@ -179,35 +177,35 @@ class _PomodoroPageState extends State<PomodoroPage> {
                       ),
                     ],
                   ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 12),
+                        child: _selectedTask != null
+                            ? TaskCard(
+                                task: _selectedTask!,
+                                disableTaskOperations: true,
+                              )
+                            : MasterButton(
+                                label: tr("selectGoal"),
+                                onPressed: () {
+                                  TaskPickerModal.show(
+                                      context: context,
+                                      onTaskSelected: (task) {
+                                        setState(() {
+                                          _selectedTask = task;
+                                        });
+                                      });
+                                },
+                                icon: Icons.checklist,
+                              ),
+                      ),
+                    ),
+                  ),
                 ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 12),
-                  child: _selectedTask != null
-                      ? TaskCard(
-                          task: _selectedTask!,
-                          disableTaskOperations: true,
-                        )
-                      : MasterButton(
-                          label: tr("selectGoal"),
-                          onPressed: () {
-                            TaskPickerModal.show(
-                                context: context,
-                                onTaskSelected: (task) {
-                                  setState(() {
-                                    _selectedTask = task;
-                                  });
-                                });
-                          },
-                          icon: Icons.checklist,
-                        ),
-                ),
               ),
             ),
           ],
