@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:yaplist/widgets/bottom/task_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/card/task_card.dart';
@@ -60,12 +61,14 @@ class _PomodoroPageState extends State<PomodoroPage> {
   @override
   void dispose() {
     _timer?.cancel();
+    WakelockPlus.disable();
     super.dispose();
   }
 
   void _startPause() {
     if (_isRunning) {
       _timer?.cancel();
+      WakelockPlus.disable();
       setState(() => _isRunning = false);
       return;
     }
@@ -74,6 +77,7 @@ class _PomodoroPageState extends State<PomodoroPage> {
   }
 
   void _startTimer() {
+    WakelockPlus.enable();
     setState(() => _isRunning = true);
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_secondsRemaining <= 0) {

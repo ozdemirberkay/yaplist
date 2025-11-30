@@ -35,6 +35,7 @@ class InputField extends StatelessWidget {
       onTap: onTap,
       readOnly: readOnly,
       maxLines: maxLines,
+      textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: label,
         suffixIcon: Icon(icon),

@@ -24,12 +24,14 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double borderWidthValue = 1.5;
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
+      margin: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: Constants.borderRadius,
         border: Border.all(
           color: task.category?.color ?? Theme.of(context).primaryColor,
+          width: borderWidthValue,
         ),
       ),
       child: InkWell(
@@ -58,20 +60,17 @@ class TaskCard extends StatelessWidget {
                     AppColors.reversePrimaryColor(Theme.of(context)),
                 icon: Icons.delete_forever,
                 label: tr("delete"),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(
+                      Constants.borderRadiusValue - borderWidthValue),
+                  bottomRight: Radius.circular(
+                      Constants.borderRadiusValue - borderWidthValue),
+                ),
               ),
             ],
           ),
           child: Container(
             padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              borderRadius: Constants.borderRadius,
-              border: Border(
-                left: BorderSide(
-                  color: task.category?.color ?? Theme.of(context).primaryColor,
-                  width: 8,
-                ),
-              ),
-            ),
             child: Row(
               children: [
                 if (!disableTaskOperations)

@@ -13,7 +13,7 @@ class CategoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => onCategorySelected(category),
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+        margin: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: category.color ?? Theme.of(context).primaryColor,
           borderRadius: Constants.borderRadius,

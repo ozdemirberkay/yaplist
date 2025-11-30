@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yaplist/shareds/constants/constants.dart';
 import 'package:yaplist/shareds/theme/appcolors.dart';
 
 class ThemeUtils {
@@ -19,8 +20,10 @@ class ThemeUtils {
   }
 
   static InputDecorationTheme get inputDecorationTheme {
-    return const InputDecorationTheme(
-      border: OutlineInputBorder(),
+    return InputDecorationTheme(
+      border: OutlineInputBorder(
+        borderRadius: Constants.borderRadius,
+      ),
       filled: true,
       alignLabelWithHint: true,
     );
