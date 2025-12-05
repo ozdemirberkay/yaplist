@@ -24,14 +24,18 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double borderWidthValue = 1.5;
+    final categoryColor =
+        task.category?.color ?? Theme.of(context).primaryColor;
+    const double borderWidthValue = 2;
+
     return Container(
       margin: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        borderRadius: Constants.borderRadius,
-        border: Border.all(
-          color: task.category?.color ?? Theme.of(context).primaryColor,
-          width: borderWidthValue,
+        border: Border(
+          bottom: BorderSide(
+            color: task.category?.color ?? Theme.of(context).primaryColor,
+            width: borderWidthValue,
+          ),
         ),
       ),
       child: InkWell(
@@ -60,16 +64,10 @@ class TaskCard extends StatelessWidget {
                     AppColors.reversePrimaryColor(Theme.of(context)),
                 icon: Icons.delete_forever,
                 label: tr("delete"),
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(
-                      Constants.borderRadiusValue - borderWidthValue),
-                  bottomRight: Radius.circular(
-                      Constants.borderRadiusValue - borderWidthValue),
-                ),
               ),
             ],
           ),
-          child: Container(
+          child: Padding(
             padding: const EdgeInsets.all(6),
             child: Row(
               children: [
@@ -82,12 +80,68 @@ class TaskCard extends StatelessWidget {
                     },
                     value: task.isCompleted,
                   ),
-                Expanded(
+                Flexible(
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
-                    child: Text(
-                      task.title,
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          task.title,
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        if (task.category != null || task.date != null)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 6),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (task.category != null)
+                                  Flexible(
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8, vertical: 3),
+                                      decoration: BoxDecoration(
+                                          color: categoryColor.withAlpha(30),
+                                          borderRadius: Constants.borderRadius),
+                                      child: Text(
+                                        task.category!.name,
+                                        style: TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w500,
+                                          color: categoryColor,
+                                        ),
+                                        overflow: TextOverflow.clip,
+                                      ),
+                                    ),
+                                  ),
+                                if (task.category != null && task.date != null)
+                                  const SizedBox(width: 8),
+                                if (task.date != null)
+                                  Row(
+                                    children: [
+                                      Icon(Icons.calendar_today_outlined,
+                                          size: 12,
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall
+                                              ?.color),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        DateFormat('dd MMM').format(task.date!),
+                                        style: TextStyle(
+                                            fontSize: 11,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall
+                                                ?.color),
+                                      ),
+                                    ],
+                                  ),
+                              ],
+                            ),
+                          ),
+                      ],
                     ),
                   ),
                 ),
