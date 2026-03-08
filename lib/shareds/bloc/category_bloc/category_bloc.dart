@@ -21,7 +21,7 @@ class CategoryBloc extends HydratedBloc<CategoryEvent, CategoryState> {
     List<Category> newCategoryList = List.from(state.categoryList);
     int index = newCategoryList
         .indexWhere((element) => element.id == event.category.id);
-    newCategoryList[index] == event.category;
+    newCategoryList[index] = event.category;
     emit(CategoryChanged(categoryList: newCategoryList));
   }
 

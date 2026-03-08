@@ -8,6 +8,7 @@ import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
 import 'package:yaplist/shareds/bloc/settings_bloc/settings_bloc.dart';
 import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
 import 'package:yaplist/shareds/constants/assets.dart';
+import 'package:yaplist/shareds/constants/constants.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/shareds/locale/locale.dart';
 import 'package:yaplist/shareds/theme/theme.dart';
@@ -18,7 +19,8 @@ Future<void> main() async {
   MobileAds.instance.initialize();
   HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: HydratedStorageDirectory(
-          await getTemporaryDirectory().then((value) => value.path)));
+          await getApplicationDocumentsDirectory()
+              .then((value) => value.path)));
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
@@ -51,7 +53,7 @@ class YaplistApp extends StatelessWidget {
     return BlocBuilder<SettingsBloc, SettingsState>(
       builder: (context, state) {
         return MaterialApp(
-            title: 'Yaplist',
+            title: Constants.appName,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,

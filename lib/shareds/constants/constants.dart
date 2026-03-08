@@ -6,4 +6,6 @@ class Constants {
       BorderRadius.circular(borderRadiusValue);
 
   static final bool useMaterial3 = true;
+
+  static const String appName = 'Yaplist';
 }
