@@ -4,13 +4,11 @@ Download links / İndirme linkleri
 
 <p align="left">
   <a href="https://play.google.com/store/apps/details?id=com.berkayozdemir.yaplist">
-    <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/8c655b41-32a7-487b-a2aa-63f2972a37a4" width="80" />
+    <img height="60" alt="playstore" src="https://github.com/user-attachments/assets/c2b03c33-c074-4ec0-b1cf-7d5c6ae31831" />
   </a>
+
   <a href="https://appgallery.huawei.com/app/C109776171">
-    <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/d60c7a76-f4d6-471e-9f62-0a0ae4b8345a" width="80" />
-  </a>
-  <a href="https://global.app.mi.com/details?lo=ID&id=com.berkayozdemir.yaplist">
-    <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/cd4c7abf-d4e9-4d04-a5cd-c5c10e6e8872" width="80" />
+    <img height="60" alt="appgallery" src="https://github.com/user-attachments/assets/ebdb6448-c609-4317-9c74-c8f8db1bc6d9" />
   </a>
 </p>
 
