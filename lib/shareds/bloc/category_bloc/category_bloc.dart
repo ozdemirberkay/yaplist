@@ -9,6 +9,7 @@ class CategoryBloc extends HydratedBloc<CategoryEvent, CategoryState> {
     on<AddCategory>(onAddCategory);
     on<UpdateCategory>(onUpdateCategory);
     on<DeleteCategory>(onDeleteCategory);
+    on<DeleteAllCategories>(onDeleteAllCategories);
   }
 
   void onAddCategory(AddCategory event, Emitter<CategoryState> emit) {
@@ -29,6 +30,11 @@ class CategoryBloc extends HydratedBloc<CategoryEvent, CategoryState> {
     List<Category> newCategoryList = List.from(state.categoryList);
     newCategoryList.remove(event.category);
     emit(CategoryChanged(categoryList: newCategoryList));
+  }
+
+  void onDeleteAllCategories(
+      DeleteAllCategories event, Emitter<CategoryState> emit) {
+    emit(const CategoryChanged(categoryList: []));
   }
 
   @override

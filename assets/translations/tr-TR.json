@@ -41,5 +41,11 @@
     "shortBreak": "Kısa Mola",
     "longBreak": "Uzun Mola",
     "selectGoal": "Hedef Seç",
-    "chooseTask": "Görev Seç"
+    "chooseTask": "Görev Seç",
+    "settings": "Ayarlar",
+    "deleteCompletedTasks": "Tamamlanan Görevleri Sil",
+    "deleteAllData": "Tüm Verileri Sil",
+    "deleteCompletedTasksConfirm": "Tüm tamamlanan görevler silinecek. Emin misiniz?",
+    "deleteAllDataConfirm": "Tüm veriler (görevler ve kategoriler) kalıcı olarak silinecek. Emin misiniz?",
+    "cancel": "İptal"
 }

@@ -30,7 +30,7 @@ class MasterButton extends StatelessWidget {
             : Icon(icon),
       ),
       label: Text(
-        label.toUpperCase(),
+        label,
         textAlign: TextAlign.center,
       ),
     );

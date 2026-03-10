@@ -17,3 +17,5 @@ class UpdateCategory extends CategoryEvent {
   final Category category;
   UpdateCategory({required this.category});
 }
+
+class DeleteAllCategories extends CategoryEvent {}

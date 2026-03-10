@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yaplist/shareds/ads/ads_manager.dart';
-import 'package:yaplist/widgets/drawer/widget/language_changer_button.dart';
-import 'package:yaplist/widgets/drawer/widget/theme_changer_button.dart';
+import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/widgets/icon/home_icon.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -27,19 +27,17 @@ class HomeDrawer extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const ThemeChangerButton(),
-                const SizedBox(height: 20),
-                const LanguageChangerButton(),
-                const SizedBox(height: 20),
-                BannerAdManager.instance.loadAndShowAd(),
-                const SizedBox(height: 10),
-              ],
-            ),
+          ListTile(
+            leading: const Icon(Icons.settings_outlined),
+            title: Text(tr('settings')),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed(Routes.settings);
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: BannerAdManager.instance.loadAndShowAd(),
           ),
         ],
       ),

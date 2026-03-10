@@ -26,3 +26,7 @@ class BulkUpdateTask extends TaskEvent {
     required this.category,
   });
 }
+
+class DeleteCompletedTasks extends TaskEvent {}
+
+class DeleteAllTasks extends TaskEvent {}

@@ -41,5 +41,11 @@
     "shortBreak": "Short Break",
     "longBreak": "Long Break",
     "selectGoal": "Select Goal",
-    "chooseTask": "Choose Task"
+    "chooseTask": "Choose Task",
+    "settings": "Settings",
+    "deleteCompletedTasks": "Delete Completed Tasks",
+    "deleteAllData": "Delete All Data",
+    "deleteCompletedTasksConfirm": "All completed tasks will be deleted. Are you sure?",
+    "deleteAllDataConfirm": "All data (tasks and categories) will be permanently deleted. Are you sure?",
+    "cancel": "Cancel"
 }
