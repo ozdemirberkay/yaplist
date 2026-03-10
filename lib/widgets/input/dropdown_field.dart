@@ -27,6 +27,7 @@ class DropdownField extends StatelessWidget {
         onChanged: onChanged,
         decoration: InputDecoration(
           labelText: label,
+          alignLabelWithHint: false,
         ),
         hint: value != null
             ? Text(
