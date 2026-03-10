@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:yaplist/screens/home/components/focus_mode_button.dart';
 import 'package:yaplist/shareds/ads/ads_manager.dart';
 import 'package:yaplist/widgets/builder/category_builder.dart';
+import 'package:yaplist/widgets/builder/pending_tasks_builder.dart';
 import 'package:yaplist/shareds/constants/routes.dart';
 import 'package:yaplist/widgets/button/master_icon_button.dart';
 import 'package:yaplist/widgets/drawer/home_drawer.dart';
@@ -21,6 +22,7 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           FocusModeButton(),
+          const PendingTasksBuilder(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
             child: Row(

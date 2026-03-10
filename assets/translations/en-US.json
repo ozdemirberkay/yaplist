@@ -43,6 +43,7 @@
     "selectGoal": "Select Goal",
     "chooseTask": "Choose Task",
     "settings": "Settings",
+    "pendingTasks": "Pending Tasks",
     "deleteCompletedTasks": "Delete Completed Tasks",
     "deleteAllData": "Delete All Data",
     "deleteCompletedTasksConfirm": "All completed tasks will be deleted. Are you sure?",

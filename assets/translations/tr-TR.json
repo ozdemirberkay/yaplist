@@ -43,6 +43,7 @@
     "selectGoal": "Hedef Seç",
     "chooseTask": "Görev Seç",
     "settings": "Ayarlar",
+    "pendingTasks": "Bekleyen Görevler",
     "deleteCompletedTasks": "Tamamlanan Görevleri Sil",
     "deleteAllData": "Tüm Verileri Sil",
     "deleteCompletedTasksConfirm": "Tüm tamamlanan görevler silinecek. Emin misiniz?",
