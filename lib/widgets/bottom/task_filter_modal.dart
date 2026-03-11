@@ -4,6 +4,7 @@ import 'package:yaplist/models/category.dart';
 import 'package:yaplist/models/filter/dropdown_model.dart';
 import 'package:yaplist/models/filter/task_filter.dart';
 import 'package:yaplist/shareds/ads/ads_manager.dart';
+import 'package:yaplist/shareds/constants/constants.dart';
 import 'package:yaplist/utilities/date/date_helper.dart';
 import 'package:yaplist/widgets/bottom/category_picker_modal.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
@@ -43,6 +44,7 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
   DateTime? selectedDate;
   Category? selectedCategory;
   CompletedDropdownModel? completedDropdownModel;
+  CompletedDropdownModel? priorityDropdownModel;
 
   @override
   void initState() {
@@ -55,6 +57,7 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
     selectedCategory = selectedCategory = widget.taskFilter?.category;
     selectedDate = widget.taskFilter?.dateTime;
     completedDropdownModel = widget.taskFilter?.completedDropdownModel;
+    priorityDropdownModel = widget.taskFilter?.priorityDropdownModel;
   }
 
   void onDateChanged(DateTime newDate) {
@@ -68,12 +71,6 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
       selectedCategory = newCategory;
     });
   }
-
-  List<CompletedDropdownModel> dropdownModelList = [
-    CompletedDropdownModel(title: tr("all"), data: null),
-    CompletedDropdownModel(title: tr("incomplete"), data: false),
-    CompletedDropdownModel(title: tr("completed"), data: true),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -131,11 +128,20 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
                   const SizedBox(height: 10),
                   DropdownField(
                     label: tr("status"),
-                    items: dropdownModelList,
+                    items: Constants.statusDropdownModelList,
                     onChanged: (CompletedDropdownModel? value) {
                       completedDropdownModel = value;
                     },
                     value: completedDropdownModel,
+                  ),
+                  const SizedBox(height: 10),
+                  DropdownField(
+                    label: tr("priority"),
+                    items: Constants.priorityDropdownModelList,
+                    onChanged: (CompletedDropdownModel? value) {
+                      priorityDropdownModel = value;
+                    },
+                    value: priorityDropdownModel,
                   ),
                   const SizedBox(height: 10),
                   Row(
@@ -157,7 +163,8 @@ class _TaskFilterModalState extends State<TaskFilterModal> {
                                 category: selectedCategory,
                                 completedDropdownModel: completedDropdownModel,
                                 dateTime: selectedDate,
-                                name: titleController.text));
+                                name: titleController.text,
+                                priorityDropdownModel: priorityDropdownModel));
                             Navigator.of(context).pop();
                           },
                           icon: Icons.check),

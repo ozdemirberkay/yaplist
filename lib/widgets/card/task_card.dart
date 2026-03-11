@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:yaplist/models/priority.dart';
 import 'package:yaplist/models/task.dart';
 import 'package:yaplist/screens/task/task_manager_screen.dart';
 import 'package:yaplist/shareds/constants/constants.dart';
@@ -83,65 +84,83 @@ class TaskCard extends StatelessWidget {
                 Flexible(
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
+                    child: Row(
                       children: [
-                        Text(
-                          task.title,
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                        if (task.category != null || task.date != null)
-                          Padding(
-                            padding: const EdgeInsets.only(top: 6),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                if (task.category != null)
-                                  Flexible(
-                                    child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 3),
-                                      decoration: BoxDecoration(
-                                          color: categoryColor.withAlpha(30),
-                                          borderRadius: Constants.borderRadius),
-                                      child: Text(
-                                        task.category!.name,
-                                        style: TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w500,
-                                          color: categoryColor,
-                                        ),
-                                        overflow: TextOverflow.clip,
-                                      ),
-                                    ),
-                                  ),
-                                if (task.category != null && task.date != null)
-                                  const SizedBox(width: 8),
-                                if (task.date != null)
-                                  Row(
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                task.title,
+                                style: TextStyle(fontWeight: FontWeight.w600),
+                              ),
+                              if (task.category != null || task.date != null)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Icon(Icons.calendar_today_outlined,
-                                          size: 12,
-                                          color: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall
-                                              ?.color),
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        DateFormat('dd MMM').format(task.date!),
-                                        style: TextStyle(
-                                            fontSize: 11,
-                                            color: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall
-                                                ?.color),
-                                      ),
+                                      if (task.category != null)
+                                        Flexible(
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8, vertical: 3),
+                                            decoration: BoxDecoration(
+                                                color:
+                                                    categoryColor.withAlpha(30),
+                                                borderRadius:
+                                                    Constants.borderRadius),
+                                            child: Text(
+                                              task.category!.name,
+                                              style: TextStyle(
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.w500,
+                                                color: categoryColor,
+                                              ),
+                                              overflow: TextOverflow.clip,
+                                            ),
+                                          ),
+                                        ),
+                                      if (task.category != null &&
+                                          task.date != null)
+                                        const SizedBox(width: 8),
+                                      if (task.date != null)
+                                        Row(
+                                          children: [
+                                            Icon(Icons.calendar_today_outlined,
+                                                size: 12,
+                                                color: Theme.of(context)
+                                                    .textTheme
+                                                    .bodySmall
+                                                    ?.color),
+                                            const SizedBox(width: 4),
+                                            Text(
+                                              DateFormat('dd MMM')
+                                                  .format(task.date!),
+                                              style: TextStyle(
+                                                  fontSize: 11,
+                                                  color: Theme.of(context)
+                                                      .textTheme
+                                                      .bodySmall
+                                                      ?.color),
+                                            ),
+                                          ],
+                                        ),
                                     ],
                                   ),
-                              ],
-                            ),
+                                ),
+                            ],
                           ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: Icon(
+                            task.priority.icon,
+                            size: 16,
+                            color: task.priority.color,
+                          ),
+                        ),
                       ],
                     ),
                   ),

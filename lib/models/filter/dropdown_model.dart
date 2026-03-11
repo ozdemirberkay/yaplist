@@ -1,6 +1,6 @@
 class CompletedDropdownModel {
   final String title;
-  final bool? data;
+  final String data;
 
   CompletedDropdownModel({required this.title, required this.data});
 }

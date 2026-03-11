@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
 import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
+import 'package:yaplist/shareds/theme/appcolors.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
 import 'package:yaplist/widgets/drawer/widget/language_changer_button.dart';
 import 'package:yaplist/widgets/drawer/widget/theme_changer_button.dart';
@@ -24,7 +25,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           TextButton(
             style: TextButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.error,
+              foregroundColor: AppColors.redColor,
             ),
             onPressed: () => Navigator.of(ctx).pop(true),
             child: Text(tr('delete')),

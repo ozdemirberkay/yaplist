@@ -5,6 +5,7 @@ class AppColors {
   static Color primaryColorDark = const Color(0xffffffff);
   static Color greyColor = Colors.grey;
   static Color redColor = Colors.red;
+  static Color blueColor = Colors.blue;
 
   static Color reversePrimaryColor(ThemeData themeData) {
     return themeData.brightness == Brightness.dark

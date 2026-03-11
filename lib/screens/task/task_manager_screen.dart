@@ -1,11 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:yaplist/models/filter/dropdown_model.dart';
+import 'package:yaplist/models/priority.dart';
 import 'package:yaplist/models/task.dart';
+import 'package:yaplist/shareds/constants/constants.dart';
 import 'package:yaplist/utilities/date/date_helper.dart';
 import 'package:yaplist/utilities/state_operations/task_manager.dart';
 import 'package:yaplist/widgets/bottom/category_picker_modal.dart';
 import 'package:yaplist/widgets/bottom/date_picker_modal.dart';
 import 'package:yaplist/widgets/button/master_button.dart';
+import 'package:yaplist/widgets/input/dropdown_field.dart';
 import 'package:yaplist/widgets/input/input_field.dart';
 import 'package:yaplist/widgets/layout/layout.dart';
 import 'package:yaplist/models/category.dart';
@@ -26,6 +30,7 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
   late TextEditingController categoryController;
   DateTime? selectedDate;
   Category? selectedCategory;
+  TaskPriority selectedPriority = TaskPriority.medium;
   bool _haveTask = false;
   Task? task;
 
@@ -41,6 +46,7 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
     selectedCategory =
         selectedCategory = widget.defaultCategory ?? task?.category;
     selectedDate = task?.date;
+    selectedPriority = task?.priority ?? TaskPriority.medium;
     _haveTask = task != null;
   }
 
@@ -54,6 +60,12 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
     setState(() {
       selectedCategory = newCategory;
     });
+  }
+
+  void onPriorityChanged(CompletedDropdownModel? newPriority) {
+    selectedPriority = TaskPriority.values.firstWhere(
+        (priority) => priority.name == newPriority?.data,
+        orElse: () => TaskPriority.medium);
   }
 
   @override
@@ -115,6 +127,16 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
                   icon: Icons.date_range,
                 ),
                 const SizedBox(height: 10),
+                DropdownField(
+                  label: tr("priority"),
+                  items: Constants.priorityDropdownModelList,
+                  onChanged: onPriorityChanged,
+                  value: Constants.priorityDropdownModelList.firstWhere(
+                      (model) => model.data == selectedPriority.name,
+                      orElse: () => Constants.priorityDropdownModelList
+                          .firstWhere((model) => model.data == "medium")),
+                ),
+                const SizedBox(height: 10),
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(4),
@@ -128,11 +150,13 @@ class _TaskManagerScreenState extends State<TaskManagerScreen> {
                               context: context,
                               title: titleController.text,
                               category: selectedCategory,
-                              date: selectedDate);
+                              date: selectedDate,
+                              priority: selectedPriority);
                         } else {
                           task!.title = titleController.text;
                           task!.category = selectedCategory;
                           task!.date = selectedDate;
+                          task!.priority = selectedPriority;
 
                           TaskManager.updateTask(
                             context: context,

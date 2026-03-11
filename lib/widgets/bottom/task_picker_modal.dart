@@ -39,7 +39,7 @@ class TaskPickerModal extends StatelessWidget {
                 disableTaskOperations: true,
                 taskFilter: TaskFilter(
                   completedDropdownModel: CompletedDropdownModel(
-                      title: tr("incomplete"), data: false),
+                      title: tr("incomplete"), data: "incomplete"),
                 ),
               ),
             ),

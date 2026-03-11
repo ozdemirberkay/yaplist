@@ -7,9 +7,14 @@ class TaskFilter {
   final CompletedDropdownModel? completedDropdownModel;
   final String? name;
   final DateTime? dateTime;
+  final CompletedDropdownModel? priorityDropdownModel;
 
   TaskFilter(
-      {this.category, this.completedDropdownModel, this.name, this.dateTime});
+      {this.category,
+      this.completedDropdownModel,
+      this.name,
+      this.dateTime,
+      this.priorityDropdownModel});
 }
 
 mixin TaskFilterMixin {
@@ -20,12 +25,19 @@ mixin TaskFilterMixin {
         return false;
       }
 
-      if (filter.completedDropdownModel?.data != null &&
-          task.isCompleted != filter.completedDropdownModel!.data) {
-        return false;
+      if (filter.completedDropdownModel?.data != null) {
+        if (filter.completedDropdownModel!.data == "incomplete" &&
+            task.isCompleted) {
+          return false;
+        }
+        if (filter.completedDropdownModel!.data == "completed" &&
+            !task.isCompleted) {
+          return false;
+        }
       }
 
       if (filter.name != null &&
+          filter.name!.isNotEmpty &&
           !task.title.toLowerCase().contains(filter.name!.toLowerCase())) {
         return false;
       }
@@ -36,6 +48,21 @@ mixin TaskFilterMixin {
               task.date!.month != filter.dateTime!.month ||
               task.date!.day != filter.dateTime!.day)) {
         return false;
+      }
+
+      if (filter.priorityDropdownModel?.data != null) {
+        if (filter.priorityDropdownModel!.data == "low" &&
+            task.priority.name != "low") {
+          return false;
+        }
+        if (filter.priorityDropdownModel!.data == "medium" &&
+            task.priority.name != "medium") {
+          return false;
+        }
+        if (filter.priorityDropdownModel!.data == "high" &&
+            task.priority.name != "high") {
+          return false;
+        }
       }
 
       return true;
