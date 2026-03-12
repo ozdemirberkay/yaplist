@@ -69,8 +69,8 @@ mixin TaskFilterMixin {
     }).toList();
   }
 
-  List<Task> pendingMaxTenTask({required List<Task> taskList}) {
+  List<Task> pendingMaxThreeTask({required List<Task> taskList}) {
     final pending = taskList.where((task) => !task.isCompleted).toList();
-    return pending.take(10).toList();
+    return pending.take(3).toList();
   }
 }

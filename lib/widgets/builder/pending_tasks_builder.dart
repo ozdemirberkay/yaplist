@@ -13,7 +13,7 @@ class PendingTasksBuilder extends StatelessWidget with TaskFilterMixin {
   Widget build(BuildContext context) {
     return BlocBuilder<TaskBloc, TaskState>(
       builder: (context, state) {
-        final List<Task> pendingTasks = pendingMaxTenTask(
+        final List<Task> pendingTasks = pendingMaxThreeTask(
           taskList: state.taskList,
         );
 
