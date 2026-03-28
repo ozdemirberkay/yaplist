@@ -17,22 +17,20 @@ Download links / İndirme linkleri
 Task management app.
 
 <p align="left">
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/abcff011-3ed5-4089-ab50-233f09e43793" width="150" />
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/0e8bdd8d-63e4-4dd5-8d2c-7d5d35a5d85b" width="150" />
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/34238381-f818-4830-a14a-03564b616151" width="150" />
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/fe999f16-56a5-42ef-8b80-940f809e2ddc" width="150" />
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/e67375f2-2c8c-4736-b7b9-8b7839e94f38" width="150" />
+  <img src="https://github.com/user-attachments/assets/36d93a13-f327-4ebc-ba8e-a3f484626e70" width="150" />
+  <img src="https://github.com/user-attachments/assets/1eeba605-233c-4225-8c16-a67bad89f764" width="150" />
+  <img src="https://github.com/user-attachments/assets/056e0f56-d745-4c86-831f-aeb38c6425f2" width="150" />
+  <img src="https://github.com/user-attachments/assets/934c4d65-1bb2-4391-bf98-2062a31a9b08" width="150" />
+  <img src="https://github.com/user-attachments/assets/68396ce3-4d03-475b-aee2-10ea9db1ba17" width="150" />
 </p>
-
 
 ### Türkçe
 Görev yönetim uygulaması
 
 <p align="left">
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/534c293f-462e-4f5f-846e-f85e3a4bdab5" width="150" />
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/81fd941b-6c77-415c-92e8-68c3d5c7c15a" width="150" />
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/3b7d78f0-18f1-4e2d-ac8c-2e79e339bc4d" width="150" />
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/ccd9e5e1-e16c-45bb-a86d-fff7b2c5f52b" width="150" />
-  <img src="https://github.com/ozdemirberkay/yaplist/assets/55758394/df8ea0f2-f77d-480b-a6b2-c34f837c1f9b" width="150" />
+  <img src="https://github.com/user-attachments/assets/e8538515-2949-4339-a098-081b5223d77b" width="150" />
+  <img src="https://github.com/user-attachments/assets/a8bce0bc-f69a-4c2d-b739-6fb177f2013b" width="150" />
+  <img src="https://github.com/user-attachments/assets/a1cc1966-a3f3-4f25-b6bf-7c729c892f4d" width="150" />
+  <img src="https://github.com/user-attachments/assets/1d8209aa-b985-4a47-8523-8095897b3847" width="150" />
+  <img src="https://github.com/user-attachments/assets/d481d7e7-13aa-464d-93a5-57a5d67bafd4" width="150" />
 </p>
-
