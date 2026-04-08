@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:yaplist/shareds/ads/tracking_transparency_manager.dart';
 import 'package:yaplist/shareds/bloc/category_bloc/category_bloc.dart';
 import 'package:yaplist/shareds/bloc/settings_bloc/settings_bloc.dart';
 import 'package:yaplist/shareds/bloc/task_bloc/task_bloc.dart';
@@ -17,7 +16,6 @@ import 'screens/unknown/unknown_route.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await TrackingTransparencyManager.preloadStatus();
   MobileAds.instance.initialize();
   HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: HydratedStorageDirectory(

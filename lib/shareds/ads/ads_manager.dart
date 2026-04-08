@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:yaplist/shareds/ads/tracking_transparency_manager.dart';
 
 class InterstitialAdManager {
   static final InterstitialAdManager _instance =
@@ -31,7 +30,6 @@ class InterstitialAdManager {
   }
 
   Future<void> loadAndShowAd() async {
-    await TrackingTransparencyManager.requestIfNeeded();
     await _loadAd();
     if (_interstitialAd != null) {
       _interstitialAd!.show();
@@ -50,7 +48,6 @@ class BannerAdManager {
       : 'ca-app-pub-8385820706890324/9527674109';
 
   void loadAd() {
-    TrackingTransparencyManager.requestIfNeeded();
     _bannerAd = BannerAd(
       adUnitId: adUnitId,
       request: const AdRequest(),

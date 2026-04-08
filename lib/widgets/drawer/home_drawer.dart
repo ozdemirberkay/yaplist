@@ -31,6 +31,7 @@ class HomeDrawer extends StatelessWidget {
             leading: const Icon(Icons.settings_outlined),
             title: Text(tr('settings')),
             onTap: () {
+              InterstitialAdManager.instance.loadAndShowAd();
               Navigator.of(context).pop();
               Navigator.of(context).pushNamed(Routes.settings);
             },
